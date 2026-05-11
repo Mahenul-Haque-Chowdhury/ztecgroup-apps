@@ -213,7 +213,7 @@ export function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2.5 rounded-xl bg-primary text-primary-foreground ring-1 ring-primary/35 shadow-[0_12px_28px_rgba(240,180,79,0.24)] transition-all duration-300 hover:brightness-110"
+                className="px-5 py-2.5 rounded-xl bg-[var(--brand-logo)] text-[var(--brand-logo-foreground)] ring-1 ring-[var(--brand-logo-ring)] shadow-[0_12px_28px_var(--brand-logo-shadow)] transition-all duration-300 hover:brightness-110"
               >
                 <span className="text-xs tracking-[0.14em] uppercase">Get Started</span>
               </motion.button>

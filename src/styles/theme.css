@@ -18,6 +18,10 @@
   --accent-foreground: #08111f;
   --destructive: #d4183d;
   --destructive-foreground: #fef2f4;
+  --brand-logo: #1f6b4f;
+  --brand-logo-foreground: #f5fff9;
+  --brand-logo-ring: rgba(31, 107, 79, 0.45);
+  --brand-logo-shadow: rgba(31, 107, 79, 0.35);
   --border: rgba(188, 220, 255, 0.12);
   --input: transparent;
   --input-background: rgba(11, 18, 32, 0.88);
@@ -58,6 +62,10 @@
   --accent-foreground: #08111f;
   --destructive: #d4183d;
   --destructive-foreground: #fef2f4;
+  --brand-logo: #1f6b4f;
+  --brand-logo-foreground: #f5fff9;
+  --brand-logo-ring: rgba(31, 107, 79, 0.45);
+  --brand-logo-shadow: rgba(31, 107, 79, 0.35);
   --border: rgba(188, 220, 255, 0.12);
   --input: transparent;
   --ring: rgba(240, 180, 79, 0.4);
