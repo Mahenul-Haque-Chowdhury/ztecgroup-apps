@@ -21,8 +21,8 @@ export function Footer() {
             <Link href="/" className="inline-block mb-6">
               <div className="relative h-[2.24rem] w-[10.24rem] overflow-hidden">
                 <Image
-                  src="/nexuslogo.png"
-                  alt="NEXUS Group"
+                  src="/ztecgroup.png"
+                  alt="ZTEC Group"
                   fill
                   sizes="(max-width: 768px) 141px, 164px"
                   className="object-contain scale-[1.62]"
@@ -36,10 +36,10 @@ export function Footer() {
               <div>
                 <p className="text-[11px] uppercase tracking-[0.14em] text-white/55">Email</p>
                 <a
-                  href="mailto:contact@nexusgroup.ltd"
+                  href="mailto:info@ztecgroup.au"
                   className="text-white/75 transition-colors hover:text-white"
                 >
-                  contact@nexusgroup.ltd
+                  info@ztecgroup.au
                 </a>
               </div>
               <div>
@@ -59,7 +59,7 @@ export function Footer() {
             <div className="flex gap-4">
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
-                href="mailto:contact@nexusgroup.ltd"
+                href="mailto:info@ztecgroup.au"
                 className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg hover:border-primary/60 hover:bg-primary/10 transition-colors"
               >
                 <Mail size={18} />
@@ -117,7 +117,7 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
           <p className="text-white/40 text-sm">
-            © {currentYear} NEXUS Group. All rights reserved.
+            © {currentYear} ZTEC Group. All rights reserved.
           </p>
           <p className="text-white/40 text-sm">
             Designed by{" "}

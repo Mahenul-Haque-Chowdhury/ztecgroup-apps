@@ -75,7 +75,7 @@ export function About() {
           >
             <div className="max-w-5xl mx-auto text-center">
               <h1 className="mb-8 text-[clamp(1.9rem,5vw,4.2rem)] font-bold leading-[1.1]">
-                About NEXUS Group
+                About ZTEC Group
               </h1>
               <p className="text-lg md:text-xl text-white/60 leading-relaxed">
                 We design and deliver integrated digital infrastructure across communication, content,
@@ -100,7 +100,7 @@ export function About() {
                 <div>
                   <h2 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">Unified Solutions, Single Partner</h2>
                   <p className="mt-5 text-base sm:text-lg leading-relaxed text-white/65">
-                    NEXUS Group was founded in 2025 to eliminate fragmented vendor stacks. Instead of managing separate agencies for strategy,
+                    ZTEC Group was founded in 2025 to eliminate fragmented vendor stacks. Instead of managing separate agencies for strategy,
                     development, production, and optimization, our clients work with one coordinated team.
                   </p>
                   <p className="mt-4 text-base leading-relaxed text-white/55">
@@ -320,7 +320,7 @@ export function About() {
           >
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-8">Join Leading Organizations</h2>
             <p className="text-base sm:text-lg md:text-xl text-white/60 mb-10 md:mb-12">
-              Partner with NEXUS Group to build digital infrastructure that supports long-term growth.
+              Partner with ZTEC Group to build digital infrastructure that supports long-term growth.
             </p>
             <Link href="/contact">
               <Button variant="primary" size="lg">

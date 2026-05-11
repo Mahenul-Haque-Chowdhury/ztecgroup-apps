@@ -13,14 +13,14 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nexusgroup.ltd"),
-  applicationName: "NexusGroup Limited",
+  metadataBase: new URL("https://ztecgroup.au"),
+  applicationName: "ZTEC Group",
   title: {
-    default: "NexusGroup Limited - Unified Ecosystem of Digital Services",
-    template: "%s | NexusGroup Limited - Unified Ecosystem of Digital Services",
+    default: "ZTEC Group - Unified Ecosystem of Digital Services",
+    template: "%s | ZTEC Group - Unified Ecosystem of Digital Services",
   },
   description:
-    "NEXUS Group connects advanced digital systems, communication, and media into one seamless solution platform.",
+    "ZTEC Group connects advanced digital systems, communication, and media into one seamless solution platform.",
   manifest: "/site.webmanifest",
   icons: {
     icon: [

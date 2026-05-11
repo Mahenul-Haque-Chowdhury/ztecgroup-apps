@@ -533,7 +533,7 @@ export function Home() {
               Digital Infrastructure?
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white/60 mb-9 md:mb-12 leading-relaxed">
-              Join forward-thinking organizations leveraging the NEXUS ecosystem for competitive advantage.
+              Join forward-thinking organizations leveraging the ZTEC ecosystem for competitive advantage.
             </p>
             <Link href="/contact">
               <Button variant="primary" size="lg" className="w-full sm:w-auto">

@@ -79,14 +79,14 @@ export function Navbar() {
           <Link href="/" className="group shrink-0">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex h-[1.55rem] w-[7.2rem] items-center sm:h-[1.9rem] sm:w-[8.9rem] lg:h-[2.1rem] lg:w-[10.8rem]"
+              className="flex h-[2.2rem] w-[10rem] items-center sm:h-[2.7rem] sm:w-[12rem] lg:h-[3.1rem] lg:w-[14.6rem]"
             >
               <Image
-                src="/nexuslogo.png"
-                alt="NEXUS Group"
+                src="/ztecgroup.png"
+                alt="ZTEC Group"
                 width={186}
                 height={42}
-                sizes="(max-width: 640px) 115px, (max-width: 1024px) 142px, 173px"
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 192px, 234px"
                 priority
                 loading="eager"
                 className="h-full w-auto object-contain"

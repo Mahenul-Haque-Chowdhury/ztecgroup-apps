@@ -63,7 +63,7 @@ export function Contact() {
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-white/60 mb-10 md:mb-12 leading-relaxed">
                   Ready to transform your digital infrastructure? Our team is standing by 
-                  to discuss your project and explore how NEXUS Group can deliver results.
+                  to discuss your project and explore how ZTEC Group can deliver results.
                 </p>
 
                 {/* Contact Info */}
@@ -74,8 +74,8 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/40 mb-1">Email</div>
-                      <a href="mailto:contact@nexusgroup.ltd" className="text-lg hover:text-white/80 transition-colors">
-                        contact@nexusgroup.ltd
+                      <a href="mailto:info@ztecgroup.au" className="text-lg hover:text-white/80 transition-colors">
+                        info@ztecgroup.au
                       </a>
                     </div>
                   </div>

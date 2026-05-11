@@ -1,13 +1,13 @@
 import { LegalDocumentLayout } from "../components/LegalDocumentLayout";
 
-const companyName = "Nexus Group Pty Ltd";
-const abn = "[ABN pending]";
+const companyName = "ZTEC Group Pty Ltd";
+const abn = "82 697 931 445";
 
 export function PrivacyPolicy() {
   return (
     <LegalDocumentLayout
       title="Privacy Policy"
-      lastUpdated="[Insert date]"
+      lastUpdated="11 May 2026"
       summary="This policy explains how we manage personal information across Content Refinery, website development services, CloakRoute anonymous communication gateways, and short-stay accommodation launch consulting."
     >
       <section className="space-y-3">
@@ -16,7 +16,7 @@ export function PrivacyPolicy() {
           <span className="text-white/55">Company:</span> {companyName} (ABN: {abn})
         </p>
         <p>
-          <span className="text-white/55">Contact:</span> Privacy Officer - privacy@nexusgroup.ltd
+          <span className="text-white/55">Contact:</span> Privacy Officer - info@ztecgroup.au
         </p>
       </section>
 
@@ -101,7 +101,7 @@ export function PrivacyPolicy() {
       <section className="space-y-3">
         <h2 className="text-2xl font-semibold text-white">8. Complaints</h2>
         <p className="text-white/75">
-          If you have a privacy grievance, contact us first at privacy@nexusgroup.ltd. If unresolved, you may complain
+          If you have a privacy grievance, contact us first at info@ztecgroup.au. If unresolved, you may complain
           to the Office of the Australian Information Commissioner (OAIC).
         </p>
       </section>

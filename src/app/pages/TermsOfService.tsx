@@ -1,14 +1,14 @@
 import { LegalDocumentLayout } from "../components/LegalDocumentLayout";
 
-const companyName = "Nexus Group Pty Ltd";
-const abn = "[ABN pending]";
+const companyName = "ZTEC Group Pty Ltd";
+const abn = "82 697 931 445";
 
 export function TermsOfService() {
   return (
     <LegalDocumentLayout
       title="Terms of Service"
-      lastUpdated="[Insert date]"
-      summary="These Terms govern your use of services provided by Nexus Group Pty Ltd, including content production, website development, communication gateway services, and hospitality consulting."
+      lastUpdated="11 May 2026"
+      summary="These Terms govern your use of services provided by ZTEC Group Pty Ltd, including content production, website development, communication gateway services, and hospitality consulting."
     >
       <section className="space-y-3">
         <h2 className="text-2xl font-semibold text-white">Company Details</h2>

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 
-const STORAGE_KEY = "nexus_preloader_seen";
+const STORAGE_KEY = "ztec_preloader_seen";
 
 const GREETINGS = [
   "Hello",

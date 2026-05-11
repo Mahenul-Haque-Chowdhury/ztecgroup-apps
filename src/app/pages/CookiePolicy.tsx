@@ -27,8 +27,8 @@ export function CookiePolicy() {
   return (
     <LegalDocumentLayout
       title="Cookie Policy"
-      lastUpdated="[Insert date]"
-      summary="This Cookie Policy explains how Nexus Group uses cookies and similar technologies on www.nexusgroup.ltd in line with OAIC transparency guidance."
+      lastUpdated="11 May 2026"
+      summary="This Cookie Policy explains how ZTEC Group uses cookies and similar technologies on www.ztecgroup.au in line with OAIC transparency guidance."
     >
       <section className="space-y-3">
         <h2 className="text-2xl font-semibold text-white">1. What Are Cookies?</h2>

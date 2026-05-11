@@ -638,8 +638,8 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                   <p className="mt-5 max-w-4xl text-lg leading-relaxed text-white/72">{strConsultationContent.bottomLineParagraph}</p>
                   <p className="mt-4 max-w-4xl text-lg leading-relaxed text-white/72">
                     Ready to start? Book a free 20-minute Discovery Call or email at{" "}
-                    <a href="mailto:enquiry@nexusgroup.ltd" className="text-white underline decoration-white/40 underline-offset-2 transition-colors hover:text-primary">
-                      enquiry@nexusgroup.ltd
+                    <a href="mailto:info@ztecgroup.au" className="text-white underline decoration-white/40 underline-offset-2 transition-colors hover:text-primary">
+                      info@ztecgroup.au
                     </a>
                     . Tell us about your property - we'll tell you exactly what steps come next.
                   </p>
