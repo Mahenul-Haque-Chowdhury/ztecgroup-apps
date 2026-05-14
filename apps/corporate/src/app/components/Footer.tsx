@@ -85,10 +85,10 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-6 text-xs tracking-[0.18em] uppercase text-white/80">Services</h3>
             <ul className="space-y-4">
-              <li><Link href="/services/communication" className="text-white/50 hover:text-white transition-colors">Anonymous Communication Gateway</Link></li>
-              <li><Link href="/services/content" className="text-white/50 hover:text-white transition-colors">Video & Motion Content Studio</Link></li>
-              <li><Link href="/services/software" className="text-white/50 hover:text-white transition-colors">Software & Business Systems</Link></li>
-              <li><Link href="/services/revenue" className="text-white/50 hover:text-white transition-colors">STRA Management Consultation</Link></li>
+              <li><a href="https://communication.ztecgroup.au" className="text-white/50 hover:text-white transition-colors">Anonymous Communication Gateway</a></li>
+              <li><a href="https://contentstudio.ztecgroup.au" className="text-white/50 hover:text-white transition-colors">Video & Motion Content Studio</a></li>
+              <li><a href="https://software.ztecgroup.au" className="text-white/50 hover:text-white transition-colors">Software & Business Systems</a></li>
+              <li><a href="https://hospitality.ztecgroup.au" className="text-white/50 hover:text-white transition-colors">STRA Management Consultation</a></li>
             </ul>
           </div>
 

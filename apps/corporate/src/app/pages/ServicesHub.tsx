@@ -10,6 +10,7 @@ import { Button } from "../components/Button";
 const services = [
   {
     id: "communication",
+    href: "https://communication.ztecgroup.au",
     number: "01",
     title: "Anonymous Communication Gateway",
     tagline: "Privacy-First Infrastructure",
@@ -27,6 +28,7 @@ const services = [
   },
   {
     id: "content",
+    href: "https://contentstudio.ztecgroup.au",
     number: "02",
     title: "Video & Motion Content Studio",
     tagline: "Cinematic Excellence",
@@ -44,6 +46,7 @@ const services = [
   },
   {
     id: "software",
+    href: "https://software.ztecgroup.au",
     number: "03",
     title: "Software & Business Systems",
     tagline: "Enterprise Solutions",
@@ -61,6 +64,7 @@ const services = [
   },
   {
     id: "revenue",
+    href: "https://hospitality.ztecgroup.au",
     number: "04",
     title: "STRA Management Consultation",
     tagline: "Advisory & Optimization",
@@ -127,7 +131,7 @@ export function ServicesHub() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Link href={`/services/${service.id}`}>
+                <Link href={service.href}>
                   <div className={`group relative grid gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 items-center ${
                     index % 2 === 1 ? 'lg:grid-flow-dense' : ''
                   }`}>

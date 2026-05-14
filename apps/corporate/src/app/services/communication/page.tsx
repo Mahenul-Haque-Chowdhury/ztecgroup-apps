@@ -1,12 +1,5 @@
-import type { Metadata } from "next";
-import { ServiceDetail } from "../../pages/ServiceDetail";
-
-export const metadata: Metadata = {
-  title: "Anonymous Communication Gateway",
-  description:
-    "Privacy-first encrypted communication infrastructure with zero-knowledge architecture and distributed security.",
-};
+import { permanentRedirect } from "next/navigation";
 
 export default function CommunicationServicePage() {
-  return <ServiceDetail serviceId="communication" />;
+  permanentRedirect("https://communication.ztecgroup.au");
 }

@@ -11,6 +11,13 @@ const GlassSurface = motion.div;
 const glassSurfaceClass = "rounded-2xl bg-[rgba(7,10,18,0.58)] ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] backdrop-blur-xl";
 const solidDropdownSurfaceClass = "rounded-2xl bg-[#070a12] ring-1 ring-white/[0.14] shadow-[0_26px_60px_rgba(4,8,20,0.62)]";
 
+const serviceDomainLinks = {
+  communication: "https://communication.ztecgroup.au",
+  content: "https://contentstudio.ztecgroup.au",
+  software: "https://software.ztecgroup.au",
+  revenue: "https://hospitality.ztecgroup.au",
+} as const;
+
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -31,28 +38,28 @@ export function Navbar() {
 
   const serviceLinks = [
     {
-      path: "/services/communication",
+      path: serviceDomainLinks.communication,
       label: "Anonymous Communication Gateway",
       description: "",
       branches: ["Scan2Call & more."],
       icon: Shield,
     },
     {
-      path: "/services/content",
+      path: serviceDomainLinks.content,
       label: "Video & Motion Content Studio",
       description: "",
       branches: ["Video Editing, Cinemetic Production & more"],
       icon: Video,
     },
     {
-      path: "/services/software",
+      path: serviceDomainLinks.software,
       label: "Software & Business Systems",
       description: "",
       branches: ["Web Design, Mobile App, E-commerce & more"],
       icon: Code,
     },
     {
-      path: "/services/revenue",
+      path: serviceDomainLinks.revenue,
       label: "STRA Management Consultation",
       description: "",
       branches: ["Property Renting Consultation"],
@@ -159,7 +166,10 @@ export function Navbar() {
                           href={service.path}
                           onClick={() => setIsServicesOpen(false)}
                           className={`block rounded-2xl px-4 py-3 transition-colors ${
-                            pathname === service.path
+                            pathname === "/services/communication" && service.path === serviceDomainLinks.communication ||
+                            pathname === "/services/content" && service.path === serviceDomainLinks.content ||
+                            pathname === "/services/software" && service.path === serviceDomainLinks.software ||
+                            pathname === "/services/revenue" && service.path === serviceDomainLinks.revenue
                               ? "bg-white/12 text-white"
                               : "text-white/72 hover:bg-white/8 hover:text-white"
                           }`}
@@ -266,7 +276,10 @@ export function Navbar() {
                     href={service.path}
                     onClick={() => setIsOpen(false)}
                     className={`block rounded-xl px-3 py-3 transition-colors ${
-                      pathname === service.path
+                      pathname === "/services/communication" && service.path === serviceDomainLinks.communication ||
+                      pathname === "/services/content" && service.path === serviceDomainLinks.content ||
+                      pathname === "/services/software" && service.path === serviceDomainLinks.software ||
+                      pathname === "/services/revenue" && service.path === serviceDomainLinks.revenue
                         ? "bg-white/10 text-white"
                         : "text-white/65 hover:bg-white/8 hover:text-white"
                     }`}

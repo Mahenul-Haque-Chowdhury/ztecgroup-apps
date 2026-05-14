@@ -1,12 +1,5 @@
-import type { Metadata } from "next";
-import { ServiceDetail } from "../../pages/ServiceDetail";
-
-export const metadata: Metadata = {
-  title: "Software & Business Systems",
-  description:
-    "Enterprise software development, automation, and scalable cloud systems.",
-};
+import { permanentRedirect } from "next/navigation";
 
 export default function SoftwareServicePage() {
-  return <ServiceDetail serviceId="software" />;
+  permanentRedirect("https://software.ztecgroup.au");
 }
