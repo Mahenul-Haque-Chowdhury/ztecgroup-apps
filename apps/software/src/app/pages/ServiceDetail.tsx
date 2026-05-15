@@ -157,11 +157,11 @@ const serviceData = {
   },
   software: {
     title: "Software & Business Systems",
-    tagline: "",
+    tagline: "Systems Engineering for Modern Operations",
     icon: Code,
     imageSrc: "/service-software.png",
     gradient: "from-blue-500 to-cyan-500",
-    overview: "A complete Web & Software solutions suite covering digital products, infrastructure, consulting, and enterprise business systems.",
+    overview: "We architect the systems layer behind modern operations: customer-facing products, internal platforms, automation workflows, and the infrastructure that keeps growth stable.",
     branches: [
       "Web & Digital Services",
       "Infrastructure & Consulting",
@@ -233,7 +233,7 @@ const serviceData = {
     ],
     proof: {
       stat: "99.9% Uptime",
-      description: "Across all deployed systems",
+      description: "Across business-critical deployed systems",
       testimonial: "Their software platform became the backbone of our entire operation."
     }
   },
@@ -389,6 +389,12 @@ const strConsultationContent = {
     "You don't need five years of hospitality experience. You just need a proven system. We provide the roadmap, the templates, and the ongoing support so you can open confidently, operate profitably, and sleep well knowing your property is in good hands.",
 };
 
+const softwareHeroMetrics = [
+  { value: "Web", label: "Products & Platforms" },
+  { value: "Ops", label: "Automation & Backoffice" },
+  { value: "Data", label: "Infrastructure & Integrations" },
+];
+
 interface ServiceDetailProps {
   serviceId: string;
 }
@@ -454,11 +460,85 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
           >
             <div
               className={
-                isCleanLayoutService
-                  ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
-                  : "max-w-4xl"
+                isSoftwareService
+                  ? "mx-auto max-w-6xl"
+                  : isCleanLayoutService
+                    ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
+                    : "max-w-4xl"
               }
             >
+                {isSoftwareService ? (
+                  <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
+                    <div className="text-center lg:text-left">
+                      {service.tagline ? (
+                        <div className="cinematic-kicker mb-6">{service.tagline}</div>
+                      ) : null}
+                      <h1 className="mb-6 text-[clamp(2.2rem,5.8vw,5.3rem)] font-bold leading-[0.98] tracking-[-0.04em]">
+                        Build the systems your business actually runs on.
+                      </h1>
+                      <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/66 sm:text-lg lg:mx-0 lg:text-[1.05rem]">
+                        From custom products and customer portals to ERP, CRM, HRMS, POS, and automation layers, we design software that removes operational drag and gives leadership cleaner control.
+                      </p>
+
+                      <div className="mt-7 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+                        {service.branches.map((branch) => (
+                          <span
+                            key={branch}
+                            className="rounded-full border border-white/12 bg-white/[0.045] px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-white/76"
+                          >
+                            {branch}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                        <Link href="/contact">
+                          <Button variant="primary" size="lg">
+                            Request Quotation
+                          </Button>
+                        </Link>
+                        <Link href="/portfolio">
+                          <Button variant="outline" size="lg">
+                            View Delivery Approach
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="cinematic-panel narrative-grid-overlay rounded-[1.75rem] p-5 sm:p-6 lg:p-7">
+                      <div className="flex items-center justify-between gap-4 border-b border-white/8 pb-4">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-primary/85">Software Systems Stack</p>
+                          <h2 className="mt-2 text-2xl font-semibold text-white/92">Operational clarity, not tool sprawl.</h2>
+                        </div>
+                        <div className="rounded-2xl border border-cyan-300/14 bg-cyan-300/8 px-3 py-2 text-right shadow-[0_12px_32px_rgba(34,211,238,0.08)]">
+                          <div className="text-xl font-semibold text-white">{service.proof.stat}</div>
+                          <div className="text-[11px] uppercase tracking-[0.12em] text-white/48">{service.proof.description}</div>
+                        </div>
+                      </div>
+
+                      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                        {softwareHeroMetrics.map((metric) => (
+                          <div
+                            key={metric.label}
+                            className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+                          >
+                            <div className="text-2xl font-semibold text-white">{metric.value}</div>
+                            <div className="mt-2 text-[11px] uppercase tracking-[0.14em] text-white/52">{metric.label}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-5 rounded-[1.35rem] border border-white/8 bg-[linear-gradient(135deg,rgba(34,211,238,0.08),rgba(59,130,246,0.04)_45%,rgba(255,255,255,0.02))] p-5">
+                        <p className="text-sm uppercase tracking-[0.18em] text-white/44">Typical Scope</p>
+                        <p className="mt-3 text-base leading-relaxed text-white/72">
+                          Customer-facing platforms, internal systems, automation workflows, reporting layers, and business infrastructure designed to scale without operational fragmentation.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
                 {service.tagline ? (
                   <div className="cinematic-kicker mb-8">
                     {service.tagline}
@@ -523,6 +603,8 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                     </Link>
                   )
                 ) : null}
+                  </>
+                )}
             </div>
           </motion.div>
         </div>
