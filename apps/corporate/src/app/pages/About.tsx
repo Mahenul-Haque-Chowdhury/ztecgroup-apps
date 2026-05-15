@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { SectionContainer } from "../components/SectionContainer";
 import { Target, Zap, Shield, Users } from "lucide-react";
@@ -36,6 +37,7 @@ const executiveTeamMembers = [
     designation: "Director",
     division: "Executive Leadership",
     shortBio: "Guides group direction, strategic partnerships, and long-horizon business growth across the ZTEC portfolio.",
+    imageSrc: "/Ben_Chenery_Director_of_ZTEC_Group.jpeg",
   },
   {
     id: 2,
@@ -43,6 +45,7 @@ const executiveTeamMembers = [
     designation: "Director",
     division: "Operations & Delivery",
     shortBio: "Oversees cross-functional coordination and keeps execution aligned across service lines, timelines, and client outcomes.",
+    imageSrc: "/Shakil Ahamed_Director_of_ZTEC_Group.jpeg.jpeg",
   },
   {
     id: 3,
@@ -50,6 +53,7 @@ const executiveTeamMembers = [
     designation: "Director of Content Studio",
     division: "Narrative & Production",
     shortBio: "Leads the content studio with a focus on brand storytelling, production systems, and commercially effective media output.",
+    imageSrc: "/Director_of_ZTEC_Content_Studio_Sayeed_Hasan.jpeg",
   },
   {
     id: 4,
@@ -57,6 +61,7 @@ const executiveTeamMembers = [
     designation: "Director of Software Lab",
     division: "Systems & Product",
     shortBio: "Drives software lab delivery, product architecture, and the technical systems that support scalable digital operations.",
+    imageSrc: null,
   },
 ];
 
@@ -164,22 +169,35 @@ export function About() {
                 >
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(240,180,79,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_28%)] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
 
-                  <div className="relative mb-5 overflow-hidden rounded-[1.4rem] border border-white/12 bg-[linear-gradient(160deg,rgba(255,255,255,0.09),rgba(255,255,255,0.03))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                    <div className="aspect-[4/5] w-full rounded-[1rem] border border-dashed border-white/12 bg-[radial-gradient(circle_at_top,rgba(240,180,79,0.16),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-5 py-6">
-                      <div className="flex h-full flex-col justify-between">
-                        <div className="flex items-start justify-between gap-3">
-                          <span className="rounded-full border border-white/14 bg-white/8 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
-                            {member.division}
-                          </span>
-                          <span className="text-[10px] uppercase tracking-[0.22em] text-white/35">Portrait</span>
+                  <div className="relative mb-5 overflow-hidden rounded-[1rem]">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1rem] bg-[radial-gradient(circle_at_top,rgba(240,180,79,0.16),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))]">
+                      {member.imageSrc ? (
+                        <>
+                          <Image
+                            src={member.imageSrc}
+                            alt={member.name}
+                            fill
+                            sizes="(min-width: 1280px) 280px, (min-width: 768px) 40vw, 92vw"
+                            className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/48 via-transparent to-transparent" />
+                        </>
+                      ) : (
+                        <div className="flex h-full flex-col justify-between px-5 py-6">
+                          <div className="flex items-start justify-between gap-3">
+                            <span className="rounded-full border border-white/14 bg-white/8 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                              {member.division}
+                            </span>
+                            <span className="text-[10px] uppercase tracking-[0.22em] text-white/35">Portrait</span>
+                          </div>
+                          <div>
+                            <p className="text-[10px] uppercase tracking-[0.24em] text-white/40">Awaiting Image</p>
+                            <p className="mt-2 max-w-[11rem] text-sm leading-relaxed text-white/52">
+                              Executive portrait will be added here once provided.
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-[10px] uppercase tracking-[0.24em] text-white/40">Image Placeholder</p>
-                          <p className="mt-2 max-w-[11rem] text-sm leading-relaxed text-white/52">
-                            Reserved for executive portrait artwork.
-                          </p>
-                        </div>
-                      </div>
+                      )}
                     </div>
                   </div>
 
