@@ -19,13 +19,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <div className="relative h-[2.24rem] w-[10.24rem] overflow-hidden">
+              <div className="relative h-[5.6rem] w-[24rem] overflow-hidden sm:h-[6.35rem] sm:w-[27.5rem] lg:h-[7.4rem] lg:w-[32rem]">
                 <Image
-                  src="/ztecgroup.png"
+                  src="/ztecgroup-logo.svg"
                   alt="ZTEC Group"
                   fill
-                  sizes="(max-width: 768px) 141px, 164px"
-                  className="object-contain scale-[1.62]"
+                  sizes="(max-width: 640px) 384px, (max-width: 1024px) 440px, 512px"
+                  className="object-contain"
                 />
               </div>
             </Link>
@@ -116,18 +116,18 @@ export function Footer() {
 
           {/* Bottom Bar */}
           <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
-          <p className="text-white/40 text-sm">
-            © {currentYear} ZTEC Group. All rights reserved.
+          <p className="text-white/40 text-sm text-center md:text-left">
+            © {currentYear} ZTEC Group. All rights reserved. ABN: 82 697 931 445
           </p>
           <p className="text-white/40 text-sm">
             Designed by{" "}
             <a
-              href="https://arnob.life"
+              href="https://software.ztecgroup.au/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/70 transition-colors hover:text-white"
             >
-              Arnob
+              ZTEC Software Lab
             </a>
           </p>
         </div>

@@ -116,8 +116,8 @@ export function Footer() {
 
           {/* Bottom Bar */}
           <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
-          <p className="text-white/40 text-sm">
-            © {currentYear} ZTEC Group. All rights reserved.
+          <p className="text-white/40 text-sm text-center md:text-left">
+            © {currentYear} ZTEC Group. All rights reserved. ABN: 82 697 931 445
           </p>
           <p className="text-white/40 text-sm">
             Designed by{" "}
