@@ -86,14 +86,14 @@ export function Navbar() {
           <Link href="/" className="group shrink-0">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex h-[2.7rem] w-[12rem] items-center sm:h-[3.2rem] sm:w-[14rem] lg:h-[3.7rem] lg:w-[16.8rem]"
+              className="flex h-[3.4rem] w-[15rem] items-center sm:h-[4rem] sm:w-[17.5rem] lg:h-[4.7rem] lg:w-[20.5rem]"
             >
               <Image
                 src="/ztecgroup-logo.svg"
                 alt="ZTEC Group"
-                width={234}
-                height={53}
-                sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 269px"
+                width={286}
+                height={65}
+                sizes="(max-width: 640px) 240px, (max-width: 1024px) 280px, 328px"
                 priority
                 loading="eager"
                 className="h-full w-auto object-contain"
