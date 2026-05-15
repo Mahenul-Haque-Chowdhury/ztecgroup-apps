@@ -89,7 +89,7 @@ export function Navbar() {
               className="flex h-[2.2rem] w-[10rem] items-center sm:h-[2.7rem] sm:w-[12rem] lg:h-[3.1rem] lg:w-[14.6rem]"
             >
               <Image
-                src="/ztecgroup.png"
+                src="/ztecgroup-logo.svg"
                 alt="ZTEC Group"
                 width={186}
                 height={42}
