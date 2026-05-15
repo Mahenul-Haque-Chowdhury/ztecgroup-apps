@@ -97,42 +97,47 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className="cinematic-panel rounded-3xl p-6 sm:p-8 md:p-10"
+              className="relative"
             >
-              <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-                <div>
-                  <h2 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">Unified Solutions, Single Partner</h2>
-                  <p className="mt-5 text-base sm:text-lg leading-relaxed text-white/65">
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-start">
+                <div className="pt-4 sm:pt-6 lg:pr-10">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-white/50">
+                    Group Overview
+                  </div>
+                  <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.04] sm:text-4xl md:text-[3.35rem]">
+                    Unified Solutions, Single Partner
+                  </h2>
+                  <p className="mt-6 max-w-2xl text-lg leading-[1.75] text-white/68">
                     ZTEC Group was founded in 2019 to replace fragmented outsourcing with a more deliberate operating model. Rather than
                     splitting communication, production, software, and growth work across disconnected vendors, clients partner with one
                     leadership team and one integrated group structure.
                   </p>
-                  <p className="mt-4 text-base leading-relaxed text-white/55">
+                  <p className="mt-5 max-w-2xl text-base leading-[1.85] text-white/52 sm:text-[1.05rem]">
                     That foundation still shapes how we work today: executive-level thinking, disciplined delivery, and specialist teams that
                     move in sync from strategy through execution.
                   </p>
                 </div>
 
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                  <div className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] p-5 shadow-[0_24px_80px_rgba(4,10,24,0.28)]">
-                    <div className="text-[clamp(2.75rem,5vw,4.5rem)] font-bold leading-none text-white/92">2019</div>
-                    <p className="mt-2 text-sm uppercase tracking-[0.18em] text-white/60">Founded</p>
-                    <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/58">
+                <div className="relative">
+                  <div className="pointer-events-none absolute left-0 top-6 hidden h-[70%] w-px bg-gradient-to-b from-white/18 via-white/6 to-transparent lg:block" />
+                  <div className="lg:pl-10">
+                    <div className="text-[clamp(4.5rem,10vw,7rem)] font-bold leading-none text-white/92">2019</div>
+                    <p className="mt-3 text-xs uppercase tracking-[0.26em] text-white/48">Founded</p>
+                    <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
                       Built to unify strategic direction with real delivery across four specialist business units.
                     </p>
-                  </div>
-                  {[
-                    "Communication, content, software, and STRA expertise operating inside one group ecosystem.",
-                    "Executive involvement stays close to delivery so decisions remain fast, informed, and accountable.",
-                    "Every engagement is designed for durable systems, sharper brand presence, and measurable business lift.",
-                  ].map((point) => (
-                    <div
-                      key={point}
-                      className="rounded-2xl bg-white/6 p-4 text-sm leading-relaxed text-white/65 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
-                    >
-                      {point}
+                    <div className="mt-10 space-y-6">
+                      {[
+                        "Communication, content, software, and STRA expertise operating inside one group ecosystem.",
+                        "Executive involvement stays close to delivery so decisions remain fast, informed, and accountable.",
+                        "Every engagement is designed for durable systems, sharper brand presence, and measurable business lift.",
+                      ].map((point) => (
+                        <div key={point} className="max-w-md text-sm leading-7 text-white/62">
+                          {point}
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

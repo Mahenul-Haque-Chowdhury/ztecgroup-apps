@@ -6,7 +6,6 @@ import { motion } from "motion/react";
 import { Mail, Linkedin, Twitter } from "lucide-react";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="relative mt-auto">
@@ -18,14 +17,14 @@ export function Footer() {
           <div className="grid grid-cols-1 gap-10 mb-10 sm:gap-12 sm:mb-14 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6">
-              <div className="relative h-[5.6rem] w-[24rem] overflow-hidden sm:h-[6.35rem] sm:w-[27.5rem] lg:h-[7.4rem] lg:w-[32rem]">
+            <Link href="/" className="mb-6 inline-flex justify-start">
+              <div className="relative h-[6rem] w-[26rem] overflow-hidden sm:h-[6.9rem] sm:w-[30rem] lg:h-[7.8rem] lg:w-[35rem]">
                 <Image
                   src="/ztecgroup-logo.svg"
                   alt="ZTEC Group"
                   fill
-                  sizes="(max-width: 640px) 384px, (max-width: 1024px) 440px, 512px"
-                  className="object-contain"
+                  sizes="(max-width: 640px) 416px, (max-width: 1024px) 480px, 560px"
+                  className="object-contain object-left"
                 />
               </div>
             </Link>
@@ -117,7 +116,7 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
           <p className="text-white/40 text-sm text-center md:text-left">
-            © {currentYear} ZTEC Group. All rights reserved. ABN: 82 697 931 445
+            © 2026 ZTEC Group Pty Ltd. All rights reserved. ABN: 82 697 931 445
           </p>
           <p className="text-white/40 text-sm">
             Designed by{" "}
