@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import { ServiceDetail } from "../../pages/ServiceDetail";
 
 export const metadata: Metadata = {
-  title: "STRA Management Consultation",
+  title: "STRA & Hospitality Management Consultation",
   description:
-    "Step-by-step STRA (Short term rental accommodation) launch and operations guidance for investors and homeowners, including feasibility, compliance, pricing, and occupancy optimization.",
+    "STRA launch planning, compliance, pricing optimization, occupancy strategy, and hospitality operations guidance for property owners and investors.",
+  keywords: [
+    "STRA consulting",
+    "short term rental accommodation",
+    "hospitality management consultation",
+    "pricing optimization",
+    "occupancy strategy",
+  ],
 };
 
 export default function RevenueServicePage() {

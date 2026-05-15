@@ -11,6 +11,7 @@ type SiteDefinition = {
   defaultTitle: string;
   titleTemplate: string;
   description: string;
+  keywords: string[];
   host: string;
   type: "website";
 };
@@ -39,6 +40,13 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     titleTemplate: "%s | ZTEC Group - Unified Ecosystem of Digital Services",
     description:
       "ZTEC Group connects advanced digital systems, communication, and media into one seamless solution platform.",
+    keywords: [
+      "digital services Australia",
+      "enterprise technology solutions",
+      "software and communication services",
+      "media production services",
+      "ZTEC Group Pty Ltd",
+    ],
     host: "https://ztecgroup.au",
     type: "website",
   },
@@ -48,10 +56,17 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     legalName: "ZTEC Group Pty Ltd",
     siteName: "ZTEC Communications",
     applicationName: "ZTEC Communications",
-    defaultTitle: "ZTEC Communications - Anonymous Communication Gateway",
-    titleTemplate: "%s | ZTEC Communications",
+    defaultTitle: "ZTEC Communications - A service of ZTEC Group Pty Ltd.",
+    titleTemplate: "%s | ZTEC Communications - A service of ZTEC Group Pty Ltd.",
     description:
-      "Privacy-first anonymous communication infrastructure and Scan2Call recovery workflows by ZTEC Group.",
+      "ZTEC Communications provides privacy-first anonymous communication infrastructure with Scan2Call recovery and secure owner-finder connectivity. ZTEC Group Pty Ltd.",
+    keywords: [
+      "anonymous communication platform",
+      "privacy-first contact recovery",
+      "secure owner-finder communication",
+      "Scan2Call",
+      "encrypted messaging infrastructure",
+    ],
     host: "https://communication.ztecgroup.au",
     type: "website",
   },
@@ -61,10 +76,17 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     legalName: "ZTEC Group Pty Ltd",
     siteName: "ZTEC Content Studio",
     applicationName: "ZTEC Content Studio",
-    defaultTitle: "ZTEC Content Studio - Video & Motion Content Studio",
-    titleTemplate: "%s | ZTEC Content Studio",
+    defaultTitle: "ZTEC Content Studio - A service of ZTEC Group Pty Ltd.",
+    titleTemplate: "%s | ZTEC Content Studio - A service of ZTEC Group Pty Ltd.",
     description:
-      "Video editing, motion content, post-production, and platform-ready creative delivery by ZTEC Group.",
+      "ZTEC Content Studio specializes in post-production, cinematic editing, social media cutdowns, and motion content creation for brands. A ZTEC Group Pty Ltd service.",
+    keywords: [
+      "video editing studio",
+      "motion graphics",
+      "post-production services",
+      "social media video editing",
+      "brand content creation",
+    ],
     host: "https://contentstudio.ztecgroup.au",
     type: "website",
   },
@@ -74,10 +96,17 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     legalName: "ZTEC Group Pty Ltd",
     siteName: "ZTEC Hospitality",
     applicationName: "ZTEC Hospitality",
-    defaultTitle: "ZTEC Hospitality - STRA Management Consultation",
-    titleTemplate: "%s | ZTEC Hospitality",
+    defaultTitle: "ZTEC STRA & Hospitality Management Consultation Service - A service of ZTEC Group Pty Ltd.",
+    titleTemplate: "%s | ZTEC STRA & Hospitality Management Consultation Service - A service of ZTEC Group Pty Ltd.",
     description:
-      "Short-term rental accommodation strategy, setup, optimization, and operational consultation by ZTEC Group.",
+      "ZTEC STRA & Hospitality Management provides expert consultation on launch planning, compliance, pricing optimization, and occupancy for property owners. ZTEC Group Pty Ltd.",
+    keywords: [
+      "STRA consulting",
+      "short term rental accommodation",
+      "hospitality management consultation",
+      "pricing optimization",
+      "occupancy strategy",
+    ],
     host: "https://hospitality.ztecgroup.au",
     type: "website",
   },
@@ -87,10 +116,17 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     legalName: "ZTEC Group Pty Ltd",
     siteName: "ZTEC Software Lab",
     applicationName: "ZTEC Software Lab",
-    defaultTitle: "ZTEC Software Lab - Software & Business Systems",
-    titleTemplate: "%s | ZTEC Software Lab",
+    defaultTitle: "ZTEC Software Lab - A service of ZTEC Group Pty Ltd.",
+    titleTemplate: "%s | ZTEC Software Lab - A service of ZTEC Group Pty Ltd.",
     description:
-      "Custom software, business systems, automation, and digital infrastructure by ZTEC Group.",
+      "ZTEC Software Lab delivers custom software engineering, process automation, and business systems architecture for enterprise operations. A ZTEC Group Pty Ltd service.",
+    keywords: [
+      "custom software development",
+      "business process automation",
+      "enterprise software architecture",
+      "cloud systems",
+      "API integration",
+    ],
     host: "https://software.ztecgroup.au",
     type: "website",
   },
@@ -112,6 +148,7 @@ export function buildSiteMetadata(site: SiteKey, overrides: Partial<Metadata> = 
       template: definition.titleTemplate,
     },
     description: definition.description,
+    keywords: definition.keywords,
     alternates: {
       canonical: "/",
     },

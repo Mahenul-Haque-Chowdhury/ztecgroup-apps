@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import { ServiceDetail } from "../../pages/ServiceDetail";
 
 export const metadata: Metadata = {
-  title: "Video & Motion Content Studio",
+  title: "Video Editing, Motion Graphics & Post-Production",
   description:
-    "Premium cinematic production and motion graphics services for modern brands.",
+    "Post-production, cinematic editing, social media cutdowns, and motion content creation for campaigns, brands, and digital platforms.",
+  keywords: [
+    "video editing studio",
+    "motion graphics",
+    "post-production services",
+    "social media video editing",
+    "brand content creation",
+  ],
 };
 
 export default function ContentServicePage() {

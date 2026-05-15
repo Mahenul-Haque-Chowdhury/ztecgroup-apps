@@ -2,9 +2,18 @@ import type { Metadata } from "next";
 import { ServiceDetail } from "./pages/ServiceDetail";
 
 export const metadata: Metadata = {
-  title: "STRA Management Consultation",
+  title: {
+    absolute: "ZTEC STRA & Hospitality Management Consultation Service - A service of ZTEC Group Pty Ltd.",
+  },
   description:
-    "Launch planning, compliance, pricing, occupancy, and STRA operational advisory for property owners and investors.",
+    "ZTEC STRA & Hospitality Management provides expert consultation on launch planning, compliance, pricing optimization, and occupancy for property owners. ZTEC Group Pty Ltd.",
+  keywords: [
+    "STRA consulting",
+    "short term rental accommodation",
+    "hospitality management consultation",
+    "pricing optimization",
+    "occupancy strategy",
+  ],
 };
 
 export default function HomePage() {
