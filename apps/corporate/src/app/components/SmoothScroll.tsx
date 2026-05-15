@@ -16,19 +16,15 @@ export function SmoothScroll() {
       return;
     }
 
-    const desktopQuery = window.matchMedia("(min-width: 1025px) and (hover: hover) and (pointer: fine)");
-    if (!desktopQuery.matches) {
-      htmlElement.classList.remove("lenis", "lenis-smooth", "lenis-stopped");
-      bodyElement.classList.remove("lenis", "lenis-smooth", "lenis-stopped");
-      return;
-    }
+    const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
     const lenis = new Lenis({
-      duration: 1.05,
+      duration: isTouchDevice ? 0.88 : 1.05,
       smoothWheel: true,
-      syncTouch: false,
-      touchMultiplier: 1.06,
-      wheelMultiplier: 0.9,
+      syncTouch: isTouchDevice,
+      syncTouchLerp: isTouchDevice ? 0.14 : undefined,
+      touchMultiplier: isTouchDevice ? 1 : 1.06,
+      wheelMultiplier: isTouchDevice ? 1 : 0.9,
       autoRaf: false,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
@@ -46,6 +42,8 @@ export function SmoothScroll() {
     return () => {
       window.cancelAnimationFrame(rafId);
       lenis.destroy();
+      htmlElement.classList.remove("lenis", "lenis-smooth", "lenis-stopped");
+      bodyElement.classList.remove("lenis", "lenis-smooth", "lenis-stopped");
       delete (window as WindowWithLenis).__lenis;
     };
   }, []);

@@ -27,6 +27,8 @@ import {
 } from "lucide-react";
 import { SectionContainer } from "../components/SectionContainer";
 import { Button } from "../components/Button";
+import ScrollVelocity from "../components/ScrollVelocity";
+import { engineeringTechStackIcons, marketingTechStack, toolsStack } from "../components/softwareTechStacks";
 
 const serviceData = {
   communication: {
@@ -420,6 +422,55 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
           ? "Book Free 20-minute Discovery Call"
       : "Request Consultation";
 
+  const renderNamedTechRow = (items: typeof marketingTechStack) => (
+    <>
+      {items.map((item, index) => {
+        const Icon = item.icon;
+
+        return (
+          <span key={`${item.name}-${index}`} className="inline-flex items-center gap-4 whitespace-nowrap px-2.5 py-1.5 sm:gap-5 sm:px-3">
+            <Icon size={38} style={item.color ? { color: item.color } : undefined} className={item.className} />
+            <span>{item.name}</span>
+          </span>
+        );
+      })}
+    </>
+  );
+
+  const renderIconTechRow = (items: typeof engineeringTechStackIcons) => (
+    <>
+      {items.map((item, index) => {
+        const Icon = item.icon;
+
+        return (
+          <span key={`${item.label}-${index}`} className="inline-flex items-center gap-4 whitespace-nowrap px-2.5 py-1.5 sm:gap-5 sm:px-3">
+            <Icon size={38} style={item.color ? { color: item.color } : undefined} className={item.className} />
+            <span>{item.label}</span>
+          </span>
+        );
+      })}
+    </>
+  );
+
+  const renderLogoOnlyTechRow = (items: typeof engineeringTechStackIcons) => (
+    <>
+      {items.map((item, index) => {
+        const Icon = item.icon;
+
+        return (
+          <span key={`${item.label}-logo-${index}`} className="inline-flex items-center justify-center whitespace-nowrap px-2.5 py-1.5 sm:px-3">
+            <Icon size={38} style={item.color ? { color: item.color } : undefined} className={item.className} />
+          </span>
+        );
+      })}
+    </>
+  );
+
+  const tickerTexts = [
+    renderLogoOnlyTechRow(engineeringTechStackIcons),
+    renderNamedTechRow([...marketingTechStack, ...toolsStack]),
+  ];
+
   return (
     <div className="relative">
       <div className="pointer-events-none fixed inset-x-0 top-0 h-[100svh] min-h-[100lvh] w-full z-0 md:inset-0 md:h-auto md:min-h-0">
@@ -456,15 +507,15 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10 w-full max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-16"
+            className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16"
           >
             <div
               className={
                 isSoftwareService
-                  ? "mx-auto max-w-6xl"
+                  ? "mx-auto max-w-7xl"
                   : isCleanLayoutService
-                    ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
-                    : "max-w-4xl"
+                    ? `${isRevenueService ? "max-w-7xl" : "max-w-6xl"} mx-auto text-center`
+                    : "max-w-5xl"
               }
             >
                 {isSoftwareService ? (
@@ -473,7 +524,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                       {service.tagline ? (
                         <div className="cinematic-kicker mb-6">{service.tagline}</div>
                       ) : null}
-                      <h1 className="mb-6 text-[clamp(2.2rem,5.8vw,5.3rem)] font-bold leading-[0.98] tracking-[-0.04em]">
+                      <h1 className="mb-6 text-[clamp(1.75rem,4.65vw,4.2rem)] font-bold leading-[0.98] tracking-[-0.04em]">
                         Build the systems your business actually runs on.
                       </h1>
                       <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/66 sm:text-lg lg:mx-0 lg:text-[1.05rem]">
@@ -609,6 +660,38 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
           </motion.div>
         </div>
       </SectionContainer>
+
+      {isSoftwareService ? (
+        <SectionContainer fullHeight={false}>
+          <div className="relative pt-2 pb-8 md:pt-3 md:pb-10">
+            <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 -mt-1 overflow-hidden px-0 py-4 sm:py-5"
+              >
+                <div className="mb-7 flex justify-center px-5 text-center sm:px-6 lg:px-8">
+                  <div className="inline-flex items-center text-[2.25rem] font-semibold uppercase tracking-[0.14em] text-white/72 sm:text-[2.75rem]">
+                    Software Stack & Tooling
+                  </div>
+                </div>
+                <div className="space-y-3 pb-1">
+                  <ScrollVelocity
+                    texts={tickerTexts}
+                    velocity={24}
+                    numCopies={6}
+                    className="px-3 text-[1.25rem] font-semibold uppercase leading-[1.3] tracking-[0.05em] text-white/90 sm:px-4 sm:text-[1.5rem]"
+                    parallaxClassName="py-2"
+                    scrollerClassName="items-center gap-7 sm:gap-8"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </SectionContainer>
+      ) : null}
 
       {isCommunicationService ? (
         <SectionContainer fullHeight={false}>
@@ -769,16 +852,41 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: i * 0.1 }}
-                    className={`cinematic-panel group relative rounded-2xl p-8 transition-all duration-300 hover:border-white/25 ${
+                    className={`group relative overflow-hidden rounded-[1.9rem] border border-white/10 bg-[linear-gradient(155deg,rgba(10,18,31,0.96),rgba(8,14,23,0.9)_52%,rgba(10,28,40,0.86))] p-8 shadow-[0_24px_70px_rgba(0,0,0,0.28)] transition-all duration-500 hover:-translate-y-1.5 hover:border-white/18 hover:shadow-[0_32px_90px_rgba(0,0,0,0.38)] ${
                       isSoftwareService ? "overflow-hidden pb-16" : ""
                     }`}
                   >
-                    {(() => {
-                      const CapabilityIcon = capabilityIcons[i % capabilityIcons.length] ?? service.icon;
-                      return <CapabilityIcon className="text-white/40 mb-4" size={24} />;
-                    })()}
-                    <h3 className="text-xl font-semibold mb-3">{capability.title}</h3>
-                    <p className="text-white/60 leading-relaxed">{capability.description}</p>
+                    <div className={`absolute inset-x-0 top-0 h-32 bg-gradient-to-br ${service.gradient} opacity-[0.16] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.26]`} />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.06),transparent_26%)]" />
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+
+                    <div className="relative z-[2] flex items-start justify-between gap-4">
+                      {(() => {
+                        const CapabilityIcon = capabilityIcons[i % capabilityIcons.length] ?? service.icon;
+                        return (
+                          <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} shadow-[0_18px_32px_rgba(15,23,42,0.34)] ring-1 ring-white/10`}>
+                            <CapabilityIcon className="text-white" size={26} />
+                          </div>
+                        );
+                      })()}
+
+                      <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-white/54 transition-colors duration-300 group-hover:border-white/18 group-hover:text-white/76">
+                        Capability
+                      </div>
+                    </div>
+
+                    <div className="relative z-[2] mt-8">
+                      <h3 className="text-[1.55rem] font-semibold leading-tight text-white/95 sm:text-[1.7rem]">{capability.title}</h3>
+                      <p className="mt-4 max-w-[34ch] text-[1rem] leading-[1.75] text-white/64">{capability.description}</p>
+                    </div>
+
+                    <div className="relative z-[2] mt-8 border-t border-white/8 pt-5">
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.18em] text-white/42">Software Track</div>
+                        <div className="mt-1 text-sm text-white/74">Designed for scale, uptime, and operational clarity</div>
+                      </div>
+                    </div>
+
                     {isSoftwareService ? (
                       <Link
                         href="/quotation"

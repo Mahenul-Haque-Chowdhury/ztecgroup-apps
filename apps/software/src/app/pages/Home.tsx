@@ -8,6 +8,8 @@ import { SectionContainer } from "../components/SectionContainer";
 import { ServiceCard } from "../components/ServiceCard";
 import { Button } from "../components/Button";
 import BlurText from "../components/BlurText";
+import ScrollVelocity from "../components/ScrollVelocity";
+import { engineeringTechStackIcons, marketingTechStack, toolsStack } from "../components/softwareTechStacks";
 import { useEffect, useRef, useState } from "react";
 
 const HERO_ROTATING_CTAS = [
@@ -78,23 +80,6 @@ export function Home() {
   const orbSecondaryY = useTransform(solutionsProgress, [0, 1], [-22, 22]);
   const activeHeroCta = HERO_ROTATING_CTAS[activeHeroCtaIndex] ?? HERO_ROTATING_CTAS[0];
 
-  const tickerItems = [
-    "Anonymous Communication Gateway",
-    "Website Development",
-    "E-Commerce Solutions",
-    "Mobile App Development",
-    "SEO & Digital Marketing",
-    "CRM",
-    "HRMS",
-    "Documentary & Story-Driven Video Edits",
-    "Shorts",
-    "Reels & Vertical Repurposing",
-    "Ad Creative & Promo Editing",
-    "Facebook-TikTok-YouTube",
-    "Video & Reels Editing",
-    "Short Term Rental Management Consultation",
-  ];
-
   const comprehensiveServices = [
     {
       number: "01",
@@ -163,6 +148,42 @@ export function Home() {
       question: "What support do we get after go-live?",
       answer: "You can choose a continuous support model covering optimization, monitoring, monthly performance reviews, and iterative feature upgrades.",
     },
+  ];
+
+  const renderNamedTechRow = (items: typeof marketingTechStack) => (
+    <>
+      {items.map((item, index) => {
+        const Icon = item.icon;
+
+        return (
+          <span key={`${item.name}-${index}`} className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 sm:gap-3 sm:px-4">
+            <Icon size={16} style={item.color ? { color: item.color } : undefined} className={item.className} />
+            <span>{item.name}</span>
+          </span>
+        );
+      })}
+    </>
+  );
+
+  const renderIconTechRow = (items: typeof engineeringTechStackIcons) => (
+    <>
+      {items.map((item, index) => {
+        const Icon = item.icon;
+
+        return (
+          <span key={`${item.label}-${index}`} className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 sm:gap-3 sm:px-4">
+            <Icon size={16} style={item.color ? { color: item.color } : undefined} className={item.className} />
+            <span>{item.label}</span>
+          </span>
+        );
+      })}
+    </>
+  );
+
+  const tickerTexts = [
+    renderNamedTechRow(marketingTechStack),
+    renderIconTechRow(engineeringTechStackIcons),
+    renderNamedTechRow(toolsStack),
   ];
 
   return (
@@ -330,19 +351,22 @@ export function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="narrative-surface relative z-10 -mt-2 mb-8 overflow-hidden rounded-2xl px-2 py-3 sm:-mt-4 sm:mb-10 sm:rounded-full sm:px-2 sm:py-3 md:-mt-6"
+              className="narrative-surface relative z-10 -mt-2 mb-8 overflow-hidden rounded-[1.75rem] px-0 py-5 sm:-mt-4 sm:mb-10 sm:py-6 md:-mt-6"
             >
-              <div className="narrative-ticker">
-                <div className="narrative-ticker-track text-[10px] leading-[1.35] uppercase tracking-[0.12em] text-white/68 sm:text-[12px] sm:tracking-[0.18em]">
-                  {Array.from({ length: 2 }).map((_, loopIndex) => (
-                    tickerItems.map((item, itemIndex) => (
-                      <span key={`${loopIndex}-${itemIndex}`} className="inline-flex items-center gap-2.5 whitespace-nowrap sm:gap-3">
-                        <span>{item}</span>
-                        <span className="h-1 w-1 rounded-full bg-primary/75" />
-                      </span>
-                    ))
-                  ))}
+              <div className="mb-4 px-5 sm:px-6 lg:px-8">
+                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-white/72">
+                  Software Stack & Tooling
                 </div>
+              </div>
+              <div className="space-y-3 pb-1">
+                <ScrollVelocity
+                  texts={tickerTexts}
+                  velocity={24}
+                  numCopies={6}
+                  className="px-3 text-[11px] font-medium uppercase leading-[1.35] tracking-[0.1em] text-white/82 sm:px-4 sm:text-[12px]"
+                  parallaxClassName="py-1"
+                  scrollerClassName="items-center gap-3 sm:gap-4"
+                />
               </div>
             </motion.div>
 

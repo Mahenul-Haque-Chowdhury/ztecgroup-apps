@@ -456,22 +456,22 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10 w-full max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-16"
+            className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16"
           >
             <div
               className={
                 isRevenueService
-                  ? "mx-auto max-w-6xl"
+                  ? "mx-auto max-w-7xl"
                   : isCleanLayoutService
-                    ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
-                    : "max-w-4xl"
+                    ? `${isRevenueService ? "max-w-7xl" : "max-w-6xl"} mx-auto text-center`
+                    : "max-w-5xl"
               }
             >
                 {isRevenueService ? (
                   <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-end">
                     <div className="text-center lg:text-left">
                       {service.tagline ? <div className="cinematic-kicker mb-6">{service.tagline}</div> : null}
-                      <h1 className="mb-6 text-[clamp(2.05rem,5.6vw,5rem)] font-bold leading-[0.98] tracking-[-0.04em]">
+                      <h1 className="mb-6 text-[clamp(1.65rem,4.5vw,4rem)] font-bold leading-[0.98] tracking-[-0.04em]">
                         Launch and run short-stay properties with clearer control.
                       </h1>
                       <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/68 sm:text-lg lg:mx-0 lg:text-[1.05rem]">

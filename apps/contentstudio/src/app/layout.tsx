@@ -10,6 +10,10 @@ import { SmoothScroll } from "./components/SmoothScroll";
 
 export const viewport: Viewport = {
   themeColor: "#070a12",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
 };
 
 export const metadata: Metadata = {
