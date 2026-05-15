@@ -34,7 +34,6 @@ export function Navbar() {
     { path: "/", label: "Home" },
     { path: "/portfolio", label: "Portfolio" },
     { path: "/about", label: "About us" },
-    { path: "/leadership", label: "Leadership" },
     { path: "/resources", label: "Resources" },
   ];
 
