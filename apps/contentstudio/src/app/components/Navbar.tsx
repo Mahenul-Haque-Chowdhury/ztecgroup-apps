@@ -28,18 +28,31 @@ export function Navbar() {
         <Link href="/" className="group shrink-0" aria-label="ZTEC Content Studio home">
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="flex h-[2.2rem] w-[10rem] items-center sm:h-[2.7rem] sm:w-[12rem] lg:h-[3.1rem] lg:w-[14.6rem]"
+            className="flex h-[2.45rem] items-center gap-0 sm:h-[2.9rem] lg:h-[3.3rem]"
           >
-            <Image
-              src="/ztecgroup.png"
-              alt="ZTEC Content Studio"
-              width={186}
-              height={42}
-              sizes="(max-width: 640px) 160px, (max-width: 1024px) 192px, 234px"
-              priority
-              loading="eager"
-              className="h-full w-auto object-contain"
-            />
+            <div className="-translate-y-0.5 flex h-[78%] w-[3.5rem] items-center self-center overflow-hidden sm:w-[4.1rem] sm:-translate-y-0.5 lg:w-[4.7rem] lg:-translate-y-1">
+              <Image
+                src="/contentstudio.svg"
+                alt="ZTEC Content Studio"
+                width={248}
+                height={56}
+                sizes="(max-width: 640px) 172px, (max-width: 1024px) 205px, 248px"
+                priority
+                loading="eager"
+                className="h-full w-auto max-w-none origin-left scale-[1.78] object-contain"
+              />
+            </div>
+            <div className="-ml-2 translate-y-0.5 flex h-[86%] w-[6.3rem] items-center self-center overflow-hidden sm:-ml-2.5 sm:w-[7.3rem] sm:translate-y-0.5 lg:-ml-3 lg:w-[8.8rem] lg:translate-y-1">
+              <Image
+                src="/ztecgroup-logo.svg"
+                alt="ZTEC Group"
+                width={376}
+                height={56}
+                sizes="(max-width: 640px) 264px, (max-width: 1024px) 312px, 376px"
+                loading="eager"
+                className="h-full w-auto max-w-none origin-left scale-[2.3] object-contain opacity-100 brightness-125 contrast-125"
+              />
+            </div>
           </motion.div>
         </Link>
 
