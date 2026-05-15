@@ -32,33 +32,31 @@ const values = [
 const executiveTeamMembers = [
   {
     id: 1,
-    name: "To Be Announced",
-    designation: "Group Chief Executive Officer",
-    portfolioHref: "/portfolio",
+    name: "Ben Chenery",
+    designation: "Director",
+    division: "Executive Leadership",
+    shortBio: "Guides group direction, strategic partnerships, and long-horizon business growth across the ZTEC portfolio.",
   },
   {
     id: 2,
-    name: "To Be Announced",
-    designation: "Chief Operating Officer",
-    portfolioHref: "/portfolio",
+    name: "Shakil Ahamed",
+    designation: "Director",
+    division: "Operations & Delivery",
+    shortBio: "Oversees cross-functional coordination and keeps execution aligned across service lines, timelines, and client outcomes.",
   },
   {
     id: 3,
-    name: "To Be Announced",
-    designation: "Chief Technology Officer",
-    portfolioHref: "/portfolio",
+    name: "Sayeed Hasan",
+    designation: "Director of Content Studio",
+    division: "Narrative & Production",
+    shortBio: "Leads the content studio with a focus on brand storytelling, production systems, and commercially effective media output.",
   },
   {
     id: 4,
-    name: "To Be Announced",
-    designation: "Chief Strategy Officer",
-    portfolioHref: "/portfolio",
-  },
-  {
-    id: 5,
-    name: "To Be Announced",
-    designation: "Chief Growth Officer",
-    portfolioHref: "/portfolio",
+    name: "Mahenul Haque Chowdhury",
+    designation: "Director of Software Lab",
+    division: "Systems & Product",
+    shortBio: "Drives software lab delivery, product architecture, and the technical systems that support scalable digital operations.",
   },
 ];
 
@@ -100,24 +98,28 @@ export function About() {
                 <div>
                   <h2 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">Unified Solutions, Single Partner</h2>
                   <p className="mt-5 text-base sm:text-lg leading-relaxed text-white/65">
-                    ZTEC Group was founded in 2025 to eliminate fragmented vendor stacks. Instead of managing separate agencies for strategy,
-                    development, production, and optimization, our clients work with one coordinated team.
+                    ZTEC Group was founded in 2019 to replace fragmented outsourcing with a more deliberate operating model. Rather than
+                    splitting communication, production, software, and growth work across disconnected vendors, clients partner with one
+                    leadership team and one integrated group structure.
                   </p>
                   <p className="mt-4 text-base leading-relaxed text-white/55">
-                    We combine strategic consulting with practical delivery support, so ideas move from planning to execution with speed,
-                    consistency, and measurable impact.
+                    That foundation still shapes how we work today: executive-level thinking, disciplined delivery, and specialist teams that
+                    move in sync from strategy through execution.
                   </p>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                  <div className="rounded-2xl bg-white/6 p-5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]">
-                    <div className="text-5xl font-bold text-white/90">2025</div>
-                    <p className="mt-2 text-sm uppercase tracking-[0.08em] text-white/60">Founded</p>
+                  <div className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] p-5 shadow-[0_24px_80px_rgba(4,10,24,0.28)]">
+                    <div className="text-[clamp(2.75rem,5vw,4.5rem)] font-bold leading-none text-white/92">2019</div>
+                    <p className="mt-2 text-sm uppercase tracking-[0.18em] text-white/60">Founded</p>
+                    <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/58">
+                      Built to unify strategic direction with real delivery across four specialist business units.
+                    </p>
                   </div>
                   {[
-                    "Communication, content, software, and STRA (Short term rental accommodation) expertise under one group.",
-                    "Strategy-first delivery model with optional hands-on execution support.",
-                    "Continuous optimization focused on long-term operational performance.",
+                    "Communication, content, software, and STRA expertise operating inside one group ecosystem.",
+                    "Executive involvement stays close to delivery so decisions remain fast, informed, and accountable.",
+                    "Every engagement is designed for durable systems, sharper brand presence, and measurable business lift.",
                   ].map((point) => (
                     <div
                       key={point}
@@ -143,13 +145,14 @@ export function About() {
               transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               className="text-center mb-10 md:mb-12"
             >
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Executive Team Members</h2>
+              <p className="mb-3 text-xs font-medium uppercase tracking-[0.26em] text-primary/80">Leadership</p>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Executive Leadership</h2>
               <p className="text-base md:text-lg text-white/62 max-w-3xl mx-auto">
-                Leadership profiles are being finalized. Names will be updated soon.
+                Four executives shape the direction of ZTEC Group, keeping strategy, production, and technical delivery aligned at every stage.
               </p>
             </motion.div>
 
-            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {executiveTeamMembers.map((member, index) => (
                 <motion.article
                   key={member.id}
@@ -157,24 +160,34 @@ export function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                  className="cinematic-panel rounded-2xl p-4"
+                  className="group cinematic-panel relative overflow-hidden rounded-[1.75rem] p-5 sm:p-6"
                 >
-                  <div className="mb-4 overflow-hidden rounded-xl border border-white/12 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))]">
-                    <div className="aspect-[4/5] w-full grid place-items-center text-[11px] uppercase tracking-[0.16em] text-white/45">
-                      Image Box
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(240,180,79,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_28%)] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  <div className="relative mb-5 overflow-hidden rounded-[1.4rem] border border-white/12 bg-[linear-gradient(160deg,rgba(255,255,255,0.09),rgba(255,255,255,0.03))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                    <div className="aspect-[4/5] w-full rounded-[1rem] border border-dashed border-white/12 bg-[radial-gradient(circle_at_top,rgba(240,180,79,0.16),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-5 py-6">
+                      <div className="flex h-full flex-col justify-between">
+                        <div className="flex items-start justify-between gap-3">
+                          <span className="rounded-full border border-white/14 bg-white/8 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                            {member.division}
+                          </span>
+                          <span className="text-[10px] uppercase tracking-[0.22em] text-white/35">Portrait</span>
+                        </div>
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.24em] text-white/40">Image Placeholder</p>
+                          <p className="mt-2 max-w-[11rem] text-sm leading-relaxed text-white/52">
+                            Reserved for executive portrait artwork.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-white/45">Name</p>
-                  <h3 className="mt-1 text-lg font-semibold text-white/92">{member.name}</h3>
-                  <p className="mt-2 text-sm text-white/62">{member.designation}</p>
-
-                  <Link
-                    href={member.portfolioHref}
-                    className="mt-5 inline-flex w-full items-center justify-center rounded-xl border border-white/18 px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-white/82 transition-colors hover:border-white/35 hover:bg-white/8"
-                  >
-                    Visit Personal Portfolio
-                  </Link>
+                  <div className="relative">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-primary/80">{member.designation}</p>
+                    <h3 className="mt-2 text-xl font-semibold leading-tight text-white/92 sm:text-2xl">{member.name}</h3>
+                    <p className="mt-4 text-sm leading-relaxed text-white/62">{member.shortBio}</p>
+                  </div>
                 </motion.article>
               ))}
             </div>
@@ -279,17 +292,17 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Global Team, Local Understanding</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">Built For Integrated Growth</h2>
               <p className="text-lg text-white/60 max-w-3xl mx-auto mb-12 leading-relaxed">
-                Experienced specialists across multiple markets, aligned around one quality standard.
+                The group is structured to keep brand, technology, and commercial execution connected instead of siloed.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
-                  { value: "50+", label: "Team Members" },
-                  { value: "12", label: "Countries" },
-                  { value: "100+", label: "Years Combined Experience" },
-                  { value: "24/7", label: "Global Coverage" },
+                  { value: "2019", label: "Founded" },
+                  { value: "4", label: "Executive Leaders" },
+                  { value: "4", label: "Core Verticals" },
+                  { value: "1", label: "Unified Group Vision" },
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}

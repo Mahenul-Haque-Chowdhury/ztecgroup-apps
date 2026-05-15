@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { Shield, Video, Code, TrendingUp, ChevronDown } from "lucide-react";
 import { SectionContainer } from "../components/SectionContainer";
 import { ServiceCard } from "../components/ServiceCard";
 import { Button } from "../components/Button";
 import BlurText from "../components/BlurText";
+import ShapeGrid from "../components/ShapeGrid";
 import { useEffect, useRef, useState } from "react";
 
 const HERO_ROTATING_CTAS = [
@@ -167,50 +167,49 @@ export function Home() {
 
   return (
     <div className="relative">
-      <div className="pointer-events-none fixed inset-x-0 top-0 h-[100svh] min-h-[100lvh] w-full z-0 md:inset-0 md:h-auto md:min-h-0">
-        <Image
-          src="/nexushero.webp"
-          alt="Cinematic background"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top md:object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/70 to-black/85" />
-      </div>
-
       <div className="relative z-10">
       {/* Hero Section */}
-      <SectionContainer fullHeight={false}>
-        <div ref={heroRef} className="relative min-h-[80svh] md:min-h-[76vh] pt-24 sm:pt-28 md:pt-20 flex items-center justify-center overflow-hidden">
+      <SectionContainer fullHeight>
+        <div ref={heroRef} className="relative min-h-[100svh] pt-24 sm:pt-28 md:pt-20 flex items-center justify-center overflow-hidden">
           {/* Animated Background */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_20%,rgba(59,130,246,0.28),transparent_32%),radial-gradient(circle_at_30%_74%,rgba(34,211,238,0.22),transparent_30%),radial-gradient(circle_at_64%_22%,rgba(251,191,36,0.26),transparent_28%),radial-gradient(circle_at_84%_64%,rgba(249,115,22,0.2),transparent_26%),radial-gradient(circle_at_78%_32%,rgba(16,185,129,0.22),transparent_30%),radial-gradient(circle_at_54%_78%,rgba(132,204,22,0.18),transparent_26%),radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.06),transparent_40%),linear-gradient(180deg,rgba(6,10,18,0.42),rgba(3,6,12,0.76))]" />
             <motion.div
               style={{ y: blobPrimaryY }}
-              className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"
+              className="absolute top-[16%] left-[12%] h-80 w-80 rounded-full bg-amber-400/20 blur-3xl animate-pulse"
             />
             <motion.div
               style={{ y: blobSecondaryY, animationDelay: "1s" }}
-              className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse"
+              className="absolute bottom-[14%] right-[10%] h-96 w-96 rounded-full bg-cyan-400/18 blur-3xl animate-pulse"
             />
           </div>
 
-          {/* Grid Pattern */}
-          <motion.div
-            style={{ opacity: gridPatternOpacity }}
-            className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"
-          />
+          <motion.div style={{ opacity: gridPatternOpacity }} className="absolute inset-0">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_60%),radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.055),transparent_40%)]" />
+            <div className="absolute inset-0 opacity-65">
+              <ShapeGrid
+                speed={0}
+                squareSize={25}
+                direction="up"
+                borderColor="#2F293A"
+                hoverFillColor="#4a4a4a"
+                shape="hexagon"
+                hoverTrailAmount={2}
+                className="scale-[1.05]"
+              />
+            </div>
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,14,0.02),rgba(2,6,14,0.34)_72%,rgba(2,6,14,0.68))]" />
+          </motion.div>
 
           <motion.div 
             style={{ opacity, y: heroY }}
             className="relative z-10 max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 text-center"
           >
             {/* Main Headline */}
-            <h1 className="sr-only">Unified Ecosystem of Digital Services for Secure Growth</h1>
+            <h1 className="sr-only">Everything Connected. Nothing Compromised.</h1>
             <div aria-hidden className="mb-8 space-y-1">
               <BlurText
-                text="Unified Ecosystem of Digital"
+                text="Everything Connected."
                 delay={190}
                 stepDuration={0.62}
                 animateBy="words"
@@ -218,7 +217,7 @@ export function Home() {
                 className="w-full justify-center text-[clamp(2.3rem,10.4vw,3.25rem)] font-bold tracking-tight leading-[1.08] sm:text-[2.9rem] md:text-[3.6rem] lg:text-[4.35rem]"
               />
               <BlurText
-                text="Services for Secure Growth"
+                text="Nothing Compromised."
                 delay={170}
                 stepDuration={0.62}
                 animateBy="words"
@@ -235,8 +234,7 @@ export function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-10 md:mb-12 leading-relaxed"
             >
-              We connect advanced digital systems, communication, and media 
-              into one seamless solution platform.
+              A unified operating system for communication, content, software, and hospitality services without trade-offs on clarity, control, or execution.
             </motion.p>
 
             {/* CTA Buttons */}

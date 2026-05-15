@@ -81,12 +81,12 @@ export function Navbar() {
       className="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-4 lg:px-8"
     >
       <GlassSurface className={`max-w-[1440px] mx-auto ${glassSurfaceClass}`}>
-        <div className="flex items-center justify-between h-14 px-3 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
+        <div className="flex h-14 items-center justify-between pl-3 pr-1.5 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
           {/* Logo */}
           <Link href="/" className="group shrink-0">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex h-[5.2rem] w-[22.5rem] items-center sm:h-[6rem] sm:w-[26rem] lg:h-[7rem] lg:w-[30.5rem]"
+              className="flex h-[5.6rem] w-[24rem] items-center sm:h-[6.35rem] sm:w-[27.5rem] lg:h-[7.4rem] lg:w-[32rem]"
             >
               <Image
                 src="/ztecgroup-logo.svg"
@@ -233,7 +233,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white p-2"
+            className="-mr-0.5 p-2 text-white lg:hidden sm:mr-0"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

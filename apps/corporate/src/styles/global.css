@@ -192,6 +192,31 @@ body::after {
   opacity: 0.25;
 }
 
+@keyframes shape-grid-pan-y {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-2%);
+  }
+}
+
+@keyframes shape-grid-pan-x {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-2%);
+  }
+}
+
+.shape-grid-scroll {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 .narrative-chip {
   display: inline-flex;
   align-items: center;
