@@ -239,11 +239,11 @@ const serviceData = {
   },
   revenue: {
     title: "Short-Term Rental Accommodation Management Consultation",
-    tagline: "",
+    tagline: "Performance Advisory for Short-Stay Operators",
     icon: TrendingUp,
     imageSrc: "/service-revenue2.jpg",
     gradient: "from-emerald-400 to-lime-500",
-    overview: "",
+    overview: "Launch, refine, and scale short-term rental accommodation with a practical operating model covering setup, compliance, pricing, occupancy, and day-to-day delivery.",
     branches: [
       "STRA Launch & Setup",
       "Airbnb Listing Optimization",
@@ -362,6 +362,12 @@ const scan2CallWorkflow: Array<{ title: string; description: string; icon: Lucid
   },
 ];
 
+const hospitalityHeroMetrics = [
+  { value: "Launch", label: "Setup & compliance" },
+  { value: "Rate", label: "Pricing strategy" },
+  { value: "Ops", label: "Occupancy systems" },
+];
+
 const strConsultationContent = {
   headingOne: "Turn Your Property Vision into a Profitable Reality",
   introParagraphOne:
@@ -454,11 +460,71 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
           >
             <div
               className={
-                isCleanLayoutService
-                  ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
-                  : "max-w-4xl"
+                isRevenueService
+                  ? "mx-auto max-w-6xl"
+                  : isCleanLayoutService
+                    ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
+                    : "max-w-4xl"
               }
             >
+                {isRevenueService ? (
+                  <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-end">
+                    <div className="text-center lg:text-left">
+                      {service.tagline ? <div className="cinematic-kicker mb-6">{service.tagline}</div> : null}
+                      <h1 className="mb-6 text-[clamp(2.05rem,5.6vw,5rem)] font-bold leading-[0.98] tracking-[-0.04em]">
+                        Launch and run short-stay properties with clearer control.
+                      </h1>
+                      <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/68 sm:text-lg lg:mx-0 lg:text-[1.05rem]">
+                        We help owners and investors move from uncertainty to operating clarity with practical STRA setup, pricing, compliance, occupancy, and workflow systems.
+                      </p>
+                      <div className="mt-7 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+                        {service.branches.map((branch) => (
+                          <span key={branch} className="rounded-full border border-white/12 bg-white/[0.045] px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-white/76">
+                            {branch}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                        <Link href="/contact">
+                          <Button variant="primary" size="lg">Book Free 20-minute Discovery Call</Button>
+                        </Link>
+                        <Link href="/contact">
+                          <Button variant="outline" size="lg">Discuss Your Property</Button>
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="cinematic-panel rounded-[1.75rem] p-5 sm:p-6 lg:p-7">
+                      <div className="flex items-center justify-between gap-4 border-b border-white/8 pb-4">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-primary/85">Advisory Scope</p>
+                          <h2 className="mt-2 text-2xl font-semibold text-white/92">Better launch decisions. Stronger operating discipline.</h2>
+                        </div>
+                        <div className="rounded-2xl border border-emerald-300/14 bg-emerald-300/8 px-3 py-2 text-right shadow-[0_12px_32px_rgba(52,211,153,0.08)]">
+                          <div className="text-xl font-semibold text-white">{service.proof.stat}</div>
+                          <div className="text-[11px] uppercase tracking-[0.12em] text-white/48">{service.proof.description}</div>
+                        </div>
+                      </div>
+
+                      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                        {hospitalityHeroMetrics.map((metric) => (
+                          <div key={metric.label} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                            <div className="text-2xl font-semibold text-white">{metric.value}</div>
+                            <div className="mt-2 text-[11px] uppercase tracking-[0.14em] text-white/52">{metric.label}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-5 rounded-[1.35rem] border border-white/8 bg-[linear-gradient(135deg,rgba(52,211,153,0.09),rgba(132,204,22,0.05)_46%,rgba(255,255,255,0.02))] p-5">
+                        <p className="text-sm uppercase tracking-[0.18em] text-white/44">What changes</p>
+                        <p className="mt-3 text-base leading-relaxed text-white/72">
+                          Instead of guessing through setup, pricing, and compliance, you get a working launch plan, better operating decisions, and a cleaner path to repeatable occupancy.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
                 {service.tagline ? (
                   <div className="cinematic-kicker mb-8">
                     {service.tagline}
@@ -523,6 +589,8 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                     </Link>
                   )
                 ) : null}
+                  </>
+                )}
             </div>
           </motion.div>
         </div>
@@ -541,9 +609,6 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
               >
                 <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
                   <div>
-                    <div className="inline-block rounded-full bg-white/7 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-white/70">
-                      Featured Product
-                    </div>
                     <h2 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">Scan2Call</h2>
                     <p className="mt-5 text-lg leading-relaxed text-white/65">
                       Scan2Call is a website-based Lost & Found service. Users buy QR tags and place them on belongings. If

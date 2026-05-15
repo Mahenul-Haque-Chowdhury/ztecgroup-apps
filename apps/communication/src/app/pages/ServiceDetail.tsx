@@ -31,11 +31,11 @@ import { Button } from "../components/Button";
 const serviceData = {
   communication: {
     title: "Anonymous Communication Gateway",
-    tagline: "",
+    tagline: "Private Recovery Infrastructure",
     icon: Shield,
     imageSrc: "/service-comm.png",
     gradient: "from-sky-300 to-cyan-400",
-    overview: "Scan2Call is a privacy-first lost-and-found service where owners tag belongings with QR labels and get anonymous finder communication when items are recovered.",
+    overview: "Scan2Call turns lost-item recovery into a secure, low-friction workflow. QR-linked products connect finders and owners instantly while keeping both sides private.",
     branches: [
       "Scan2Call Platform",
       "QR Smart Tags",
@@ -362,6 +362,12 @@ const scan2CallWorkflow: Array<{ title: string; description: string; icon: Lucid
   },
 ];
 
+const communicationHeroMetrics = [
+  { value: "QR", label: "Tag-triggered recovery" },
+  { value: "Anon", label: "Masked communication" },
+  { value: "Live", label: "Instant owner alerts" },
+];
+
 const strConsultationContent = {
   headingOne: "Turn Your Property Vision into a Profitable Reality",
   introParagraphOne:
@@ -454,11 +460,76 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
           >
             <div
               className={
-                isCleanLayoutService
-                  ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
-                  : "max-w-4xl"
+                isCommunicationService
+                  ? "mx-auto max-w-6xl"
+                  : isCleanLayoutService
+                    ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
+                    : "max-w-4xl"
               }
             >
+                {isCommunicationService ? (
+                  <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
+                    <div className="text-center lg:text-left">
+                      {service.tagline ? <div className="cinematic-kicker mb-6">{service.tagline}</div> : null}
+                      <h1 className="mb-6 text-[clamp(2.1rem,5.6vw,5rem)] font-bold leading-[0.98] tracking-[-0.04em]">
+                        Lost items recovered without exposing private details.
+                      </h1>
+                      <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/66 sm:text-lg lg:mx-0 lg:text-[1.05rem]">
+                        Scan2Call gives owners a privacy-first recovery layer powered by QR tagging, anonymous contact options, and real-time notification routing.
+                      </p>
+                      <div className="mt-7 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+                        {service.branches.map((branch) => (
+                          <span key={branch} className="rounded-full border border-white/12 bg-white/[0.045] px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-white/76">
+                            {branch}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                        <a href="https://scan2call.net" target="_blank" rel="noopener noreferrer">
+                          <Button variant="primary" size="lg">Visit Scan2Call</Button>
+                        </a>
+                        <Link href="/contact">
+                          <Button variant="outline" size="lg">Talk About Deployment</Button>
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="cinematic-panel rounded-[1.75rem] p-5 sm:p-6 lg:p-7">
+                      <div className="flex items-center justify-between gap-4 border-b border-white/8 pb-4">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-primary/85">Recovery Flow</p>
+                          <h2 className="mt-2 text-2xl font-semibold text-white/92">Product-led, privacy-first, easy to deploy.</h2>
+                        </div>
+                        <div className="rounded-2xl border border-sky-300/14 bg-sky-300/8 px-3 py-2 text-right shadow-[0_12px_32px_rgba(125,211,252,0.08)]">
+                          <div className="text-xl font-semibold text-white">{service.proof.stat}</div>
+                          <div className="text-[11px] uppercase tracking-[0.12em] text-white/48">{service.proof.description}</div>
+                        </div>
+                      </div>
+
+                      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                        {communicationHeroMetrics.map((metric) => (
+                          <div key={metric.label} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                            <div className="text-2xl font-semibold text-white">{metric.value}</div>
+                            <div className="mt-2 text-[11px] uppercase tracking-[0.14em] text-white/52">{metric.label}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                        {scan2CallWorkflow.slice(0, 4).map((step) => (
+                          <div key={step.title} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
+                            <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white/82">
+                              <step.icon size={18} />
+                            </div>
+                            <h3 className="text-sm font-semibold text-white/90">{step.title}</h3>
+                            <p className="mt-2 text-sm leading-relaxed text-white/60">{step.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
                 {service.tagline ? (
                   <div className="cinematic-kicker mb-8">
                     {service.tagline}
@@ -523,6 +594,8 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                     </Link>
                   )
                 ) : null}
+                  </>
+                )}
             </div>
           </motion.div>
         </div>

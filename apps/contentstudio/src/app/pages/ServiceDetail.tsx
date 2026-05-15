@@ -82,11 +82,11 @@ const serviceData = {
   },
   content: {
     title: "Video & Motion Content Studio",
-    tagline: "",
+    tagline: "Editorial Post-Production for Brands in Motion",
     icon: Video,
     imageSrc: "/service-video.png",
     gradient: "from-amber-400 to-orange-500",
-    overview: "Full-spectrum post-production for brands, creators, and businesses. Send raw clips, mixed footage, or even a chaotic folder of broken takes, and we deliver polished, production-ready videos tailored for every platform.",
+    overview: "We turn rough footage, interviews, campaign assets, and creator content into sharp, platform-ready edits with story structure, motion polish, and delivery discipline.",
     branches: [
       "Short-Form Social Editing",
       "Long-Form & Documentary Editing",
@@ -362,6 +362,12 @@ const scan2CallWorkflow: Array<{ title: string; description: string; icon: Lucid
   },
 ];
 
+const contentHeroHighlights = [
+  "Short-form social edits with hook-first pacing",
+  "Documentary, interview, and story-led long form",
+  "Motion graphics, captions, titles, and platform packaging",
+];
+
 const strConsultationContent = {
   headingOne: "Turn Your Property Vision into a Profitable Reality",
   introParagraphOne:
@@ -454,11 +460,63 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
           >
             <div
               className={
-                isCleanLayoutService
-                  ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
-                  : "max-w-4xl"
+                isContentService
+                  ? "mx-auto max-w-6xl"
+                  : isCleanLayoutService
+                    ? `${isRevenueService ? "max-w-6xl" : "max-w-5xl"} mx-auto text-center`
+                    : "max-w-4xl"
               }
             >
+                {isContentService ? (
+                  <div className="grid gap-8 lg:grid-cols-[0.98fr_1.02fr] lg:items-end">
+                    <div className="text-center lg:text-left">
+                      {service.tagline ? <div className="cinematic-kicker mb-6">{service.tagline}</div> : null}
+                      <h1 className="mb-6 text-[clamp(2.1rem,5.8vw,5.1rem)] font-bold leading-[0.98] tracking-[-0.04em]">
+                        Raw footage in. Sharp, release-ready edits out.
+                      </h1>
+                      <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/66 sm:text-lg lg:mx-0 lg:text-[1.05rem]">
+                        Content Studio is built for teams that need speed, polish, and format-native output across reels, campaigns, documentary edits, and ongoing channel production.
+                      </p>
+                      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                        <Link href="/contact">
+                          <Button variant="primary" size="lg">Get Editing Quote</Button>
+                        </Link>
+                        <Link href="/portfolio">
+                          <Button variant="outline" size="lg">View Workflows</Button>
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="cinematic-panel rounded-[1.75rem] p-5 sm:p-6 lg:p-7">
+                      <div className="flex items-center justify-between gap-4 border-b border-white/8 pb-4">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-primary/85">Studio Output</p>
+                          <h2 className="mt-2 text-2xl font-semibold text-white/92">Built for content velocity and premium finish.</h2>
+                        </div>
+                        <div className="rounded-2xl border border-amber-300/14 bg-amber-300/8 px-3 py-2 text-right shadow-[0_12px_32px_rgba(251,191,36,0.08)]">
+                          <div className="text-xl font-semibold text-white">{service.proof.stat}</div>
+                          <div className="text-[11px] uppercase tracking-[0.12em] text-white/48">{service.proof.description}</div>
+                        </div>
+                      </div>
+
+                      <div className="mt-5 space-y-3">
+                        {contentHeroHighlights.map((highlight) => (
+                          <div key={highlight} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-sm leading-relaxed text-white/72">
+                            {highlight}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-5 rounded-[1.35rem] border border-white/8 bg-[linear-gradient(135deg,rgba(251,191,36,0.1),rgba(249,115,22,0.06)_46%,rgba(255,255,255,0.02))] p-5">
+                        <p className="text-sm uppercase tracking-[0.18em] text-white/44">Delivery Promise</p>
+                        <p className="mt-3 text-base leading-relaxed text-white/72">
+                          Send raw assets once. Receive polished platform variants, tightened narrative structure, motion-ready graphics, and export packages that are ready to publish.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
                 {service.tagline ? (
                   <div className="cinematic-kicker mb-8">
                     {service.tagline}
@@ -523,6 +581,8 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                     </Link>
                   )
                 ) : null}
+                  </>
+                )}
             </div>
           </motion.div>
         </div>
