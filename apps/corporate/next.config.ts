@@ -26,6 +26,7 @@ function getAllowedDevOrigins(): string[] {
 
 const nextConfig: NextConfig = {
 	allowedDevOrigins: getAllowedDevOrigins(),
+	transpilePackages: ["@ztecgroup/content"],
 };
 
 export default nextConfig;

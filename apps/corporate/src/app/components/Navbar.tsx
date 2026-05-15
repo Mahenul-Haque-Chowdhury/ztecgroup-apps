@@ -1,5 +1,6 @@
 "use client";
 
+import { serviceLinks as enterpriseServiceLinks } from "@ztecgroup/content";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -12,10 +13,10 @@ const glassSurfaceClass = "rounded-2xl bg-[rgba(7,10,18,0.58)] ring-1 ring-white
 const solidDropdownSurfaceClass = "rounded-2xl bg-[#070a12] ring-1 ring-white/[0.14] shadow-[0_26px_60px_rgba(4,8,20,0.62)]";
 
 const serviceDomainLinks = {
-  communication: "https://communication.ztecgroup.au",
-  content: "https://contentstudio.ztecgroup.au",
-  software: "https://software.ztecgroup.au",
-  revenue: "https://hospitality.ztecgroup.au",
+  communication: enterpriseServiceLinks.find((service) => service.slug === "communication")?.url ?? "https://communication.ztecgroup.au",
+  content: enterpriseServiceLinks.find((service) => service.slug === "content")?.url ?? "https://contentstudio.ztecgroup.au",
+  software: enterpriseServiceLinks.find((service) => service.slug === "software")?.url ?? "https://software.ztecgroup.au",
+  revenue: enterpriseServiceLinks.find((service) => service.slug === "revenue")?.url ?? "https://hospitality.ztecgroup.au",
 } as const;
 
 export function Navbar() {
@@ -33,6 +34,7 @@ export function Navbar() {
     { path: "/", label: "Home" },
     { path: "/portfolio", label: "Portfolio" },
     { path: "/about", label: "About us" },
+    { path: "/leadership", label: "Leadership" },
     { path: "/resources", label: "Resources" },
   ];
 

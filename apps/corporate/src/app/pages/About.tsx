@@ -1,5 +1,6 @@
 "use client";
 
+import { leadershipProfiles } from "@ztecgroup/content";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -28,41 +29,6 @@ const values = [
     title: "Client Partnership",
     description: "We become an extension of your team, invested in your long-term success."
   }
-];
-
-const executiveTeamMembers = [
-  {
-    id: 1,
-    name: "Ben Chenery",
-    designation: "Director",
-    division: "Executive Leadership",
-    shortBio: "Guides group direction, strategic partnerships, and long-horizon business growth across the ZTEC portfolio.",
-    imageSrc: "/Ben_Chenery_Director_of_ZTEC_Group.jpeg",
-  },
-  {
-    id: 2,
-    name: "Shakil Ahamed",
-    designation: "Director",
-    division: "Operations & Delivery",
-    shortBio: "Oversees cross-functional coordination and keeps execution aligned across service lines, timelines, and client outcomes.",
-    imageSrc: "/Shakil Ahamed_Director_of_ZTEC_Group.jpeg.jpeg",
-  },
-  {
-    id: 3,
-    name: "Sayeed Hasan",
-    designation: "Director of Content Studio",
-    division: "Narrative & Production",
-    shortBio: "Leads the content studio with a focus on brand storytelling, production systems, and commercially effective media output.",
-    imageSrc: "/Director_of_ZTEC_Content_Studio_Sayeed_Hasan.jpeg",
-  },
-  {
-    id: 4,
-    name: "Mahenul Haque Chowdhury",
-    designation: "Director of Software Lab",
-    division: "Systems & Product",
-    shortBio: "Drives software lab delivery, product architecture, and the technical systems that support scalable digital operations.",
-    imageSrc: null,
-  },
 ];
 
 export function About() {
@@ -163,9 +129,9 @@ export function About() {
             </motion.div>
 
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {executiveTeamMembers.map((member, index) => (
+              {leadershipProfiles.map((member, index) => (
                 <motion.article
-                  key={member.id}
+                  key={member.slug}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -176,10 +142,10 @@ export function About() {
 
                   <div className="relative mb-5 overflow-hidden rounded-[1rem]">
                     <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1rem] bg-[radial-gradient(circle_at_top,rgba(240,180,79,0.16),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))]">
-                      {member.imageSrc ? (
+                      {member.image ? (
                         <>
                           <Image
-                            src={member.imageSrc}
+                            src={member.image}
                             alt={member.name}
                             fill
                             sizes="(min-width: 1280px) 280px, (min-width: 768px) 40vw, 92vw"
@@ -207,12 +173,21 @@ export function About() {
                   </div>
 
                   <div className="relative">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-primary/80">{member.designation}</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-primary/80">{member.jobTitle}</p>
                     <h3 className="mt-2 text-xl font-semibold leading-tight text-white/92 sm:text-2xl">{member.name}</h3>
                     <p className="mt-4 text-sm leading-relaxed text-white/62">{member.shortBio}</p>
+                    <Link href={`/leadership/${member.slug}`} className="mt-5 inline-flex text-sm font-medium text-primary transition-colors hover:text-primary/80">
+                      View profile
+                    </Link>
                   </div>
                 </motion.article>
               ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <Link href="/leadership" className="inline-flex items-center justify-center rounded-full border border-white/12 px-5 py-3 text-sm text-white/78 transition-colors hover:border-primary/45 hover:text-white">
+                Explore Leadership
+              </Link>
             </div>
           </div>
         </div>
