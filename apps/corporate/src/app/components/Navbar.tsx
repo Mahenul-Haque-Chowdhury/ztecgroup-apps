@@ -81,23 +81,25 @@ export function Navbar() {
       className="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-4 lg:px-8"
     >
       <GlassSurface className={`max-w-[1440px] mx-auto ${glassSurfaceClass}`}>
-        <div className="flex h-14 items-center justify-between pl-3 pr-1.5 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
+        <div className="flex h-14 items-center justify-between gap-2 pl-3 pr-2 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
           {/* Logo */}
-          <Link href="/" className="group shrink-0">
+          <Link href="/" className="group min-w-0 shrink" aria-label="ZTEC Group home">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex h-[5.6rem] w-[24rem] items-center sm:h-[6.35rem] sm:w-[27.5rem] lg:h-[7.4rem] lg:w-[32rem]"
+              className="flex h-[2.9rem] w-[11.4rem] items-center sm:h-[3.15rem] sm:w-[13rem] lg:h-[7.4rem] lg:w-[32rem]"
             >
-              <Image
-                src="/ztecgroup-logo.svg"
-                alt="ZTEC Group"
-                width={420}
-                height={95}
-                sizes="(max-width: 640px) 344px, (max-width: 1024px) 400px, 488px"
-                priority
-                loading="eager"
-                className="h-full w-auto object-contain"
-              />
+              <div className="flex h-[88%] w-[100%] items-center overflow-hidden sm:h-[92%] lg:h-full">
+                <Image
+                  src="/ztecgroup-logo.svg"
+                  alt="ZTEC Group"
+                  width={420}
+                  height={95}
+                  sizes="(max-width: 640px) 182px, (max-width: 1024px) 208px, 488px"
+                  priority
+                  loading="eager"
+                  className="translate-y-0.5 h-full w-auto max-w-none origin-left scale-[2.9] object-contain sm:translate-y-0.5 sm:scale-[3.15] lg:translate-y-0 lg:scale-100"
+                />
+              </div>
             </motion.div>
           </Link>
 
@@ -232,11 +234,13 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="-mr-0.5 p-2 text-white lg:hidden sm:mr-0"
-            aria-label="Toggle menu"
+            type="button"
+            onClick={() => setIsOpen((current) => !current)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white lg:hidden"
+            aria-expanded={isOpen}
+            aria-label="Toggle navigation"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </GlassSurface>
@@ -250,38 +254,33 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <GlassSurface
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className={`lg:hidden mt-1.5 sm:mt-2 max-w-[1440px] mx-auto ${glassSurfaceClass}`}
-        >
-          <div className="px-5 py-6 space-y-5 sm:px-8 sm:py-8 sm:space-y-6">
+        <div className="mx-auto mt-3 max-w-[1440px] rounded-2xl bg-[#070a12] p-4 ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] lg:hidden">
+          <div className="flex flex-col gap-2">
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className={`block text-sm uppercase tracking-[0.14em] ${
-                pathname === "/" ? "text-white" : "text-white/65"
+              className={`rounded-xl px-4 py-3 text-sm transition-colors ${
+                pathname === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
               }`}
             >
               Home
             </Link>
 
             <div className="space-y-3">
-              <p className="text-[11px] uppercase tracking-[0.16em] text-white/45">Services</p>
+              <p className="px-4 pt-1 text-[11px] uppercase tracking-[0.16em] text-white/45">Services</p>
               <div className="space-y-2">
                 {serviceLinks.map((service) => (
                   <Link
                     key={service.path}
                     href={service.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block rounded-xl px-3 py-3 transition-colors ${
+                    className={`block rounded-xl px-4 py-3 text-sm transition-colors ${
                       pathname === "/services/communication" && service.path === serviceDomainLinks.communication ||
                       pathname === "/services/content" && service.path === serviceDomainLinks.content ||
                       pathname === "/services/software" && service.path === serviceDomainLinks.software ||
                       pathname === "/services/revenue" && service.path === serviceDomainLinks.revenue
                         ? "bg-white/10 text-white"
-                        : "text-white/65 hover:bg-white/8 hover:text-white"
+                        : "text-white/70 hover:bg-white/5 hover:text-white"
                     }`}
                   >
                     <div className="flex items-start gap-3">
@@ -305,20 +304,20 @@ export function Navbar() {
                 key={link.path}
                 href={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block text-sm uppercase tracking-[0.14em] ${
-                  pathname === link.path ? "text-white" : "text-white/65"
+                className={`rounded-xl px-4 py-3 text-sm transition-colors ${
+                  pathname === link.path ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
             <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <button className="w-full px-6 py-3 rounded-xl bg-primary text-primary-foreground ring-1 ring-primary/35">
+              <button className="w-full rounded-xl bg-primary px-6 py-3 text-primary-foreground ring-1 ring-primary/35">
                 Get Started
               </button>
             </Link>
           </div>
-        </GlassSurface>
+        </div>
       )}
     </motion.nav>
   );

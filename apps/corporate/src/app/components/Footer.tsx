@@ -122,12 +122,12 @@ export function Footer() {
           <p className="text-white/40 text-sm">
             Designed by{" "}
             <a
-              href="https://arnob.life"
+              href="https://software.ztecgroup.au/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/70 transition-colors hover:text-white"
             >
-              Arnob
+              ZTEC Software Lab
             </a>
           </p>
         </div>

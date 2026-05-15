@@ -492,7 +492,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                       </div>
 
                       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-                        <Link href="/contact">
+                        <Link href="/quotation">
                           <Button variant="primary" size="lg">
                             Request Quotation
                           </Button>
@@ -781,7 +781,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                     <p className="text-white/60 leading-relaxed">{capability.description}</p>
                     {isSoftwareService ? (
                       <Link
-                        href="/contact"
+                        href="/quotation"
                         className="pointer-events-none absolute bottom-5 right-5 translate-y-2 opacity-0 transition-all duration-200 lg:group-hover:pointer-events-auto lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
                       >
                         <span className="inline-flex items-center rounded-lg bg-primary px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-primary-foreground shadow-[0_10px_22px_rgba(240,180,79,0.25)]">
@@ -889,7 +889,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                   </a>
                 ) : (
                   <>
-                    <Link href="/contact" className={isSoftwareService ? "lg:hidden" : ""}>
+                    <Link href="/quotation" className={isSoftwareService ? "lg:hidden" : ""}>
                       <Button variant="primary" size="lg">
                         {isSoftwareService
                           ? "Request Quotation"
