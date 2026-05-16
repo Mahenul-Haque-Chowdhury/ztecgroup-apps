@@ -182,8 +182,8 @@ export function Navbar() {
                           }`}
                         >
                           <div className="flex items-start gap-3">
-                            <div className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 p-1.5">
-                              <Image src={service.logoSrc} alt={service.logoAlt} width={32} height={32} className="h-full w-full object-contain" />
+                            <div className="mt-0.5 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
+                              <Image src={service.logoSrc} alt={service.logoAlt} width={56} height={56} className="h-full w-full object-contain" />
                             </div>
                             <div className="min-w-0">
                               <div className="text-[0.95rem] font-semibold leading-tight text-white">{service.label}</div>
@@ -289,8 +289,8 @@ export function Navbar() {
                     }`}
                   >
                     <div className="flex items-start gap-3">
-                      <div className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 p-1">
-                        <Image src={service.logoSrc} alt={service.logoAlt} width={28} height={28} className="h-full w-full object-contain" />
+                      <div className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
+                        <Image src={service.logoSrc} alt={service.logoAlt} width={48} height={48} className="h-full w-full object-contain" />
                       </div>
                       <div className="min-w-0">
                         <div className="text-sm font-medium leading-snug text-white">{service.label}</div>
