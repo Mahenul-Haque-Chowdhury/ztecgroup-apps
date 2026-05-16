@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
-import { ChevronDown, Code, Menu, Shield, TrendingUp, Video, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const GlassSurface = motion.div;
@@ -43,28 +43,32 @@ export function Navbar() {
       label: "Anonymous Communication Gateway",
       description: "",
       branches: ["Scan2Call & more."],
-      icon: Shield,
+      logoSrc: "/communication.svg",
+      logoAlt: "Anonymous Communication Gateway logo",
     },
     {
       path: serviceDomainLinks.content,
       label: "Video & Motion Content Studio",
       description: "",
       branches: ["Video Editing, Cinemetic Production & more"],
-      icon: Video,
+      logoSrc: "/contentstudio.svg",
+      logoAlt: "Video & Motion Content Studio logo",
     },
     {
       path: serviceDomainLinks.software,
       label: "Software & Business Systems",
       description: "",
       branches: ["Web Design, Mobile App, E-commerce & more"],
-      icon: Code,
+      logoSrc: "/software.svg",
+      logoAlt: "Software & Business Systems logo",
     },
     {
       path: serviceDomainLinks.revenue,
       label: "STRA Management Consultation",
       description: "",
       branches: ["Property Renting Consultation"],
-      icon: TrendingUp,
+      logoSrc: "/hospitality.svg",
+      logoAlt: "STRA Management Consultation logo",
     },
   ];
 
@@ -178,8 +182,8 @@ export function Navbar() {
                           }`}
                         >
                           <div className="flex items-start gap-3">
-                            <div className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white/80">
-                              <service.icon size={16} />
+                            <div className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 p-1.5">
+                              <Image src={service.logoSrc} alt={service.logoAlt} width={32} height={32} className="h-full w-full object-contain" />
                             </div>
                             <div className="min-w-0">
                               <div className="text-[0.95rem] font-semibold leading-tight text-white">{service.label}</div>
@@ -285,8 +289,8 @@ export function Navbar() {
                     }`}
                   >
                     <div className="flex items-start gap-3">
-                      <div className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white/80">
-                        <service.icon size={14} />
+                      <div className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 p-1">
+                        <Image src={service.logoSrc} alt={service.logoAlt} width={28} height={28} className="h-full w-full object-contain" />
                       </div>
                       <div className="min-w-0">
                         <div className="text-sm font-medium leading-snug text-white">{service.label}</div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronDown, Code, Menu, Shield, TrendingUp, Video, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const GlassSurface = motion.div;
@@ -20,10 +20,10 @@ const serviceDomainLinks = {
 } as const;
 
 const serviceLinks = [
-  { path: serviceDomainLinks.communication, key: "communication", label: "Anonymous Communication Gateway", branches: ["Scan2Call & more."], icon: Shield },
-  { path: serviceDomainLinks.content, key: "content", label: "Video & Motion Content Studio", branches: ["Video Editing, Cinematic Production & more"], icon: Video },
-  { path: serviceDomainLinks.software, key: "software", label: "Software & Business Systems", branches: ["Web Design, Mobile App, E-commerce & more"], icon: Code },
-  { path: serviceDomainLinks.revenue, key: "revenue", label: "STRA Management Consultation", branches: ["Property Renting Consultation"], icon: TrendingUp },
+  { path: serviceDomainLinks.communication, key: "communication", label: "Anonymous Communication Gateway", branches: ["Scan2Call & more."], logoSrc: "/communication.svg", logoAlt: "Anonymous Communication Gateway logo" },
+  { path: serviceDomainLinks.content, key: "content", label: "Video & Motion Content Studio", branches: ["Video Editing, Cinematic Production & more"], logoSrc: "/contentstudio.svg", logoAlt: "Video & Motion Content Studio logo" },
+  { path: serviceDomainLinks.software, key: "software", label: "Software & Business Systems", branches: ["Web Design, Mobile App, E-commerce & more"], logoSrc: "/software.svg", logoAlt: "Software & Business Systems logo" },
+  { path: serviceDomainLinks.revenue, key: "revenue", label: "STRA Management Consultation", branches: ["Property Renting Consultation"], logoSrc: "/hospitality.svg", logoAlt: "STRA Management Consultation logo" },
 ];
 
 const primaryLinks = [
@@ -77,8 +77,8 @@ export function Navbar() {
                       {serviceLinks.map((service) => (
                         <Link key={service.path} href={service.path} onClick={() => setIsServicesOpen(false)} className={`block rounded-2xl px-4 py-3 transition-colors ${activeServiceKey === service.key ? "bg-white/12 text-white" : "text-white/72 hover:bg-white/8 hover:text-white"}`}>
                           <div className="flex items-start gap-3">
-                            <div className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white/80">
-                              <service.icon size={16} />
+                            <div className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 p-1.5">
+                              <Image src={service.logoSrc} alt={service.logoAlt} width={32} height={32} className="h-full w-full object-contain" />
                             </div>
                             <div className="min-w-0">
                               <div className="text-[0.95rem] font-semibold leading-tight text-white">{service.label}</div>
@@ -129,8 +129,8 @@ export function Navbar() {
                 {serviceLinks.map((service) => (
                   <Link key={service.path} href={service.path} onClick={() => setIsOpen(false)} className={`block rounded-xl px-4 py-3 text-sm transition-colors ${activeServiceKey === service.key ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>
                     <div className="flex items-start gap-3">
-                      <div className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white/80">
-                        <service.icon size={14} />
+                      <div className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 p-1">
+                        <Image src={service.logoSrc} alt={service.logoAlt} width={28} height={28} className="h-full w-full object-contain" />
                       </div>
                       <div className="min-w-0">
                         <div className="text-sm font-medium leading-snug text-white">{service.label}</div>
