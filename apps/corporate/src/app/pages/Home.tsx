@@ -480,17 +480,17 @@ export function Home() {
                 Trusted by Industry Leaders
               </h2>
               <p className="text-white/60">
-                Organizations worldwide rely on this infrastructure
+                A growing mix of operators, teams, and service-led businesses rely on our delivery model
               </p>
             </motion.div>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {[
-                { value: "500+", label: "Projects Delivered" },
-                { value: "99.9%", label: "Uptime Guaranteed" },
-                { value: "50+", label: "Enterprise Clients" },
-                { value: "24/7", label: "Global Support" }
+                { value: "80+", label: "Projects Delivered" },
+                { value: "99.5%", label: "Platform Reliability" },
+                { value: "20+", label: "Active Clients" },
+                { value: "4", label: "Specialist Divisions" }
               ].map((stat, i) => (
                 <motion.div
                   key={i}
