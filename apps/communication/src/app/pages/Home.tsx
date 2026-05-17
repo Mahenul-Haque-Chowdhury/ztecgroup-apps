@@ -169,7 +169,7 @@ export function Home() {
     <div className="relative">
       <div className="pointer-events-none fixed inset-x-0 top-0 h-[100svh] min-h-[100lvh] w-full z-0 md:inset-0 md:h-auto md:min-h-0">
         <Image
-          src="/nexushero.webp"
+          src="/hero-background.webp"
           alt="Cinematic background"
           fill
           priority
