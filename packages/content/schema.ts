@@ -37,7 +37,10 @@ export function buildWebSiteSchema(site: SiteKey, siteUrl?: string) {
     "@type": "WebSite",
     "@id": `${url}/#website`,
     name: definition.siteName,
+    alternateName: definition.name,
     url,
+    description: definition.description,
+    keywords: definition.keywords,
     publisher: {
       "@id": `${siteDefinitions.corporate.host}/#organization`,
     },
@@ -56,6 +59,7 @@ export function buildServiceSchema(site: Exclude<SiteKey, "corporate">, siteUrl?
     name: definition.name,
     serviceType: definition.name,
     url,
+    keywords: definition.keywords,
     areaServed: "AU",
     provider: {
       "@id": `${siteDefinitions.corporate.host}/#organization`,
@@ -66,6 +70,7 @@ export function buildServiceSchema(site: Exclude<SiteKey, "corporate">, siteUrl?
       url,
     },
     description: definition.description,
+    category: definition.siteName,
     isPartOf: {
       "@id": `${siteDefinitions.corporate.host}/#organization`,
     },

@@ -30,7 +30,7 @@ export function buildRobots(site: SiteKey, siteUrl?: string): MetadataRoute.Robo
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/_next/", "/preview/"],
+      disallow: ["/api/", "/preview/"],
     },
     sitemap: `${metadataBase.toString().replace(/\/$/, "")}/sitemap.xml`,
     host: metadataBase.toString(),

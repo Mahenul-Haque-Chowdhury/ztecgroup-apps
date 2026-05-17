@@ -13,20 +13,8 @@ type SiteDefinition = {
   description: string;
   keywords: string[];
   host: string;
+  iconPath: string;
   type: "website";
-};
-
-const sharedIcons: NonNullable<Metadata["icons"]> = {
-  icon: [
-    { url: "/favicon.ico", sizes: "any" },
-    { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
-    { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-    { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
-    { url: "/android-chrome-192x192.png", type: "image/png", sizes: "192x192" },
-    { url: "/android-chrome-512x512.png", type: "image/png", sizes: "512x512" },
-  ],
-  apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
-  shortcut: [{ url: "/favicon.ico" }],
 };
 
 export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
@@ -41,13 +29,22 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     description:
       "ZTEC Group connects advanced digital systems, communication, and media into one seamless solution platform.",
     keywords: [
+      "ZTEC Group",
+      "ZTEC Group Pty Ltd",
       "digital services Australia",
+      "digital transformation company Australia",
       "enterprise technology solutions",
+      "business systems consulting",
+      "software development company Australia",
+      "communications solutions Australia",
+      "content production services Australia",
+      "hospitality consulting Australia",
       "software and communication services",
       "media production services",
-      "ZTEC Group Pty Ltd",
+      "enterprise service ecosystem",
     ],
     host: "https://ztecgroup.au",
+    iconPath: "/ztecgroup-logo.svg",
     type: "website",
   },
   communication: {
@@ -61,13 +58,19 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     description:
       "ZTEC Communications provides privacy-first anonymous communication infrastructure with Scan2Call recovery and secure owner-finder connectivity. ZTEC Group Pty Ltd.",
     keywords: [
+      "ZTEC Communications",
       "anonymous communication platform",
+      "anonymous contact solution",
+      "lost and found communication system",
       "privacy-first contact recovery",
       "secure owner-finder communication",
       "Scan2Call",
       "encrypted messaging infrastructure",
+      "QR code contact recovery",
+      "private contact relay service",
     ],
     host: "https://communication.ztecgroup.au",
+    iconPath: "/communication.svg",
     type: "website",
   },
   contentstudio: {
@@ -81,13 +84,19 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     description:
       "ZTEC Content Studio specializes in post-production, cinematic editing, social media cutdowns, and motion content creation for brands. A ZTEC Group Pty Ltd service.",
     keywords: [
+      "ZTEC Content Studio",
+      "video production studio Australia",
       "video editing studio",
       "motion graphics",
       "post-production services",
       "social media video editing",
       "brand content creation",
+      "commercial video editing",
+      "motion design studio",
+      "content production services",
     ],
     host: "https://contentstudio.ztecgroup.au",
+    iconPath: "/contentstudio.svg",
     type: "website",
   },
   hospitality: {
@@ -101,13 +110,18 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     description:
       "ZTEC STRA & Hospitality Management provides expert consultation on launch planning, compliance, pricing optimization, and occupancy for property owners. ZTEC Group Pty Ltd.",
     keywords: [
+      "ZTEC Hospitality",
       "STRA consulting",
       "short term rental accommodation",
       "hospitality management consultation",
       "pricing optimization",
       "occupancy strategy",
+      "airbnb management consulting",
+      "holiday rental revenue management",
+      "hospitality operations consulting",
     ],
     host: "https://hospitality.ztecgroup.au",
+    iconPath: "/hospitality.svg",
     type: "website",
   },
   software: {
@@ -121,13 +135,19 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     description:
       "ZTEC Software Lab delivers custom software engineering, process automation, and business systems architecture for enterprise operations. A ZTEC Group Pty Ltd service.",
     keywords: [
+      "ZTEC Software Lab",
       "custom software development",
+      "software development company Australia",
       "business process automation",
       "enterprise software architecture",
       "cloud systems",
       "API integration",
+      "custom web application development",
+      "business systems integration",
+      "workflow automation services",
     ],
     host: "https://software.ztecgroup.au",
+    iconPath: "/software.svg",
     type: "website",
   },
 };
@@ -149,6 +169,7 @@ export function buildSiteMetadata(site: SiteKey, overrides: Partial<Metadata> = 
     },
     description: definition.description,
     keywords: definition.keywords,
+    category: definition.name,
     alternates: {
       canonical: "/",
     },
@@ -166,10 +187,13 @@ export function buildSiteMetadata(site: SiteKey, overrides: Partial<Metadata> = 
       description: definition.description,
     },
     manifest: "/site.webmanifest",
-    icons: sharedIcons,
+    icons: {
+      icon: [{ url: definition.iconPath, type: "image/svg+xml", sizes: "any" }],
+      shortcut: [definition.iconPath],
+    },
     other: {
       "msapplication-TileColor": "#070a12",
-      "msapplication-config": "/browserconfig.xml",
+      "classification": definition.name,
     },
     ...overrides,
   };
