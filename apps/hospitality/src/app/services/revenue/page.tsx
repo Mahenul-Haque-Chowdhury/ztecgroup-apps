@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "pricing optimization",
     "occupancy strategy",
   ],
+  alternates: {
+    canonical: "/services/revenue",
+  },
 };
 
 export default function RevenueServicePage() {

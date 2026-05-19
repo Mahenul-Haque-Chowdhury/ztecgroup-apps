@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Portfolio",
   description:
     "Explore ZTEC Group case studies and measurable client outcomes across communication, content, software, and STRA (Short term rental accommodation) revenue systems.",
+  alternates: {
+    canonical: "/portfolio",
+  },
 };
 
 export default function PortfolioPage() {

@@ -191,7 +191,7 @@ export function Home() {
       <div className="pointer-events-none fixed inset-x-0 top-0 h-[100svh] min-h-[100lvh] w-full z-0 md:inset-0 md:h-auto md:min-h-0">
         <Image
           src="/hero-background.webp"
-          alt="Cinematic background"
+          alt="ZTEC Group service ecosystem background"
           fill
           priority
           sizes="100vw"
@@ -386,7 +386,7 @@ export function Home() {
                 <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent"> Solutions</span>
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-white/62 leading-relaxed">
-                Framer-inspired motion language with layered depth, kinetic rhythm, and coordinated service flows.
+                Coordinated service delivery across communication, content, software, and hospitality operations.
               </p>
             </motion.div>
 
@@ -503,20 +503,20 @@ export function Home() {
               className="text-center mb-16"
             >
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
-                Trusted by Industry Leaders
+                Built for Practical Delivery
               </h2>
               <p className="text-white/60">
-                Organizations worldwide rely on this infrastructure
+                Service teams, operators, and product owners use this delivery model to move from plan to launch.
               </p>
             </motion.div>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {[
-                { value: "500+", label: "Projects Delivered" },
-                { value: "99.9%", label: "Uptime Guaranteed" },
-                { value: "50+", label: "Enterprise Clients" },
-                { value: "24/7", label: "Global Support" }
+                { value: "4", label: "Specialist Divisions" },
+                { value: "1", label: "Shared Delivery Model" },
+                { value: "2019", label: "Group Founded" },
+                { value: "AU", label: "Australian Company" }
               ].map((stat, i) => (
                 <motion.div
                   key={i}

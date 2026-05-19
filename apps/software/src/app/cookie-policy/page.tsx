@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Cookie Policy",
   description:
     "Understand what cookies ZTEC Group uses, why they are used, and how you can manage cookie consent.",
+  alternates: {
+    canonical: "/cookie-policy",
+  },
 };
 
 export default function CookiePolicyPage() {

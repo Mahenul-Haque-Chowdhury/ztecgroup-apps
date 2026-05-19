@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Learn about ZTEC Group and our unified architecture for communication, content, software, and revenue systems.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

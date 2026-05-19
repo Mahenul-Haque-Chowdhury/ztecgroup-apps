@@ -13,11 +13,6 @@ export const siteRoutes: Record<SiteKey, RouteDefinition[]> = {
     { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
     { path: "/portfolio", priority: 0.8, changeFrequency: "weekly" },
     { path: "/resources", priority: 0.8, changeFrequency: "weekly" },
-    { path: "/services", priority: 0.8, changeFrequency: "weekly" },
-    { path: "/services/communication", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services/content", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services/software", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services/revenue", priority: 0.8, changeFrequency: "monthly" },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/terms-of-service", priority: 0.3, changeFrequency: "yearly" },
@@ -25,7 +20,6 @@ export const siteRoutes: Record<SiteKey, RouteDefinition[]> = {
   communication: [
     { path: "/", priority: 1, changeFrequency: "weekly" },
     { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services", priority: 0.9, changeFrequency: "weekly" },
     { path: "/services/communication", priority: 0.9, changeFrequency: "monthly" },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },
@@ -34,7 +28,6 @@ export const siteRoutes: Record<SiteKey, RouteDefinition[]> = {
   contentstudio: [
     { path: "/", priority: 1, changeFrequency: "weekly" },
     { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services", priority: 0.9, changeFrequency: "weekly" },
     { path: "/services/content", priority: 0.9, changeFrequency: "monthly" },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },
@@ -43,7 +36,6 @@ export const siteRoutes: Record<SiteKey, RouteDefinition[]> = {
   hospitality: [
     { path: "/", priority: 1, changeFrequency: "weekly" },
     { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/services", priority: 0.9, changeFrequency: "weekly" },
     { path: "/services/revenue", priority: 0.9, changeFrequency: "monthly" },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },
@@ -54,7 +46,6 @@ export const siteRoutes: Record<SiteKey, RouteDefinition[]> = {
     { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
     { path: "/portfolio", priority: 0.8, changeFrequency: "weekly" },
     { path: "/quotation", priority: 0.6, changeFrequency: "monthly" },
-    { path: "/services", priority: 0.9, changeFrequency: "weekly" },
     { path: "/services/software", priority: 0.9, changeFrequency: "monthly" },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },

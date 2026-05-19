@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "social media video editing",
     "brand content creation",
   ],
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function HomePage() {

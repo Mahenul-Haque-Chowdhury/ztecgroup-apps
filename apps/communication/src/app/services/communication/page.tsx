@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "Scan2Call",
     "encrypted messaging infrastructure",
   ],
+  alternates: {
+    canonical: "/services/communication",
+  },
 };
 
 export default function CommunicationServicePage() {

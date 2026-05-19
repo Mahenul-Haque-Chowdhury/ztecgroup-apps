@@ -33,7 +33,7 @@ export function buildRobots(site: SiteKey, siteUrl?: string): MetadataRoute.Robo
       disallow: ["/api/", "/preview/"],
     },
     sitemap: `${metadataBase.toString().replace(/\/$/, "")}/sitemap.xml`,
-    host: metadataBase.toString(),
+    host: metadataBase.toString().replace(/\/$/, ""),
   };
 }
 

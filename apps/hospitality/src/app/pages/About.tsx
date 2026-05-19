@@ -289,7 +289,7 @@ export function About() {
                   { value: "50+", label: "Team Members" },
                   { value: "12", label: "Countries" },
                   { value: "100+", label: "Years Combined Experience" },
-                  { value: "24/7", label: "Global Coverage" },
+                  { value: "AU", label: "Australian Company" },
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}

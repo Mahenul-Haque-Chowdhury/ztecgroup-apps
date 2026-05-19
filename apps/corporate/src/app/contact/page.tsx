@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact ZTEC Group to discuss your communication, software, content, or revenue optimization project.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

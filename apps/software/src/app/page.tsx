@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "cloud systems",
     "API integration",
   ],
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function HomePage() {

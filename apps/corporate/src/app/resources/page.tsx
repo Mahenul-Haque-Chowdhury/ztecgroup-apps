@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Resources",
   description:
     "Download ZTEC Group whitepapers, case studies, and educational resources on secure communication and digital infrastructure.",
+  alternates: {
+    canonical: "/resources",
+  },
 };
 
 export default function ResourcesPage() {

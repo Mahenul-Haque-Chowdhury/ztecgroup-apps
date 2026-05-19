@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "pricing optimization",
     "occupancy strategy",
   ],
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function HomePage() {

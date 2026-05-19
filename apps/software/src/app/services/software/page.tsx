@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "cloud systems",
     "API integration",
   ],
+  alternates: {
+    canonical: "/services/software",
+  },
 };
 
 export default function SoftwareServicePage() {

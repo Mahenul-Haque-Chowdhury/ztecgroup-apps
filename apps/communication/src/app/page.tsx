@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "Scan2Call",
     "encrypted messaging infrastructure",
   ],
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function HomePage() {

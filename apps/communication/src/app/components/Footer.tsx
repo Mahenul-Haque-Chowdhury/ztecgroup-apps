@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export function Footer() {
 
@@ -13,17 +13,18 @@ export function Footer() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
       
       <div className="relative max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 pt-10 sm:pt-14 md:pt-16 pb-0">
-        <div className="cinematic-panel relative overflow-hidden rounded-t-3xl rounded-b-none p-6 sm:p-8 md:p-10 lg:p-14">
-          <div className="grid grid-cols-1 gap-10 mb-10 sm:gap-12 sm:mb-14 md:grid-cols-2 lg:grid-cols-5">
+        <div className="cinematic-panel relative overflow-hidden rounded-t-3xl rounded-b-none p-6 sm:p-8 md:p-10 lg:p-12">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+          <div className="grid grid-cols-1 gap-8 mb-9 sm:gap-10 sm:mb-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="mb-6 inline-flex justify-start">
-              <div className="relative h-[6rem] w-[26rem] overflow-hidden sm:h-[6.9rem] sm:w-[30rem] lg:h-[7.8rem] lg:w-[35rem]">
+            <Link href="/" className="mb-5 inline-flex justify-start">
+              <div className="relative h-[3.6rem] w-[15.8rem] overflow-hidden sm:h-[4.1rem] sm:w-[18rem] lg:h-[4.8rem] lg:w-[21rem]">
                 <Image
                   src="/ztecgroup-logo.svg"
                   alt="ZTEC Group"
                   fill
-                  sizes="(max-width: 640px) 416px, (max-width: 1024px) 480px, 560px"
+                  sizes="(max-width: 640px) 253px, (max-width: 1024px) 288px, 336px"
                   className="object-contain object-left"
                 />
               </div>
@@ -62,20 +63,6 @@ export function Footer() {
                 className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg hover:border-primary/60 hover:bg-primary/10 transition-colors"
               >
                 <Mail size={18} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1, y: -2 }}
-                href="#"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg hover:border-primary/60 hover:bg-primary/10 transition-colors"
-              >
-                <Linkedin size={18} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1, y: -2 }}
-                href="#"
-                className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg hover:border-primary/60 hover:bg-primary/10 transition-colors"
-              >
-                <Twitter size={18} />
               </motion.a>
             </div>
           </div>

@@ -232,9 +232,9 @@ const serviceData = {
       "Competitive technical advantage"
     ],
     proof: {
-      stat: "99.9% Uptime",
-      description: "Across all deployed systems",
-      testimonial: "Their software platform became the backbone of our entire operation."
+      stat: "Operational Systems",
+      description: "Designed for maintainable launches and clear day-to-day workflows",
+      testimonial: "A structured delivery approach helps teams move from scattered tools to a cleaner operating system."
     }
   },
   revenue: {
@@ -368,7 +368,7 @@ const strConsultationContent = {
     "You know the opportunity is there - short-term accommodation demand is strong, and both travellers and business guests are booking every night. But without hands-on experience, the risks feel overwhelming. Licensing confusion, pricing mistakes, terrible first reviews, or even losing money on a property you thought would be a goldmine. We remove the guesswork.",
   introParagraphTwo:
     "Whether you're an investor eyeing a boutique motel or a homeowner with a spare bedroom, we give you a clear, step-by-step launch plan tailored to your specific property, budget, and goals.",
-  headingTwo: "No Experiences For Hotel & Motel Investors? We can Help",
+  headingTwo: "No Experience With Hotel or Motel Operations? We Can Help",
   investorPoints: [
     "Feasibility first: We analyse your target suburb, competitor occupancy rates, and average daily rates before you sign a lease or purchase.",
     "Licensing and red tape made simple: We map out every council permit, fire safety requirement, and insurance obligation so you don't get fined or shut down.",
@@ -553,7 +553,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                       The scan link lets finders call, text, or submit a report to the owner while keeping personal identity private.
                     </p>
                     <p className="mt-6 text-sm text-white/45">
-                      Logo and direct product link can be added here when you share them.
+                      Scan2Call gives owners a simple product path for private lost-item recovery.
                     </p>
 
                     <div className="mt-8 flex flex-wrap gap-2.5">
@@ -645,7 +645,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                   </p>
                   <Link href="/contact" className="mt-8">
                     <Button variant="primary" size="lg">
-                      Book a 20 min Consultation Now.
+                      Book a 20-minute Consultation
                     </Button>
                   </Link>
                 </section>

@@ -26,11 +26,11 @@ export function ServiceCard({ number, title, description, icon: Icon, imageSrc, 
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        whileHover={{ y: -10, scale: 1.01 }}
+        whileHover={{ y: -6, scale: 1.005 }}
         className="group relative h-full"
       >
         {/* Card Background with Layered Framer-Inspired Surface */}
-        <div className="narrative-surface narrative-surface-no-border relative flex h-full flex-col overflow-hidden rounded-3xl p-5 transition-all duration-500 group-hover:-translate-y-1 sm:p-6 lg:p-12">
+        <div className="narrative-surface narrative-surface-no-border relative flex h-full flex-col overflow-hidden rounded-2xl p-5 transition-all duration-500 group-hover:-translate-y-0.5 sm:p-6 lg:p-8">
           <span className="narrative-glint" aria-hidden />
 
           {/* Gradient Accent */}
@@ -48,7 +48,7 @@ export function ServiceCard({ number, title, description, icon: Icon, imageSrc, 
           {/* Icon */}
           <div className="relative z-[2] mb-8">
             {imageSrc ? (
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-white/5 transition-all duration-500">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-white/5 transition-all duration-500">
                 <Image
                   src={imageSrc}
                   alt={title}
@@ -85,7 +85,7 @@ export function ServiceCard({ number, title, description, icon: Icon, imageSrc, 
             ) : null}
 
             <div className="mt-auto inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-white/80 transition-colors group-hover:text-white">
-              <span>Explore vertical</span>
+              <span>Explore service</span>
               <span aria-hidden>{">"}</span>
             </div>
           </div>

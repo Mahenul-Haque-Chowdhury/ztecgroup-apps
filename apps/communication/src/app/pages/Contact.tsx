@@ -136,6 +136,10 @@ export function Contact() {
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                      <div className="border-b border-white/10 pb-5">
+                        <p className="text-[11px] uppercase tracking-[0.18em] text-white/45">Project Intake</p>
+                        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">Tell us what you need</h2>
+                      </div>
                       <div>
                         <label htmlFor="name" className="block text-sm text-white/60 mb-2">
                           Full Name *
@@ -147,7 +151,7 @@ export function Contact() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-primary/70 focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-black/25 border border-white/14 focus:border-primary/70 focus:bg-black/35 focus:outline-none transition-colors"
                           placeholder="John Smith"
                         />
                       </div>
@@ -163,7 +167,7 @@ export function Contact() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-primary/70 focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-black/25 border border-white/14 focus:border-primary/70 focus:bg-black/35 focus:outline-none transition-colors"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -178,7 +182,7 @@ export function Contact() {
                           name="company"
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-primary/70 focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-black/25 border border-white/14 focus:border-primary/70 focus:bg-black/35 focus:outline-none transition-colors"
                           placeholder="Your Company"
                         />
                       </div>
@@ -192,7 +196,7 @@ export function Contact() {
                           name="service"
                           value={formData.service}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-primary/70 focus:outline-none transition-colors text-white"
+                          className="w-full px-4 py-3 rounded-xl bg-black/25 border border-white/14 focus:border-primary/70 focus:bg-black/35 focus:outline-none transition-colors text-white"
                         >
                           <option value="" className="bg-[#070a12]">Select a service</option>
                           <option value="communication" className="bg-[#070a12]">Anonymous Communication Gateway</option>
@@ -215,7 +219,7 @@ export function Contact() {
                           onChange={handleChange}
                           required
                           rows={5}
-                          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-primary/70 focus:outline-none transition-colors resize-none"
+                          className="w-full px-4 py-3 rounded-xl bg-black/25 border border-white/14 focus:border-primary/70 focus:bg-black/35 focus:outline-none transition-colors resize-none"
                           placeholder="Tell us about your project, timeline, and goals..."
                         />
                       </div>

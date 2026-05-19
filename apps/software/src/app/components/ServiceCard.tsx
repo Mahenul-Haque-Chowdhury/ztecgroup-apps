@@ -26,12 +26,12 @@ export function ServiceCard({ number, title, description, icon: Icon, imageSrc, 
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        whileHover={{ y: -12, scale: 1.012 }}
+        whileHover={{ y: -6, scale: 1.005 }}
         className="group relative h-full"
       >
-        <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-white/10 via-white/[0.02] to-transparent opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/8 via-white/[0.02] to-transparent opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
-        <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(10,18,31,0.96),rgba(7,14,24,0.88)_55%,rgba(14,36,52,0.82))] shadow-[0_24px_70px_rgba(0,0,0,0.3)] transition-all duration-500 group-hover:border-white/18 group-hover:shadow-[0_34px_90px_rgba(0,0,0,0.4)]">
+        <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(145deg,rgba(10,18,31,0.96),rgba(7,14,24,0.88)_55%,rgba(14,36,52,0.82))] shadow-[0_18px_48px_rgba(0,0,0,0.28)] transition-all duration-500 group-hover:border-white/18 group-hover:shadow-[0_24px_58px_rgba(0,0,0,0.34)]">
           <span className="narrative-glint" aria-hidden />
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-70" />
           <div className={`absolute inset-x-0 top-0 h-44 bg-gradient-to-br ${gradient} opacity-18 blur-3xl transition-all duration-500 group-hover:opacity-28`} />

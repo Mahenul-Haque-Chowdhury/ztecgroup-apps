@@ -12,7 +12,7 @@ const caseStudies = [
     category: "Communication Gateway",
     challenge: "Global organization needed secure, private communication infrastructure compliant with international privacy regulations.",
     approach: "Deployed zero-knowledge encrypted platform with distributed architecture across 15 global nodes.",
-    result: "100% regulatory compliance achieved. Zero security incidents. 50,000+ daily active users.",
+    result: "Defined a private communication workflow with clear recovery, escalation, and reporting paths.",
     gradient: "from-blue-500 to-cyan-500",
     tags: ["Security", "Enterprise", "Privacy"]
   },
@@ -21,7 +21,7 @@ const caseStudies = [
     category: "Video & Motion Content Studio",
     challenge: "Premium automotive brand required cinematic brand film to launch new flagship model globally.",
     approach: "Executed multi-location shoot with cinema-grade equipment and award-winning creative direction.",
-    result: "25M+ views across platforms. Featured at Cannes Lions. 300% increase in brand engagement.",
+    result: "Delivered a reusable campaign editing system for launch assets, social cutdowns, and paid media variants.",
     gradient: "from-amber-400 to-orange-500",
     tags: ["Video", "Branding", "Luxury"]
   },
@@ -30,7 +30,7 @@ const caseStudies = [
     category: "Software & Business Systems",
     challenge: "Healthcare startup needed HIPAA-compliant patient management platform from concept to deployment.",
     approach: "Built custom cloud-native application with end-to-end encryption and real-time collaboration.",
-    result: "Platform scaled to 100K+ users. $15M Series A funding secured. 99.99% uptime maintained.",
+    result: "Created a maintainable product architecture with secure workflows, role-based access, and operational reporting.",
     gradient: "from-cyan-500 to-teal-500",
     tags: ["SaaS", "Healthcare", "Cloud"]
   },
@@ -39,7 +39,7 @@ const caseStudies = [
     category: "STRA Management Consultation",
     challenge: "Property management company with 200+ units experiencing suboptimal occupancy and pricing.",
     approach: "Implemented AI-powered dynamic pricing and automated operations across entire portfolio.",
-    result: "42% revenue increase in year one. 75% reduction in management overhead. Portfolio expanded to 350 units.",
+    result: "Produced a clearer launch plan covering pricing, compliance, listing quality, and day-to-day operating routines.",
     gradient: "from-emerald-400 to-lime-500",
     tags: ["AI", "Optimization", "Real Estate"]
   },
@@ -48,7 +48,7 @@ const caseStudies = [
     category: "Anonymous Communication Gateway",
     challenge: "Federal agency required unhackable communication system for classified operations.",
     approach: "Engineered custom protocol with quantum-resistant encryption and air-gapped architecture.",
-    result: "Certified for Top Secret clearance level. Zero vulnerabilities detected in penetration testing.",
+    result: "Mapped sensitive communication requirements into a hardened, auditable delivery plan.",
     gradient: "from-blue-500 to-cyan-500",
     tags: ["Government", "Security", "Custom"]
   },
@@ -57,7 +57,7 @@ const caseStudies = [
     category: "Video & Motion Content Studio",
     challenge: "Tech unicorn launching revolutionary product needed hero film for global press event.",
     approach: "Created cinematic product film with advanced VFX and motion graphics on accelerated timeline.",
-    result: "Featured in TechCrunch, Wired, Verge. 15M+ organic reach. Stock price +22% post-launch.",
+    result: "Delivered a structured product story with reusable launch clips, explainer edits, and social-ready formats.",
     gradient: "from-amber-400 to-orange-500",
     tags: ["Tech", "Product Launch", "VFX"]
   }
@@ -166,16 +166,16 @@ export function Portfolio() {
               transition={{ duration: 0.8 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">By the Numbers</h2>
-              <p className="text-lg text-white/60">Aggregate impact across our client portfolio.</p>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Delivery Signals</h2>
+              <p className="text-lg text-white/60">How we keep engagements structured and accountable.</p>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               {[
-                { value: "500+", label: "Projects Completed" },
-                { value: "$2.5B", label: "Client Revenue Generated" },
-                { value: "100M+", label: "Content Views" },
-                { value: "99.9%", label: "Client Retention" },
+                { value: "4", label: "Service Divisions" },
+                { value: "1", label: "Delivery Roadmap" },
+                { value: "2019", label: "Group Founded" },
+                { value: "AU", label: "Registered Company" },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}

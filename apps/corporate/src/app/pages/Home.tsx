@@ -360,7 +360,7 @@ export function Home() {
                 <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent"> Solutions</span>
               </h2>
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-white/62 leading-relaxed">
-                Framer-inspired motion language with layered depth, kinetic rhythm, and coordinated service flows.
+                Coordinated service delivery across communication, content, software, and hospitality operations.
               </p>
             </motion.div>
 
@@ -477,7 +477,7 @@ export function Home() {
               className="text-center mb-16"
             >
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">
-                Trusted by Industry Leaders
+                Built for Practical Delivery
               </h2>
               <p className="text-white/60">
                 A growing mix of operators, teams, and service-led businesses rely on our delivery model

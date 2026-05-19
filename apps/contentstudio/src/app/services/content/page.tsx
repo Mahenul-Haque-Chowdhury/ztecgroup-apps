@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "social media video editing",
     "brand content creation",
   ],
+  alternates: {
+    canonical: "/services/content",
+  },
 };
 
 export default function ContentServicePage() {

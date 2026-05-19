@@ -50,7 +50,7 @@ export function Navbar() {
       path: serviceDomainLinks.content,
       label: "Video & Motion Content Studio",
       description: "",
-      branches: ["Video Editing, Cinemetic Production & more"],
+      branches: ["Video editing, cinematic production & more"],
       logoSrc: "/contentstudio.svg",
       logoAlt: "Video & Motion Content Studio logo",
     },
@@ -91,7 +91,7 @@ export function Navbar() {
           <Link href="/" className="group min-w-0 shrink" aria-label="ZTEC Group home">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex h-[2.9rem] w-[11.4rem] items-center sm:h-[3.15rem] sm:w-[13rem] lg:h-[7.4rem] lg:w-[32rem]"
+              className="flex h-[2.9rem] w-[11.4rem] items-center sm:h-[3.15rem] sm:w-[13rem] lg:h-[4.25rem] lg:w-[18rem]"
             >
               <div className="flex h-[88%] w-[100%] items-center overflow-hidden sm:h-[92%] lg:h-full">
                 <Image
@@ -99,7 +99,7 @@ export function Navbar() {
                   alt="ZTEC Group"
                   width={420}
                   height={95}
-                  sizes="(max-width: 640px) 182px, (max-width: 1024px) 208px, 488px"
+                  sizes="(max-width: 640px) 182px, (max-width: 1024px) 208px, 288px"
                   priority
                   loading="eager"
                   className="translate-y-0.5 h-full w-auto max-w-none origin-left scale-[2.9] object-contain sm:translate-y-0.5 sm:scale-[3.15] lg:translate-y-0 lg:scale-100"
@@ -327,4 +327,3 @@ export function Navbar() {
     </motion.nav>
   );
 }
-

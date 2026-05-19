@@ -175,16 +175,24 @@ export function buildSiteMetadata(site: SiteKey, overrides: Partial<Metadata> = 
     },
     openGraph: {
       type: definition.type,
-      url: metadataBase,
       siteName: definition.siteName,
       title: definition.defaultTitle,
       description: definition.description,
       locale: "en_AU",
+      images: [
+        {
+          url: "/hero-bg.png",
+          width: 1200,
+          height: 630,
+          alt: `${definition.siteName} brand preview`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: definition.defaultTitle,
       description: definition.description,
+      images: ["/hero-bg.png"],
     },
     manifest: "/site.webmanifest",
     icons: {
