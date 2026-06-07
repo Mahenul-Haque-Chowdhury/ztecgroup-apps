@@ -4,3 +4,4 @@ export * from "./routes";
 export * from "./crawl";
 export * from "./schema";
 export * from "./authority";
+export * from "./agent-discovery";

@@ -34,7 +34,33 @@ export function buildRobots(site: SiteKey, siteUrl?: string): MetadataRoute.Robo
     },
     sitemap: `${metadataBase.toString().replace(/\/$/, "")}/sitemap.xml`,
     host: metadataBase.toString().replace(/\/$/, ""),
-  };
+    // Content Signals are not yet typed by Next.js MetadataRoute.Robots.
+    policies: {
+      "Content-Signal": "ai-train=no, search=yes, ai-input=yes",
+    },
+  } as MetadataRoute.Robots;
+}
+
+export function buildRobotsText(site: SiteKey, siteUrl?: string) {
+  const metadataBase = getSiteUrl(site, siteUrl).toString().replace(/\/$/, "");
+  const lines = ["User-agent: *"];
+
+  if (!isProductionSite(site, siteUrl)) {
+    lines.push("Disallow: /");
+  } else {
+    lines.push("Allow: /", "Disallow: /api/", "Disallow: /preview/");
+  }
+
+  lines.push(
+    "",
+    "Content-Signal: ai-train=no, search=yes, ai-input=yes",
+    "",
+    `Sitemap: ${metadataBase}/sitemap.xml`,
+    `Host: ${metadataBase}`,
+    "",
+  );
+
+  return lines.join("\n");
 }
 
 export function buildSitemap(site: SiteKey, siteUrl?: string): MetadataRoute.Sitemap {
