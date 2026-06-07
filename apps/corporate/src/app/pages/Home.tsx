@@ -218,6 +218,14 @@ export function Home() {
             <div className="min-w-0 lg:-ml-8 xl:-ml-12">
               {/* Main Headline */}
               <h1 className="sr-only">Everything Connected. Nothing Compromised.</h1>
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="mb-3 text-[0.72rem] font-medium uppercase tracking-[0.28em] text-white/65 sm:text-xs lg:mb-4"
+              >
+                Welcome to ZTEC GROUP PTY LTD
+              </motion.p>
               <div aria-hidden className="mb-8 space-y-1">
                 <BlurText
                   text="Everything Connected."

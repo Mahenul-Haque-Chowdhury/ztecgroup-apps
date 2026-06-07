@@ -56,8 +56,8 @@ export function Navbar() {
               <div className="-translate-y-0.5 flex h-[78%] w-[4rem] items-center self-center overflow-hidden sm:w-[4.7rem] sm:-translate-y-0.5 lg:w-[5.35rem] lg:-translate-y-1">
                 <Image src="/communication.svg" alt="ZTEC Communication" width={248} height={56} sizes="(max-width: 640px) 172px, (max-width: 1024px) 205px, 248px" priority loading="eager" className="h-full w-auto max-w-none origin-left scale-[1.78] object-contain" />
               </div>
-              <div className="-ml-2 translate-y-0.5 flex h-[86%] w-[7.4rem] items-center self-center overflow-hidden sm:-ml-2.5 sm:w-[8.6rem] sm:translate-y-0.5 lg:-ml-3 lg:w-[10.4rem] lg:translate-y-1">
-                <Image src="/ztecgroup-logo.svg" alt="ZTEC Group" width={376} height={56} sizes="(max-width: 640px) 296px, (max-width: 1024px) 344px, 416px" loading="eager" className="h-full w-auto max-w-none origin-left scale-[2.3] object-contain opacity-100 brightness-125 contrast-125" />
+              <div className="-ml-2 translate-y-1 flex h-[86%] w-[7.4rem] items-center self-center overflow-hidden sm:-ml-2.5 sm:w-[8.6rem] sm:translate-y-1 lg:-ml-3 lg:w-[10.4rem] lg:translate-y-[0.3rem]">
+                <Image src="/ztecgroup-logo.svg" alt="ZTEC Group" width={376} height={56} sizes="(max-width: 640px) 296px, (max-width: 1024px) 344px, 416px" loading="eager" className="h-full w-auto max-w-none origin-left scale-[3] object-contain opacity-100 brightness-125 contrast-125" />
               </div>
             </motion.div>
           </Link>

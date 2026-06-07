@@ -102,7 +102,7 @@ export function Navbar() {
                   sizes="(max-width: 640px) 208px, (max-width: 1024px) 240px, 320px"
                   priority
                   loading="eager"
-                  className="translate-y-0.5 h-full w-auto max-w-none origin-left scale-[2.9] object-contain sm:translate-y-0.5 sm:scale-[3.15] lg:translate-y-0 lg:scale-100"
+                  className="translate-y-1 h-full w-auto max-w-none origin-left scale-[3.77] object-contain sm:translate-y-1 sm:scale-[4.1] lg:translate-y-[0.2rem] lg:scale-[1.3]"
                 />
               </div>
             </motion.div>
