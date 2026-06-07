@@ -518,7 +518,7 @@ export function QuotationRequirements() {
                       type="submit"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex w-full items-center justify-center gap-2 rounded-xl border border-primary/60 bg-primary px-6 py-4 text-primary-foreground transition-colors hover:brightness-110"
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-primary/60 bg-primary px-6 py-4 text-primary-foreground transition-colors hover:brightness-110"
                     >
                       <span>Submit Requirements</span>
                       <Send size={18} />

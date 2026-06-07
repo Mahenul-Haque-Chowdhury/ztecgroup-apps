@@ -9,7 +9,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const GlassSurface = motion.div;
-const glassSurfaceClass = "rounded-2xl bg-[rgba(7,10,18,0.58)] ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] backdrop-blur-xl";
+const glassSurfaceClass = "rounded-full bg-[rgba(7,10,18,0.58)] ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] backdrop-blur-xl";
 const solidDropdownSurfaceClass = "rounded-2xl bg-[#070a12] ring-1 ring-white/[0.14] shadow-[0_26px_60px_rgba(4,8,20,0.62)]";
 
 const serviceDomainLinks = {
@@ -91,7 +91,7 @@ export function Navbar() {
           <Link href="/" className="group min-w-0 shrink" aria-label="ZTEC Group home">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex h-[2.9rem] w-[11.4rem] items-center sm:h-[3.15rem] sm:w-[13rem] lg:h-[4.25rem] lg:w-[18rem]"
+              className="flex h-[3.15rem] w-[13rem] items-center sm:h-[3.35rem] sm:w-[15rem] lg:h-[4.45rem] lg:w-[20rem]"
             >
               <div className="flex h-[88%] w-[100%] items-center overflow-hidden sm:h-[92%] lg:h-full">
                 <Image
@@ -99,7 +99,7 @@ export function Navbar() {
                   alt="ZTEC Group"
                   width={420}
                   height={95}
-                  sizes="(max-width: 640px) 182px, (max-width: 1024px) 208px, 288px"
+                  sizes="(max-width: 640px) 208px, (max-width: 1024px) 240px, 320px"
                   priority
                   loading="eager"
                   className="translate-y-0.5 h-full w-auto max-w-none origin-left scale-[2.9] object-contain sm:translate-y-0.5 sm:scale-[3.15] lg:translate-y-0 lg:scale-100"
@@ -230,7 +230,7 @@ export function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2.5 rounded-xl bg-[var(--brand-logo)] text-[var(--brand-logo-foreground)] ring-1 ring-[var(--brand-logo-ring)] shadow-[0_12px_28px_var(--brand-logo-shadow)] transition-all duration-300 hover:brightness-110"
+                className="rounded-full bg-[var(--brand-logo)] px-5 py-2.5 text-[var(--brand-logo-foreground)] ring-1 ring-[var(--brand-logo-ring)] shadow-[0_12px_28px_var(--brand-logo-shadow)] transition-all duration-300 hover:brightness-110"
               >
                 <span className="text-xs tracking-[0.14em] uppercase">Get Started</span>
               </motion.button>
@@ -241,7 +241,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen((current) => !current)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white lg:hidden"
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
           >
@@ -264,7 +264,7 @@ export function Navbar() {
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className={`rounded-xl px-4 py-3 text-sm transition-colors ${
+              className={`rounded-full px-4 py-3 text-sm transition-colors ${
                 pathname === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
               }`}
             >
@@ -279,7 +279,7 @@ export function Navbar() {
                     key={service.path}
                     href={service.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block rounded-xl px-4 py-3 text-sm transition-colors ${
+                    className={`block rounded-[1.5rem] px-4 py-3 text-sm transition-colors ${
                       pathname === "/services/communication" && service.path === serviceDomainLinks.communication ||
                       pathname === "/services/content" && service.path === serviceDomainLinks.content ||
                       pathname === "/services/software" && service.path === serviceDomainLinks.software ||
@@ -309,7 +309,7 @@ export function Navbar() {
                 key={link.path}
                 href={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`rounded-xl px-4 py-3 text-sm transition-colors ${
+                className={`rounded-full px-4 py-3 text-sm transition-colors ${
                   pathname === link.path ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
                 }`}
               >
@@ -317,7 +317,7 @@ export function Navbar() {
               </Link>
             ))}
             <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <button className="w-full rounded-xl bg-primary px-6 py-3 text-primary-foreground ring-1 ring-primary/35">
+              <button className="w-full rounded-full bg-primary px-6 py-3 text-primary-foreground ring-1 ring-primary/35">
                 Get Started
               </button>
             </Link>

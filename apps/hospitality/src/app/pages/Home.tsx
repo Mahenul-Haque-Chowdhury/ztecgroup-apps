@@ -181,7 +181,7 @@ export function Home() {
 
       <div className="relative z-10">
       {/* Hero Section */}
-      <SectionContainer fullHeight={false}>
+      <SectionContainer fullHeight={false} className="z-30 -mt-32 sm:-mt-36 md:-mt-44">
         <div ref={heroRef} className="relative min-h-[80svh] md:min-h-[76vh] pt-24 sm:pt-28 md:pt-20 flex items-center justify-center overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
@@ -311,7 +311,7 @@ export function Home() {
 
       {/* Services Preview Section */}
       <SectionContainer fullHeight={false}>
-        <div ref={solutionsRef} className="relative overflow-hidden pt-2 pb-16 md:pb-20 md:pt-4">
+        <div ref={solutionsRef} className="relative overflow-x-hidden overflow-y-visible pt-2 pb-16 md:pb-20 md:pt-4">
           <motion.div
             style={{ y: orbPrimaryY }}
             className="narrative-orb narrative-orb-cyan -left-24 top-4"
@@ -326,11 +326,7 @@ export function Home() {
           <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
             <motion.div
               style={{ y: tickerDriftY }}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="narrative-surface relative z-10 -mt-2 mb-8 overflow-hidden rounded-2xl px-2 py-3 sm:-mt-4 sm:mb-10 sm:rounded-full sm:px-2 sm:py-3 md:-mt-6"
+              className="narrative-surface narrative-ticker-full-bleed relative z-50 mb-8 overflow-hidden px-2 py-3 sm:mb-10 sm:px-2 sm:py-3"
             >
               <div className="narrative-ticker">
                 <div className="narrative-ticker-track text-[10px] leading-[1.35] uppercase tracking-[0.12em] text-white/68 sm:text-[12px] sm:tracking-[0.18em]">

@@ -222,6 +222,13 @@ body::after {
   mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
 
+.narrative-ticker-full-bleed {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+}
+
 .narrative-ticker-track {
   display: inline-flex;
   width: max-content;
@@ -229,7 +236,7 @@ body::after {
   align-items: center;
   gap: 1.5rem;
   padding-inline-end: 1.5rem;
-  animation: narrative-ticker-scroll 22s linear infinite;
+  animation: narrative-ticker-scroll 72s linear infinite;
   will-change: transform;
 }
 
@@ -289,7 +296,7 @@ body::after {
   .narrative-ticker-track {
     gap: 0.9rem;
     padding-inline-end: 0.9rem;
-    animation-duration: 32s;
+    animation-duration: 84s;
   }
 }
 

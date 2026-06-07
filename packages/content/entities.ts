@@ -93,7 +93,7 @@ export const leadershipProfiles: LeadershipProfile[] = [
     division: "Systems & Product",
     shortBio: "Drives software lab delivery, product architecture, and the technical systems that support scalable digital operations.",
     bio: "Mahenul Haque Chowdhury leads ZTEC Software Lab, directing software delivery, product architecture, and the technical systems that enable scalable digital operations.",
-    image: "/Mahenul_Haque_Chowdhury_Director_of_ZTEC_Software_Lab_GrayVally_CEO.png",
+    image: "/mahenul haque chowdhury Director_of_ZTEC_Software_Lab.jpg",
     worksFor: ["corporate", "software"],
     knowsAbout: ["Product architecture", "Software delivery", "Automation", "Digital systems"],
   },

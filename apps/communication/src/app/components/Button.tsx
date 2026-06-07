@@ -18,7 +18,7 @@ export function Button({
   onClick,
   className = ""
 }: ButtonProps) {
-  const baseStyles = "inline-flex min-h-11 items-center justify-center rounded-lg transition-all duration-300 tracking-[0.06em] uppercase font-medium";
+  const baseStyles = "inline-flex min-h-11 items-center justify-center rounded-full transition-all duration-300 tracking-[0.06em] uppercase font-medium";
   
   const variants = {
     primary: "bg-primary text-primary-foreground ring-1 ring-primary/32 shadow-[0_10px_24px_rgba(240,180,79,0.22)] hover:-translate-y-0.5 hover:brightness-105",

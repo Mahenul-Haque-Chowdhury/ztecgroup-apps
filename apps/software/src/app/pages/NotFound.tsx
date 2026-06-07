@@ -32,7 +32,7 @@ export function NotFound() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full sm:w-auto px-6 sm:px-8 py-4 rounded-xl bg-primary text-primary-foreground border border-primary/60 hover:brightness-110 transition-colors flex items-center justify-center gap-2"
+              className="w-full rounded-full bg-primary px-6 py-4 text-primary-foreground border border-primary/60 hover:brightness-110 transition-colors flex items-center justify-center gap-2 sm:w-auto sm:px-8"
             >
               <Home size={18} />
               <span>Go Home</span>
@@ -42,7 +42,7 @@ export function NotFound() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => window.history.back()}
-            className="w-full sm:w-auto px-6 sm:px-8 py-4 rounded-xl bg-secondary/80 text-secondary-foreground border border-border hover:border-accent/60 hover:bg-secondary transition-colors flex items-center justify-center gap-2"
+            className="w-full rounded-full bg-secondary/80 px-6 py-4 text-secondary-foreground border border-border hover:border-accent/60 hover:bg-secondary transition-colors flex items-center justify-center gap-2 sm:w-auto sm:px-8"
           >
             <ArrowLeft size={18} />
             <span>Go Back</span>

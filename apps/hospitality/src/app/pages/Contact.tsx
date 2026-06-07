@@ -228,7 +228,7 @@ export function Contact() {
                         type="submit"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full px-6 py-4 rounded-xl bg-primary text-primary-foreground border border-primary/60 hover:brightness-110 transition-colors flex items-center justify-center gap-2"
+                        className="w-full rounded-full bg-primary px-6 py-4 text-primary-foreground border border-primary/60 hover:brightness-110 transition-colors flex items-center justify-center gap-2"
                       >
                         <span>Send Message</span>
                         <Send size={18} />

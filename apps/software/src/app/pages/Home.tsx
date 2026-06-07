@@ -202,7 +202,7 @@ export function Home() {
 
       <div className="relative z-10">
       {/* Hero Section */}
-      <SectionContainer fullHeight={false}>
+      <SectionContainer fullHeight={false} className="z-30 -mt-32 sm:-mt-36 md:-mt-44">
         <div ref={heroRef} className="relative min-h-[80svh] md:min-h-[76vh] pt-24 sm:pt-28 md:pt-20 flex items-center justify-center overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
@@ -332,7 +332,7 @@ export function Home() {
 
       {/* Services Preview Section */}
       <SectionContainer fullHeight={false}>
-        <div ref={solutionsRef} className="relative overflow-hidden pt-2 pb-16 md:pb-20 md:pt-4">
+        <div ref={solutionsRef} className="relative overflow-x-hidden overflow-y-visible pt-2 pb-16 md:pb-20 md:pt-4">
           <motion.div
             style={{ y: orbPrimaryY }}
             className="narrative-orb narrative-orb-cyan -left-24 top-4"
@@ -347,11 +347,7 @@ export function Home() {
           <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
             <motion.div
               style={{ y: tickerDriftY }}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="narrative-surface relative z-10 -mt-2 mb-8 overflow-hidden rounded-[1.75rem] px-0 py-5 sm:-mt-4 sm:mb-10 sm:py-6 md:-mt-6"
+              className="narrative-surface narrative-ticker-full-bleed relative z-50 mb-8 overflow-hidden px-0 py-5 sm:mb-10 sm:py-6"
             >
               <div className="mb-4 px-5 sm:px-6 lg:px-8">
                 <div className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-white/72">
@@ -361,7 +357,7 @@ export function Home() {
               <div className="space-y-3 pb-1">
                 <ScrollVelocity
                   texts={tickerTexts}
-                  velocity={24}
+                  velocity={7}
                   numCopies={6}
                   className="px-3 text-[11px] font-medium uppercase leading-[1.35] tracking-[0.1em] text-white/82 sm:px-4 sm:text-[12px]"
                   parallaxClassName="py-1"

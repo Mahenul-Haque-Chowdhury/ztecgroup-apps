@@ -9,7 +9,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const GlassSurface = motion.div;
-const glassSurfaceClass = "rounded-2xl bg-[rgba(7,10,18,0.58)] ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] backdrop-blur-xl";
+const glassSurfaceClass = "rounded-full bg-[rgba(7,10,18,0.58)] ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] backdrop-blur-xl";
 const solidDropdownSurfaceClass = "rounded-2xl bg-[#070a12] ring-1 ring-white/[0.14] shadow-[0_26px_60px_rgba(4,8,20,0.62)]";
 
 const serviceDomainLinks = {
@@ -52,12 +52,12 @@ export function Navbar() {
       <GlassSurface className={`mx-auto max-w-[1440px] ${glassSurfaceClass}`}>
         <div className="flex h-14 items-center justify-between gap-2 px-3 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
           <Link href="/" className="group shrink-0" aria-label="ZTEC Communication home">
-            <motion.div whileHover={{ scale: 1.02 }} className="flex h-[2.45rem] items-center gap-0 sm:h-[2.9rem] lg:h-[3.3rem]">
-              <div className="-translate-y-0.5 flex h-[78%] w-[3.5rem] items-center self-center overflow-hidden sm:w-[4.1rem] sm:-translate-y-0.5 lg:w-[4.7rem] lg:-translate-y-1">
+            <motion.div whileHover={{ scale: 1.02 }} className="flex h-[2.7rem] items-center gap-0 sm:h-[3.1rem] lg:h-[3.55rem]">
+              <div className="-translate-y-0.5 flex h-[78%] w-[4rem] items-center self-center overflow-hidden sm:w-[4.7rem] sm:-translate-y-0.5 lg:w-[5.35rem] lg:-translate-y-1">
                 <Image src="/communication.svg" alt="ZTEC Communication" width={248} height={56} sizes="(max-width: 640px) 172px, (max-width: 1024px) 205px, 248px" priority loading="eager" className="h-full w-auto max-w-none origin-left scale-[1.78] object-contain" />
               </div>
-              <div className="-ml-2 translate-y-0.5 flex h-[86%] w-[6.3rem] items-center self-center overflow-hidden sm:-ml-2.5 sm:w-[7.3rem] sm:translate-y-0.5 lg:-ml-3 lg:w-[8.8rem] lg:translate-y-1">
-                <Image src="/ztecgroup-logo.svg" alt="ZTEC Group" width={376} height={56} sizes="(max-width: 640px) 264px, (max-width: 1024px) 312px, 376px" loading="eager" className="h-full w-auto max-w-none origin-left scale-[2.3] object-contain opacity-100 brightness-125 contrast-125" />
+              <div className="-ml-2 translate-y-0.5 flex h-[86%] w-[7.4rem] items-center self-center overflow-hidden sm:-ml-2.5 sm:w-[8.6rem] sm:translate-y-0.5 lg:-ml-3 lg:w-[10.4rem] lg:translate-y-1">
+                <Image src="/ztecgroup-logo.svg" alt="ZTEC Group" width={376} height={56} sizes="(max-width: 640px) 296px, (max-width: 1024px) 344px, 416px" loading="eager" className="h-full w-auto max-w-none origin-left scale-[2.3] object-contain opacity-100 brightness-125 contrast-125" />
               </div>
             </motion.div>
           </Link>
@@ -106,13 +106,13 @@ export function Navbar() {
 
           <div className="hidden lg:block">
             <Link href="/contact">
-              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="rounded-xl bg-[var(--brand-logo)] px-5 py-2.5 text-[var(--brand-logo-foreground)] ring-1 ring-[var(--brand-logo-ring)] shadow-[0_12px_28px_var(--brand-logo-shadow)] transition-all duration-300 hover:brightness-110">
+              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="rounded-full bg-[var(--brand-logo)] px-5 py-2.5 text-[var(--brand-logo-foreground)] ring-1 ring-[var(--brand-logo-ring)] shadow-[0_12px_28px_var(--brand-logo-shadow)] transition-all duration-300 hover:brightness-110">
                 <span className="text-xs uppercase tracking-[0.14em]">Request Access</span>
               </motion.button>
             </Link>
           </div>
 
-          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white lg:hidden" aria-expanded={isOpen} aria-label="Toggle navigation" onClick={() => setIsOpen((current) => !current)}>
+          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white lg:hidden" aria-expanded={isOpen} aria-label="Toggle navigation" onClick={() => setIsOpen((current) => !current)}>
             {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
@@ -121,13 +121,13 @@ export function Navbar() {
       {isOpen ? (
         <div className="mx-auto mt-3 max-w-[1440px] rounded-2xl bg-[#070a12] p-4 ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] lg:hidden">
           <div className="flex flex-col gap-2">
-            <Link href="/" onClick={() => setIsOpen(false)} className={`rounded-xl px-4 py-3 text-sm transition-colors ${pathname === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>Gateway</Link>
+            <Link href="/" onClick={() => setIsOpen(false)} className={`rounded-full px-4 py-3 text-sm transition-colors ${pathname === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>Gateway</Link>
 
             <div className="space-y-3">
               <p className="px-4 pt-1 text-[11px] uppercase tracking-[0.16em] text-white/45">Services</p>
               <div className="space-y-2">
                 {serviceLinks.map((service) => (
-                  <Link key={service.path} href={service.path} onClick={() => setIsOpen(false)} className={`block rounded-xl px-4 py-3 text-sm transition-colors ${activeServiceKey === service.key ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>
+                  <Link key={service.path} href={service.path} onClick={() => setIsOpen(false)} className={`block rounded-[1.5rem] px-4 py-3 text-sm transition-colors ${activeServiceKey === service.key ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>
                     <div className="flex items-start gap-3">
                       <div className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
                         <Image src={service.logoSrc} alt={service.logoAlt} width={48} height={48} className="h-full w-full object-contain" />
@@ -142,13 +142,12 @@ export function Navbar() {
             </div>
 
             {primaryLinks.slice(1).map((link) => (
-              <Link key={link.path} href={link.path} onClick={() => setIsOpen(false)} className={`rounded-xl px-4 py-3 text-sm transition-colors ${pathname === link.path ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>{link.label}</Link>
+              <Link key={link.path} href={link.path} onClick={() => setIsOpen(false)} className={`rounded-full px-4 py-3 text-sm transition-colors ${pathname === link.path ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>{link.label}</Link>
             ))}
-            <a href="https://ztecgroup.au" className="rounded-xl px-4 py-3 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white">Visit ZTEC Group</a>
+            <a href="https://ztecgroup.au" className="rounded-full px-4 py-3 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white">Visit ZTEC Group</a>
           </div>
         </div>
       ) : null}
     </motion.nav>
   );
 }
-
