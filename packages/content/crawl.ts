@@ -76,8 +76,6 @@ export function buildSitemap(site: SiteKey, siteUrl?: string): MetadataRoute.Sit
         changeFrequency: "monthly",
       });
     }
-
-    routes.push({ path: "/leadership", priority: 0.8, changeFrequency: "weekly" });
   }
 
   return routes.map((route) => ({

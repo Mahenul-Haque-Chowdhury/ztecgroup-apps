@@ -1,7 +1,46 @@
 import { leadershipProfiles, serviceLinks } from "./entities";
 import { getSiteUrl, siteDefinitions, type SiteKey } from "./seo";
+import { siteRoutes } from "./routes";
 
 type JsonLdValue = Record<string, unknown>;
+
+const routeLabels: Partial<Record<SiteKey, Record<string, string>>> = {
+  corporate: {
+    "/": "Home",
+    "/about": "About ZTEC Group",
+    "/contact": "Contact",
+    "/portfolio": "Portfolio",
+    "/resources": "Resources",
+    "/leadership": "Leadership",
+    "/services": "Services",
+    "/services/communication": "ZTEC Communications",
+    "/services/content": "ZTEC Content Studio",
+    "/services/revenue": "ZTEC Hospitality",
+    "/services/software": "ZTEC Software Lab",
+  },
+  communication: {
+    "/": "ZTEC Communications",
+    "/contact": "Contact",
+    "/services/communication": "Anonymous Communication Gateway",
+  },
+  contentstudio: {
+    "/": "ZTEC Content Studio",
+    "/contact": "Contact",
+    "/services/content": "Video & Motion Content Studio",
+  },
+  hospitality: {
+    "/": "ZTEC Hospitality",
+    "/contact": "Contact",
+    "/services/revenue": "STRA Management Consultation",
+  },
+  software: {
+    "/": "ZTEC Software Lab",
+    "/contact": "Contact",
+    "/portfolio": "Portfolio",
+    "/quotation": "Quotation Requirements",
+    "/services/software": "Software & Business Systems",
+  },
+};
 
 export function serializeJsonLd(value: JsonLdValue | JsonLdValue[]) {
   return JSON.stringify(value);
@@ -31,6 +70,7 @@ export function buildOrganizationSchema(siteUrl?: string) {
 export function buildWebSiteSchema(site: SiteKey, siteUrl?: string) {
   const definition = siteDefinitions[site];
   const url = getSiteUrl(site, siteUrl).toString().replace(/\/$/, "");
+  const siteNavigation = buildSiteNavigationSchema(site, siteUrl);
 
   return {
     "@context": "https://schema.org",
@@ -44,8 +84,38 @@ export function buildWebSiteSchema(site: SiteKey, siteUrl?: string) {
     publisher: {
       "@id": `${siteDefinitions.corporate.host}/#organization`,
     },
+    hasPart: siteNavigation,
     inLanguage: "en-AU",
   };
+}
+
+export function buildSiteNavigationSchema(site: SiteKey, siteUrl?: string) {
+  const url = getSiteUrl(site, siteUrl).toString().replace(/\/$/, "");
+  const labels = routeLabels[site] ?? {};
+  const routes = siteRoutes[site]
+    .filter((route) => labels[route.path])
+    .map((route, index) => ({
+      "@type": "SiteNavigationElement",
+      "@id": `${url}${route.path === "/" ? "" : route.path}/#sitelink`,
+      name: labels[route.path],
+      url: `${url}${route.path}`,
+      position: index + 1,
+    }));
+
+  if (site === "corporate") {
+    const serviceNavigation = serviceLinks.map((service, index) => ({
+      "@type": "SiteNavigationElement",
+      "@id": `${service.url}/#sitelink`,
+      name: service.label,
+      description: service.description,
+      url: service.url,
+      position: routes.length + index + 1,
+    }));
+
+    return [...routes, ...serviceNavigation];
+  }
+
+  return routes;
 }
 
 export function buildServiceSchema(site: Exclude<SiteKey, "corporate">, siteUrl?: string) {
