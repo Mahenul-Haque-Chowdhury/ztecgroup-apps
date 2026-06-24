@@ -54,9 +54,14 @@ export function buildOrganizationSchema(siteUrl?: string) {
     "@type": "Organization",
     "@id": `${corporateUrl}/#organization`,
     name: "ZTEC Group Pty Ltd",
-    alternateName: "ZTEC Group",
+    legalName: "ZTEC Group Pty Ltd",
+    alternateName: ["ZTEC Group", "ZTEC Group Pty Ltd"],
     url: corporateUrl,
     email: "info@ztecgroup.au",
+    brand: {
+      "@type": "Brand",
+      name: "ZTEC Group",
+    },
     sameAs: leadershipProfiles.flatMap((profile) => profile.linkedIn ? [profile.linkedIn] : []),
     subOrganization: serviceLinks.map((service) => ({
       "@type": "Organization",
@@ -84,6 +89,16 @@ export function buildWebSiteSchema(site: SiteKey, siteUrl?: string) {
     publisher: {
       "@id": `${siteDefinitions.corporate.host}/#organization`,
     },
+    potentialAction: site === "corporate"
+      ? {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${url}/search?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        }
+      : undefined,
     hasPart: siteNavigation,
     inLanguage: "en-AU",
   };
@@ -105,10 +120,10 @@ export function buildSiteNavigationSchema(site: SiteKey, siteUrl?: string) {
   if (site === "corporate") {
     const serviceNavigation = serviceLinks.map((service, index) => ({
       "@type": "SiteNavigationElement",
-      "@id": `${service.url}/#sitelink`,
+      "@id": `${url}/services/${service.slug}/#sitelink`,
       name: service.label,
       description: service.description,
-      url: service.url,
+      url: `${url}/services/${service.slug}`,
       position: routes.length + index + 1,
     }));
 

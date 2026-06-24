@@ -217,7 +217,7 @@ export function Home() {
           >
             <div className="min-w-0 lg:-ml-8 xl:-ml-12">
               {/* Main Headline */}
-              <h1 className="sr-only">Everything Connected. Nothing Compromised.</h1>
+              <h1 className="sr-only">ZTEC Group Pty Ltd. Everything Connected. Nothing Compromised.</h1>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -253,7 +253,7 @@ export function Home() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-white/60 sm:text-lg md:mb-12 md:text-xl lg:mx-0"
               >
-                A unified operating system for communication, content, software, and hospitality services without trade-offs on clarity, control, or execution.
+                ZTEC Group Pty Ltd is a unified operating system for communication, content, software, and hospitality services without trade-offs on clarity, control, or execution.
               </motion.p>
 
               {/* CTA Buttons */}

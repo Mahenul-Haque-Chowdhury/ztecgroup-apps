@@ -24,10 +24,10 @@ export const siteDefinitions: Record<SiteKey, SiteDefinition> = {
     legalName: "ZTEC Group Pty Ltd",
     siteName: "ZTEC Group",
     applicationName: "ZTEC Group",
-    defaultTitle: "ZTEC Group - Unified Ecosystem of Digital Services",
-    titleTemplate: "%s | ZTEC Group - Unified Ecosystem of Digital Services",
+    defaultTitle: "ZTEC Group Pty Ltd - Unified Ecosystem of Digital Services",
+    titleTemplate: "%s | ZTEC Group Pty Ltd - Unified Ecosystem of Digital Services",
     description:
-      "ZTEC Group connects advanced digital systems, communication, and media into one seamless solution platform.",
+      "ZTEC Group Pty Ltd connects advanced digital systems, communication, and media into one seamless solution platform.",
     keywords: [
       "ZTEC Group",
       "ZTEC Group Pty Ltd",
