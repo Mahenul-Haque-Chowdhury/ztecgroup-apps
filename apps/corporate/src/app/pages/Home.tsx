@@ -11,6 +11,7 @@ import BlurText from "../components/BlurText";
 import ShapeGrid from "../components/ShapeGrid";
 import CardSwap, { Card } from "../components/CardSwap";
 import { useEffect, useRef, useState } from "react";
+import { siteFaqs } from "@ztecgroup/content";
 
 const HERO_ROTATING_CTAS = [
   {
@@ -148,32 +149,7 @@ export function Home() {
     },
   ];
 
-  const faqItems = [
-    {
-      question: "How do your four divisions collaborate on one engagement?",
-      answer: "Each project starts with a shared roadmap, then we assign a lead division while the other teams plug in at mapped milestones for communication, media, systems, and growth outcomes.",
-    },
-    {
-      question: "Can we launch with one service first and expand later?",
-      answer: "Yes. Most clients begin with one priority track, then add additional divisions once the first deployment reaches measurable traction.",
-    },
-    {
-      question: "What happens during the kickoff sprint?",
-      answer: "We align goals, define KPIs, audit current infrastructure, and deliver an execution blueprint with timelines, owners, and phased delivery checkpoints.",
-    },
-    {
-      question: "How fast can you ship a first usable release?",
-      answer: "Depending on scope, we typically deliver a validated first release within 3-6 weeks, including design, build, and real-world feedback loops.",
-    },
-    {
-      question: "Do you integrate with our existing tools and platforms?",
-      answer: "Absolutely. We integrate with existing CRMs, analytics stacks, communication tools, and internal workflows to avoid disruption and accelerate adoption.",
-    },
-    {
-      question: "What support do we get after go-live?",
-      answer: "You can choose a continuous support model covering optimization, monitoring, monthly performance reviews, and iterative feature upgrades.",
-    },
-  ];
+  const faqItems = siteFaqs.corporate;
 
   return (
     <div className="relative">
@@ -217,7 +193,7 @@ export function Home() {
           >
             <div className="min-w-0 lg:-ml-8 xl:-ml-12">
               {/* Main Headline */}
-              <h1 className="sr-only">ZTEC Group Pty Ltd. Everything Connected. Nothing Compromised.</h1>
+              <h1 className="sr-only">ZTEC Group — Digital Services, Software, Communication, Content &amp; Hospitality Consulting in Australia. Everything Connected. Nothing Compromised.</h1>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}

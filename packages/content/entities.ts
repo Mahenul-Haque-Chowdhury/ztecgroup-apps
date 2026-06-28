@@ -21,6 +21,26 @@ export type LeadershipProfile = {
   knowsAbout: string[];
 };
 
+export type SocialLink = {
+  platform: "linkedin" | "facebook";
+  label: string;
+  url: string;
+};
+
+/** Official ZTEC Group social profiles. Used for footer links and Organization schema sameAs. */
+export const socialLinks: SocialLink[] = [
+  {
+    platform: "linkedin",
+    label: "ZTEC Group on LinkedIn",
+    url: "https://www.linkedin.com/company/117544016/",
+  },
+  {
+    platform: "facebook",
+    label: "ZTEC Group on Facebook",
+    url: "https://www.facebook.com/profile.php?id=61590654996152",
+  },
+];
+
 export const serviceLinks: ServiceLink[] = [
   {
     slug: "communication",

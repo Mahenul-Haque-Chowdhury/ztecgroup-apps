@@ -1,3 +1,4 @@
+import { getNavigableLinks } from "./schema";
 import { getSiteUrl, siteDefinitions, type SiteKey } from "./seo";
 
 const jsonHeaders = {
@@ -165,8 +166,7 @@ export function buildHomepageMarkdown(site: SiteKey, siteUrl?: string) {
     "",
     "## Key Pages",
     "",
-    `- Home: ${base}/`,
-    `- Contact: ${base}/contact`,
+    ...getNavigableLinks(site, siteUrl).map((link) => `- ${link.name}: ${link.url}`),
     `- Sitemap: ${base}/sitemap.xml`,
     `- Agent documentation: ${base}/llms.txt`,
     `- API catalog: ${base}/.well-known/api-catalog`,

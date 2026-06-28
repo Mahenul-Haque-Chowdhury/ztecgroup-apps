@@ -182,8 +182,8 @@ export function buildSiteMetadata(site: SiteKey, overrides: Partial<Metadata> = 
       images: [
         {
           url: "/hero-bg.png",
-          width: 1200,
-          height: 630,
+          width: 1408,
+          height: 768,
           alt: `${definition.siteName} brand preview`,
         },
       ],

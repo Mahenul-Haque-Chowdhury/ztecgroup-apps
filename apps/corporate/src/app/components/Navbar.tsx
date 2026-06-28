@@ -40,39 +40,33 @@ export function Navbar() {
   const serviceLinks = [
     {
       path: serviceDomainLinks.communication,
-      label: "Communication",
-      description: "",
+      label: "Anonymous Communication Gateway",
       branches: ["Scan2Call & more."],
       logoSrc: "/communication.svg",
       logoAlt: "Anonymous Communication Gateway logo",
     },
     {
       path: serviceDomainLinks.content,
-      label: "Content",
-      description: "",
-      branches: ["Video editing, cinematic production & more"],
+      label: "Video & Motion Content Studio",
+      branches: ["Video Editing, Cinematic Production & more"],
       logoSrc: "/contentstudio.svg",
       logoAlt: "Video & Motion Content Studio logo",
     },
     {
       path: serviceDomainLinks.software,
-      label: "Software",
-      description: "",
+      label: "Software & Business Systems",
       branches: ["Web Design, Mobile App, E-commerce & more"],
       logoSrc: "/software.svg",
       logoAlt: "Software & Business Systems logo",
     },
     {
       path: serviceDomainLinks.revenue,
-      label: "Hospitality",
-      description: "",
+      label: "STRA Management Consultation",
       branches: ["Property Renting Consultation"],
       logoSrc: "/hospitality.svg",
       logoAlt: "STRA Management Consultation logo",
     },
   ];
-
-  const isServiceRoute = pathname.startsWith("/services/");
 
   useEffect(() => {
     setIsServicesOpen(false);
@@ -128,25 +122,65 @@ export function Navbar() {
               </Link>
             </motion.div>
 
-            {serviceLinks.map((service) => (
-              <motion.div key={service.path} className="relative" whileHover={{ y: -1 }}>
-                <Link
-                  href={service.path}
-                  className={`relative z-10 inline-flex rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors ${
-                    pathname === service.path ? "text-white" : "text-white/70 hover:text-white"
-                  }`}
-                >
-                  {pathname === service.path && (
-                    <motion.span
-                      layoutId="navbar-indicator"
-                      className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]"
-                      transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                    />
-                  )}
-                  {service.label}
-                </Link>
-              </motion.div>
-            ))}
+            <motion.div
+              className="relative"
+              whileHover={{ y: -1 }}
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setIsServicesOpen((previous) => !previous)}
+                aria-haspopup="menu"
+                aria-expanded={isServicesOpen}
+                className={`relative z-10 inline-flex items-center gap-1 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors ${
+                  isServicesOpen ? "text-white" : "text-white/70 hover:text-white"
+                }`}
+              >
+                {isServicesOpen && (
+                  <motion.span
+                    layoutId="navbar-indicator"
+                    className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]"
+                    transition={{ type: "spring", stiffness: 320, damping: 30 }}
+                  />
+                )}
+                <span>Services</span>
+                <ChevronDown size={14} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              <AnimatePresence>
+                {isServicesOpen && (
+                  <GlassSurface
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                    className={`absolute left-1/2 top-[calc(100%+1.5rem)] z-40 w-[min(94vw,52rem)] -translate-x-1/2 isolate p-6 ${solidDropdownSurfaceClass}`}
+                  >
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                      {serviceLinks.map((service) => (
+                        <Link
+                          key={service.path}
+                          href={service.path}
+                          onClick={() => setIsServicesOpen(false)}
+                          className="block rounded-2xl px-4 py-3 text-white/72 transition-colors hover:bg-white/8 hover:text-white"
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className="mt-0.5 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
+                              <Image src={service.logoSrc} alt={service.logoAlt} width={56} height={56} className="h-full w-full object-contain" />
+                            </div>
+                            <div className="min-w-0">
+                              <div className="text-[0.95rem] font-semibold leading-tight text-white">{service.label}</div>
+                              <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[11px] uppercase tracking-[0.08em] text-white/45">{service.branches.slice(0, 3).join(" | ")}</p>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </GlassSurface>
+                )}
+              </AnimatePresence>
+            </motion.div>
 
             {primaryLinks.slice(1).map((link) => (
               <motion.div key={link.path} className="relative" whileHover={{ y: -1 }}>
@@ -224,14 +258,7 @@ export function Navbar() {
                     key={service.path}
                     href={service.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block rounded-[1.5rem] px-4 py-3 text-sm transition-colors ${
-                      pathname === "/services/communication" && service.path === serviceDomainLinks.communication ||
-                      pathname === "/services/content" && service.path === serviceDomainLinks.content ||
-                      pathname === "/services/software" && service.path === serviceDomainLinks.software ||
-                      pathname === "/services/revenue" && service.path === serviceDomainLinks.revenue
-                        ? "bg-white/10 text-white"
-                        : "text-white/70 hover:bg-white/5 hover:text-white"
-                    }`}
+                    className="block rounded-[1.5rem] px-4 py-3 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
                   >
                     <div className="flex items-start gap-3">
                       <div className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
@@ -239,9 +266,7 @@ export function Navbar() {
                       </div>
                       <div className="min-w-0">
                         <div className="text-sm font-medium leading-snug text-white">{service.label}</div>
-                        {service.description ? (
-                          <p className="mt-1 text-xs leading-snug text-white/55">{service.description}</p>
-                        ) : null}
+                        <p className="mt-1 text-xs leading-snug text-white/55">{service.branches.slice(0, 3).join(" | ")}</p>
                       </div>
                     </div>
                   </Link>

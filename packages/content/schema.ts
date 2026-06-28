@@ -1,10 +1,11 @@
-import { leadershipProfiles, serviceLinks } from "./entities";
+import { leadershipProfiles, serviceLinks, socialLinks } from "./entities";
+import { siteFaqs } from "./faq";
 import { getSiteUrl, siteDefinitions, type SiteKey } from "./seo";
-import { siteRoutes } from "./routes";
+import { getIndexableRoutes, siteRoutes } from "./routes";
 
 type JsonLdValue = Record<string, unknown>;
 
-const routeLabels: Partial<Record<SiteKey, Record<string, string>>> = {
+export const routeLabels: Partial<Record<SiteKey, Record<string, string>>> = {
   corporate: {
     "/": "Home",
     "/about": "About ZTEC Group",
@@ -46,6 +47,23 @@ export function serializeJsonLd(value: JsonLdValue | JsonLdValue[]) {
   return JSON.stringify(value);
 }
 
+/**
+ * Real, indexable pages with human-readable labels for this site, as absolute URLs.
+ * Used to drive llms.txt and agent-facing markdown so AI crawlers discover every key page
+ * (e.g. the corporate About page) without listing redirect shims.
+ */
+export function getNavigableLinks(site: SiteKey, siteUrl?: string) {
+  const base = getSiteUrl(site, siteUrl).toString().replace(/\/$/, "");
+  const labels = routeLabels[site] ?? {};
+
+  return getIndexableRoutes(site)
+    .filter((route) => labels[route.path])
+    .map((route) => ({
+      name: labels[route.path] as string,
+      url: `${base}${route.path === "/" ? "/" : route.path}`,
+    }));
+}
+
 export function buildOrganizationSchema(siteUrl?: string) {
   const corporateUrl = getSiteUrl("corporate", siteUrl && siteUrl.includes("ztecgroup.au") ? siteUrl : undefined).toString().replace(/\/$/, "");
 
@@ -62,7 +80,10 @@ export function buildOrganizationSchema(siteUrl?: string) {
       "@type": "Brand",
       name: "ZTEC Group",
     },
-    sameAs: leadershipProfiles.flatMap((profile) => profile.linkedIn ? [profile.linkedIn] : []),
+    sameAs: [
+      ...socialLinks.map((social) => social.url),
+      ...leadershipProfiles.flatMap((profile) => (profile.linkedIn ? [profile.linkedIn] : [])),
+    ],
     subOrganization: serviceLinks.map((service) => ({
       "@type": "Organization",
       "@id": `${service.url}/#organization`,
@@ -159,6 +180,30 @@ export function buildServiceSchema(site: Exclude<SiteKey, "corporate">, siteUrl?
     isPartOf: {
       "@id": `${siteDefinitions.corporate.host}/#organization`,
     },
+  };
+}
+
+export function buildFaqSchema(site: SiteKey, siteUrl?: string) {
+  const items = siteFaqs[site];
+
+  if (!items?.length) {
+    return null;
+  }
+
+  const url = getSiteUrl(site, siteUrl).toString().replace(/\/$/, "");
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${url}/#faq`,
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 

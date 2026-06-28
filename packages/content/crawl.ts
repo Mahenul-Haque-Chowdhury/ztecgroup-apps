@@ -1,16 +1,30 @@
 import type { MetadataRoute } from "next";
 import { leadershipProfiles } from "./entities";
-import { siteRoutes } from "./routes";
+import { getIndexableRoutes } from "./routes";
 import { getSiteUrl, siteDefinitions, type SiteKey } from "./seo";
 
 function isProductionSite(site: SiteKey, siteUrl?: string) {
-  const expectedHost = new URL(siteDefinitions[site].host).host;
-
-  if (!siteUrl) {
-    return process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production";
+  // Explicit non-production deployments (e.g. Vercel preview/development) must never be indexed.
+  const vercelEnv = process.env.VERCEL_ENV;
+  if (vercelEnv && vercelEnv !== "production") {
+    return false;
   }
 
-  return new URL(siteUrl).host === expectedHost;
+  // Treat any ztecgroup.au host (apex, www, or a service subdomain) as production so a minor
+  // host mismatch in NEXT_PUBLIC_SITE_URL can never accidentally block the whole site from search.
+  if (siteUrl) {
+    try {
+      const host = new URL(siteUrl).host;
+      const rootHost = new URL(siteDefinitions.corporate.host).host;
+      if (host === rootHost || host.endsWith(`.${rootHost}`)) {
+        return true;
+      }
+    } catch {
+      // Fall through to environment-based detection on an unparseable URL.
+    }
+  }
+
+  return vercelEnv === "production" || process.env.NODE_ENV === "production";
 }
 
 export function buildRobots(site: SiteKey, siteUrl?: string): MetadataRoute.Robots {
@@ -66,7 +80,7 @@ export function buildRobotsText(site: SiteKey, siteUrl?: string) {
 export function buildSitemap(site: SiteKey, siteUrl?: string): MetadataRoute.Sitemap {
   const metadataBase = getSiteUrl(site, siteUrl).toString().replace(/\/$/, "");
   const lastModified = new Date();
-  const routes = [...siteRoutes[site]];
+  const routes = [...getIndexableRoutes(site)];
 
   if (site === "corporate") {
     for (const profile of leadershipProfiles) {

@@ -1,4 +1,5 @@
 import { leadershipProfiles, serviceLinks } from "./entities";
+import { getNavigableLinks } from "./schema";
 import { getSiteUrl, siteDefinitions, type SiteKey } from "./seo";
 
 export function buildOrganizationAuthority(site: SiteKey, siteUrl?: string) {
@@ -100,9 +101,7 @@ export function buildLlmsTxt(site: SiteKey, siteUrl?: string) {
     ...currentSite.keywords.map((keyword) => `- ${keyword}`),
     "",
     "## Important URLs",
-    `- Home: ${currentUrl}/`,
-    `- Services: ${currentUrl}/services`,
-    `- Contact: ${currentUrl}/contact`,
+    ...getNavigableLinks(site, siteUrl).map((link) => `- ${link.name}: ${link.url}`),
     `- Sitemap: ${currentUrl}/sitemap.xml`,
     `- Robots: ${currentUrl}/robots.txt`,
     `- LLM profile: ${currentUrl}/.well-known/llm-profile.json`,

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { Mail } from "lucide-react";
+import { Facebook, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
 
@@ -60,9 +60,30 @@ export function Footer() {
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
                 href="mailto:info@ztecgroup.au"
+                aria-label="Email ZTEC Group"
                 className="w-9 h-9 flex items-center justify-center bg-white/5 border border-white/10 rounded-full hover:border-primary/60 hover:bg-primary/10 transition-colors"
               >
                 <Mail size={18} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1, y: -2 }}
+                href="https://www.linkedin.com/company/117544016/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ZTEC Group on LinkedIn"
+                className="w-9 h-9 flex items-center justify-center bg-white/5 border border-white/10 rounded-full hover:border-primary/60 hover:bg-primary/10 transition-colors"
+              >
+                <Linkedin size={18} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1, y: -2 }}
+                href="https://www.facebook.com/profile.php?id=61590654996152"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ZTEC Group on Facebook"
+                className="w-9 h-9 flex items-center justify-center bg-white/5 border border-white/10 rounded-full hover:border-primary/60 hover:bg-primary/10 transition-colors"
+              >
+                <Facebook size={18} />
               </motion.a>
             </div>
           </div>
