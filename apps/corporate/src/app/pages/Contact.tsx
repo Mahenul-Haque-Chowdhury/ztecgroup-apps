@@ -51,19 +51,12 @@ export function Contact() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="cinematic-kicker mb-8">
-                  Get in Touch
-                </div>
-                <h1 className="mb-7 text-4xl font-bold leading-tight sm:text-5xl md:mb-8 md:text-7xl">
-                  Let's Build
-                  <br />
-                  <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
-                    Something Great
-                  </span>
+                <span className="eyebrow mb-8">Get in Touch</span>
+                <h1 className="display-2xl mb-7 text-white md:mb-8">
+                  Let&apos;s build <span className="text-gradient">something great</span>
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl text-white/60 mb-10 md:mb-12 leading-relaxed">
-                  Ready to transform your digital infrastructure? Our team is standing by 
-                  to discuss your project and explore how ZTEC Group can deliver results.
+                <p className="measure mb-10 text-base leading-8 text-white/60 sm:text-lg md:mb-12">
+                  Ready to transform your digital infrastructure? Our team is standing by to discuss your project and how ZTEC Group can deliver results.
                 </p>
 
                 {/* Contact Info */}

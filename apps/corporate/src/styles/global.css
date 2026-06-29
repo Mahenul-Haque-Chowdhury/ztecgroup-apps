@@ -374,3 +374,152 @@ body::after {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   Premium overhaul utilities (bolder display type, tiles, chips)
+   ============================================================ */
+
+.display-2xl,
+.display-xl,
+.display-lg {
+  font-family: inherit;
+}
+
+.display-2xl {
+  font-size: clamp(2.6rem, 6.4vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.display-xl {
+  font-size: clamp(2.1rem, 4.6vw, 3.9rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.display-lg {
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+/* Readable measure for body copy */
+.measure {
+  max-width: 62ch;
+}
+
+.measure-sm {
+  max-width: 48ch;
+}
+
+/* Gradient text for key headline words */
+.text-gradient {
+  background-image: linear-gradient(118deg, var(--foreground) 8%, var(--primary) 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Standardized eyebrow label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.6rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary));
+}
+
+/* Icon chip — rounded gradient tile for feature/capability icons */
+.icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-xl);
+  color: var(--foreground);
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02)),
+    color-mix(in srgb, var(--primary) 16%, transparent);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 10px 24px rgba(4, 8, 20, 0.4);
+}
+
+.icon-chip-lg {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: var(--radius-2xl);
+}
+
+/* Premium surface card */
+.premium-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015) 46%, rgba(255, 255, 255, 0.03)),
+    linear-gradient(180deg, rgba(9, 18, 34, 0.86), rgba(7, 11, 22, 0.78));
+  border: 1px solid rgba(176, 224, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 26px 60px rgba(4, 8, 20, 0.5);
+  backdrop-filter: blur(18px) saturate(140%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--primary) 40%, rgba(176, 224, 255, 0.14));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 34px 72px rgba(4, 8, 20, 0.6);
+}
+
+/* Feature tile — lighter card for dense icon-led grids */
+.feature-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(176, 224, 255, 0.1);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease, background 0.45s ease;
+}
+
+.feature-tile:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--primary) 34%, rgba(176, 224, 255, 0.1));
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+}
+
+/* Gradient hairline divider */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(176, 224, 255, 0.22), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-card,
+  .feature-tile {
+    transition: none !important;
+  }
+  .premium-card:hover,
+  .feature-tile:hover {
+    transform: none !important;
+  }
+}

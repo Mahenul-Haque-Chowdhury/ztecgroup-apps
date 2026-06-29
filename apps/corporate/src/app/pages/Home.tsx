@@ -3,10 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
-import { Shield, Video, Code, TrendingUp, ChevronDown } from "lucide-react";
+import { Shield, Video, Code, TrendingUp } from "lucide-react";
 import { SectionContainer } from "../components/SectionContainer";
 import { ServiceCard } from "../components/ServiceCard";
 import { Button } from "../components/Button";
+import { Faq } from "../components/Faq";
+import { StatStrip } from "../components/StatStrip";
 import BlurText from "../components/BlurText";
 import ShapeGrid from "../components/ShapeGrid";
 import CardSwap, { Card } from "../components/CardSwap";
@@ -49,7 +51,6 @@ const HERO_CTA_ROTATION_MS = 2800;
 export function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [activeHeroCtaIndex, setActiveHeroCtaIndex] = useState(0);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -193,7 +194,7 @@ export function Home() {
           >
             <div className="min-w-0 lg:-ml-8 xl:-ml-12">
               {/* Main Headline */}
-              <h1 className="sr-only">ZTEC Group — Digital Services, Software, Communication, Content &amp; Hospitality Consulting in Australia. Everything Connected. Nothing Compromised.</h1>
+              <h1 className="sr-only">ZTEC Group: Digital Services, Software, Communication, Content and Hospitality Consulting in Australia. Everything Connected. Nothing Compromised.</h1>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -209,7 +210,7 @@ export function Home() {
                   stepDuration={0.62}
                   animateBy="words"
                   direction="top"
-                  className="w-full justify-center text-[clamp(2rem,9vw,2.85rem)] font-bold tracking-tight leading-[1.08] sm:text-[2.55rem] md:text-[3.15rem] lg:justify-start lg:whitespace-nowrap lg:text-[3.35rem] xl:text-[3.75rem]"
+                  className="font-display w-full justify-center text-[clamp(2.3rem,9.5vw,3.1rem)] font-extrabold tracking-[-0.03em] leading-[1.02] sm:text-[2.9rem] md:text-[3.6rem] lg:justify-start lg:whitespace-nowrap lg:text-[3.9rem] xl:text-[4.4rem]"
                 />
                 <BlurText
                   text="Nothing Compromised."
@@ -217,7 +218,7 @@ export function Home() {
                   stepDuration={0.62}
                   animateBy="words"
                   direction="bottom"
-                  className="w-full justify-center text-[clamp(2rem,9vw,2.85rem)] font-bold tracking-tight leading-[1.08] sm:text-[2.55rem] md:text-[3.15rem] lg:justify-start lg:whitespace-nowrap lg:text-[3.35rem] xl:text-[3.75rem]"
+                  className="font-display w-full justify-center text-[clamp(2.3rem,9.5vw,3.1rem)] font-extrabold tracking-[-0.03em] leading-[1.02] sm:text-[2.9rem] md:text-[3.6rem] lg:justify-start lg:whitespace-nowrap lg:text-[3.9rem] xl:text-[4.4rem]"
                   segmentClassName="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent"
                 />
               </div>
@@ -227,9 +228,9 @@ export function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-white/60 sm:text-lg md:mb-12 md:text-xl lg:mx-0"
+                className="measure mx-auto mb-10 text-base leading-8 text-white/62 sm:text-lg md:mb-12 lg:mx-0"
               >
-                ZTEC Group Pty Ltd is a unified operating system for communication, content, software, and hospitality services without trade-offs on clarity, control, or execution.
+                A unified operating system for communication, content, software, and hospitality. No trade-offs on clarity, control, or execution.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -379,15 +380,12 @@ export function Home() {
               transition={{ duration: 0.8 }}
               className="relative z-10 text-center mb-10 md:mb-14"
             >
-              <div className="narrative-surface inline-flex items-center rounded-full px-4 py-2 text-[11px] tracking-[0.16em] text-white/70 mb-8 uppercase">
-                Core Capabilities
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-[1.08]">
-                Comprehensive
-                <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent"> Solutions</span>
+              <span className="eyebrow justify-center">Core Capabilities</span>
+              <h2 className="display-xl mx-auto mt-5 max-w-3xl text-white">
+                Comprehensive <span className="text-gradient">Solutions</span>
               </h2>
-              <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-white/62 leading-relaxed">
-                Coordinated service delivery across communication, content, software, and hospitality operations.
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60 sm:text-lg">
+                Coordinated delivery across communication, content, software, and hospitality.
               </p>
             </motion.div>
 
@@ -431,75 +429,14 @@ export function Home() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="mb-9 text-center md:mb-12"
             >
-              <div className="narrative-surface mb-5 inline-flex items-center rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-white/70">
-                Decision support
-              </div>
-              <h2 className="text-3xl font-semibold tracking-tight text-white/95 sm:text-4xl md:text-5xl">FAQ</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/58 sm:text-base">
+              <span className="eyebrow justify-center">Decision support</span>
+              <h2 className="display-xl mt-5 text-white">Frequently asked questions</h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60">
                 Clear answers for teams evaluating a multi-division delivery partner.
               </p>
             </motion.div>
 
-            <div className="narrative-surface rounded-[2rem] p-2.5 shadow-[0_30px_80px_rgba(0,0,0,0.34)] md:p-3">
-              {faqItems.map((item, index) => {
-                const isOpen = openFaqIndex === index;
-
-                return (
-                  <motion.div
-                    key={item.question}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.55, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                    className={`overflow-hidden rounded-[1.5rem] border transition-all duration-300 ${
-                      isOpen
-                        ? "border-primary/30 bg-[linear-gradient(112deg,rgba(42,48,58,0.98),rgba(22,28,37,0.96))] shadow-[0_18px_46px_rgba(0,0,0,0.24)]"
-                        : "border-white/10 bg-white/[0.035] hover:border-white/18 hover:bg-white/[0.055]"
-                    }`}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                      aria-expanded={isOpen}
-                      className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left md:px-6 md:py-5"
-                    >
-                      <span className="flex items-start gap-4">
-                        <span className="mt-0.5 hidden h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-[11px] uppercase tracking-[0.08em] text-white/50 sm:inline-flex">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-base font-medium leading-snug text-white/92 sm:text-lg md:text-xl md:leading-snug">
-                          {item.question}
-                        </span>
-                      </span>
-                      <motion.span
-                        animate={{ rotate: isOpen ? 180 : 0 }}
-                        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/65"
-                      >
-                        <ChevronDown size={20} />
-                      </motion.span>
-                    </button>
-
-                    <AnimatePresence initial={false}>
-                      {isOpen ? (
-                        <motion.div
-                          key="faq-answer"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <p className="px-5 pb-5 text-sm leading-relaxed text-white/68 sm:pl-[4.75rem] md:pr-12 md:text-base">
-                            {item.answer}
-                          </p>
-                        </motion.div>
-                      ) : null}
-                    </AnimatePresence>
-                  </motion.div>
-                );
-              })}
-            </div>
+            <Faq items={faqItems} />
           </div>
         </div>
       </SectionContainer>
@@ -528,30 +465,14 @@ export function Home() {
             </motion.div>
 
             {/* Stats Grid */}
-            <div className="narrative-surface narrative-grid-overlay overflow-hidden rounded-[2rem]">
-              <div className="relative z-10 grid grid-cols-2 divide-x divide-y divide-white/8 md:grid-cols-4 md:divide-y-0">
-              {[
+            <StatStrip
+              stats={[
                 { value: "80+", label: "Projects Delivered" },
                 { value: "99.5%", label: "Platform Reliability" },
                 { value: "20+", label: "Active Clients" },
-                { value: "4", label: "Specialist Divisions" }
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="group relative px-4 py-8 text-center transition-colors duration-300 hover:bg-white/[0.045] sm:px-6 sm:py-10"
-                >
-                  <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-primary/55 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="mx-auto mb-5 h-px w-10 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-                  <div className="mb-3 bg-gradient-to-r from-white via-white/90 to-white/58 bg-clip-text text-4xl font-semibold text-transparent md:text-5xl">{stat.value}</div>
-                  <div className="text-xs uppercase tracking-[0.16em] text-white/48">{stat.label}</div>
-                </motion.div>
-              ))}
-              </div>
-            </div>
+                { value: "4", label: "Specialist Divisions" },
+              ]}
+            />
           </div>
         </div>
       </SectionContainer>
@@ -573,15 +494,11 @@ export function Home() {
             className="narrative-surface narrative-grid-overlay relative z-10 mx-auto max-w-5xl overflow-hidden rounded-[2.25rem] px-5 py-10 text-center shadow-[0_34px_100px_rgba(0,0,0,0.42)] sm:px-8 sm:py-12 md:py-16"
           >
             <div className="relative z-10">
-            <div className="mb-6 inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-white/70">
-              Begin the build
-            </div>
-            <h2 className="mb-6 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl md:mb-8 md:text-6xl">
-              Ready to Transform Your
-              <br />
-              <span className="bg-gradient-to-r from-white via-white/88 to-white/58 bg-clip-text text-transparent">Digital Infrastructure?</span>
+            <span className="eyebrow justify-center">Begin the build</span>
+            <h2 className="display-xl mx-auto mb-6 mt-5 max-w-3xl text-white md:mb-8">
+              Ready to transform your <span className="text-gradient">digital infrastructure?</span>
             </h2>
-            <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-white/62 sm:text-lg md:mb-12 md:text-xl">
+            <p className="measure mx-auto mb-9 text-base leading-8 text-white/62 sm:text-lg md:mb-12">
               Join forward-thinking organizations leveraging the ZTEC ecosystem for competitive advantage.
             </p>
             <Link href="/contact" className="inline-flex w-full sm:w-auto">
