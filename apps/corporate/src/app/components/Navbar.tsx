@@ -85,7 +85,7 @@ export function Navbar() {
           <Link href="/" className="group min-w-0 shrink" aria-label="ZTEC Group home">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex h-[3.15rem] w-[13rem] items-center sm:h-[3.35rem] sm:w-[15rem] lg:h-[4.45rem] lg:w-[20rem]"
+              className="flex h-[2.35rem] w-[10rem] items-center sm:h-[2.7rem] sm:w-[12rem] lg:h-[4.45rem] lg:w-[20rem]"
             >
               <div className="flex h-[88%] w-[100%] items-center overflow-hidden sm:h-[92%] lg:h-full">
                 <Image
@@ -93,10 +93,10 @@ export function Navbar() {
                   alt="ZTEC Group"
                   width={420}
                   height={95}
-                  sizes="(max-width: 640px) 208px, (max-width: 1024px) 240px, 320px"
+                  sizes="(max-width: 640px) 160px, (max-width: 1024px) 192px, 320px"
                   priority
                   loading="eager"
-                  className="translate-y-1 h-full w-auto max-w-none origin-left scale-[3.77] object-contain sm:translate-y-1 sm:scale-[4.1] lg:translate-y-[0.2rem] lg:scale-[1.3]"
+                  className="translate-y-0.5 h-full w-auto max-w-none origin-left scale-[2.7] object-contain sm:translate-y-1 sm:scale-[3.0] lg:translate-y-[0.2rem] lg:scale-[1.3]"
                 />
               </div>
             </motion.div>

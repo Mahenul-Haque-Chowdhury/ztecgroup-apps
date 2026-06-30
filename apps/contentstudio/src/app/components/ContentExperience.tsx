@@ -303,9 +303,9 @@ export function ContentExperience() {
                 >
                   <div className="h-4 w-4 rounded-full bg-amber-300 shadow-[0_0_16px_rgba(246,186,85,0.9)] ring-2 ring-black/40" />
                 </motion.div>
-                <div className="mt-3 flex justify-between font-mono text-[10px] tracking-[0.16em] text-white/40">
+                <div className="mt-3 flex items-center justify-between font-mono text-[10px] tracking-[0.16em] text-white/40">
                   <span>00:00:00</span>
-                  <span>EDIT · GRADE · MIX · MASTER</span>
+                  <span className="hidden sm:inline">EDIT · GRADE · MIX · MASTER</span>
                   <span>00:24:00</span>
                 </div>
               </div>

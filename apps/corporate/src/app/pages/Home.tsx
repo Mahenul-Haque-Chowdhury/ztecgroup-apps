@@ -157,7 +157,7 @@ export function Home() {
       <div className="relative z-10">
       {/* Hero Section */}
       <SectionContainer fullHeight>
-        <div ref={heroRef} className="relative flex min-h-[100svh] items-start justify-center overflow-hidden pt-32 sm:pt-36 md:pt-36 lg:pt-36 xl:pt-40">
+        <div ref={heroRef} className="relative flex min-h-[100svh] items-start justify-center overflow-hidden pt-28 sm:pt-32 md:pt-36 lg:pt-36 xl:pt-40">
           {/* Animated Background */}
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_20%,rgba(59,130,246,0.28),transparent_32%),radial-gradient(circle_at_30%_74%,rgba(34,211,238,0.22),transparent_30%),radial-gradient(circle_at_64%_22%,rgba(251,191,36,0.26),transparent_28%),radial-gradient(circle_at_84%_64%,rgba(249,115,22,0.2),transparent_26%),radial-gradient(circle_at_78%_32%,rgba(16,185,129,0.22),transparent_30%),radial-gradient(circle_at_54%_78%,rgba(132,204,22,0.18),transparent_26%),radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.06),transparent_40%),linear-gradient(180deg,rgba(6,10,18,0.42),rgba(3,6,12,0.76))]" />
@@ -340,7 +340,7 @@ export function Home() {
       </SectionContainer>
 
       {/* Services Preview Section */}
-      <SectionContainer fullHeight={false} className="z-30 -mt-32 sm:-mt-36 md:-mt-44">
+      <SectionContainer fullHeight={false} className="z-30 mt-0 sm:-mt-16 md:-mt-44">
         <div ref={solutionsRef} className="relative overflow-x-hidden overflow-y-visible pt-2 pb-16 md:pb-20 md:pt-4">
           <motion.div
             style={{ y: orbPrimaryY }}
