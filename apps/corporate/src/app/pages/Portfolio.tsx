@@ -1,10 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { SectionContainer } from "../components/SectionContainer";
-import { StatStrip } from "../components/StatStrip";
 import { Button } from "../components/Button";
+import { Reveal } from "../components/motion/Reveal";
+import { Counter } from "../components/motion/Counter";
+import { ScrollProgressRail } from "../components/motion/ScrollProgressRail";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const caseStudies = [
   {
@@ -75,94 +80,101 @@ const caseStudies = [
   },
 ];
 
+function CaseStudyCard({ study, index }: { study: (typeof caseStudies)[number]; index: number }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.65, ease: EASE, delay: (index % 2) * 0.08 }}
+      whileHover={{ y: -6 }}
+      className={`cinematic-panel group relative overflow-hidden rounded-2xl p-7 sm:p-8 ${study.size === "large" ? "md:col-span-2" : ""}`}
+    >
+      <div
+        className={`pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br ${study.gradient} blur-3xl transition-opacity duration-500 group-hover:opacity-150`}
+      />
+
+      <div className="relative z-10">
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <span className="text-5xl font-bold leading-none tracking-tight text-white/[0.08] transition-colors duration-500 group-hover:text-white/[0.14]">
+            {study.number}
+          </span>
+          <span className="rounded-full bg-white/[0.06] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-white/55">
+            {study.category}
+          </span>
+        </div>
+
+        <h2 className={`font-semibold leading-tight text-white ${study.size === "large" ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"}`}>
+          {study.title}
+        </h2>
+
+        <p className="mt-4 text-sm leading-relaxed text-white/58">{study.description}</p>
+
+        <div className="mt-6 rounded-xl border border-white/8 bg-white/[0.035] p-4">
+          <p className="mb-2 text-[10px] uppercase tracking-[0.14em] text-white/38">Outcome</p>
+          <p className="text-sm font-medium leading-relaxed text-white/82">{study.outcome}</p>
+        </div>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {study.tags.map((tag) => (
+            <span key={tag} className="rounded-md bg-white/5 px-2.5 py-1 text-xs text-white/50">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 export function Portfolio() {
+  const railRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ctaRef, offset: ["start end", "end start"] });
+  const sweepX = useTransform(scrollYProgress, [0.3, 0.8], ["-40%", "140%"]);
+
   return (
     <div className="relative pt-24">
-
       {/* Hero */}
       <SectionContainer fullHeight={false}>
         <div className="relative overflow-hidden py-16 md:py-24 lg:py-32">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(127,211,255,0.11),transparent)]" />
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-16"
-          >
+          <div className="relative z-10 mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-16">
             <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
               <div>
-                <span className="eyebrow mb-6">Selected Work</span>
-                <h1 className="display-2xl mt-4 text-white">
-                  Projects that<br /><span className="text-gradient">move the needle.</span>
-                </h1>
+                <Reveal>
+                  <span className="eyebrow mb-6">Selected Work</span>
+                </Reveal>
+                <Reveal delay={0.08}>
+                  <h1 className="display-2xl mt-4 text-white">
+                    Projects that
+                    <br />
+                    <span className="text-gradient">move the needle.</span>
+                  </h1>
+                </Reveal>
               </div>
-              <p className="max-w-xl text-lg leading-8 text-white/55 lg:text-right lg:self-end">
-                Outcome-focused delivery across communication platforms, software systems, content production, and STRA optimization.
-              </p>
+              <Reveal delay={0.16}>
+                <p className="max-w-xl text-lg leading-8 text-white/55 lg:self-end lg:text-right">
+                  Outcome-focused delivery across communication platforms, software systems, content production, and STRA optimization.
+                </p>
+              </Reveal>
             </div>
-          </motion.div>
+          </div>
         </div>
       </SectionContainer>
 
-      {/* Case Studies */}
+      {/* Case Studies with progress rail */}
       <SectionContainer fullHeight={false}>
         <div className="relative pb-16 md:pb-24">
-          <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-16">
-            <div className="grid gap-4 md:grid-cols-2 lg:gap-5">
+          <div className="mx-auto flex max-w-[1320px] gap-6 px-5 sm:px-8 lg:gap-10 lg:px-16">
+            <div className="hidden shrink-0 lg:block">
+              <div className="sticky top-32 h-[60vh]">
+                <ScrollProgressRail target={railRef} className="h-full" />
+              </div>
+            </div>
+            <div ref={railRef} className="grid min-w-0 flex-1 gap-4 md:grid-cols-2 lg:gap-5">
               {caseStudies.map((study, index) => (
-                <motion.article
-                  key={study.title}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: index * 0.06 }}
-                  className={`cinematic-panel group relative overflow-hidden rounded-2xl p-7 sm:p-8 ${study.size === "large" ? "md:col-span-2" : ""}`}
-                >
-                  {/* Gradient accent top-right */}
-                  <div
-                    className={`pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br ${study.gradient} blur-3xl transition-opacity duration-500 group-hover:opacity-150`}
-                  />
-
-                  <div className="relative z-10">
-                    {/* Top row */}
-                    <div className="mb-6 flex items-start justify-between gap-4">
-                      <span className="text-5xl font-bold tracking-tight text-white/8 group-hover:text-white/14 transition-colors duration-500 leading-none">
-                        {study.number}
-                      </span>
-                      <span className="rounded-full bg-white/6 px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-white/55">
-                        {study.category}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h2 className={`font-semibold leading-tight text-white ${study.size === "large" ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"}`}>
-                      {study.title}
-                    </h2>
-
-                    {/* Description */}
-                    <p className="mt-4 text-sm leading-relaxed text-white/58">
-                      {study.description}
-                    </p>
-
-                    {/* Outcome */}
-                    <div className="mt-6 rounded-xl border border-white/8 bg-white/[0.035] p-4">
-                      <p className="text-[10px] uppercase tracking-[0.14em] text-white/38 mb-2">Outcome</p>
-                      <p className="text-sm font-medium leading-relaxed text-white/82">{study.outcome}</p>
-                    </div>
-
-                    {/* Tags */}
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {study.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-md bg-white/5 px-2.5 py-1 text-xs text-white/50"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.article>
+                <CaseStudyCard key={study.title} study={study} index={index} />
               ))}
             </div>
           </div>
@@ -173,48 +185,69 @@ export function Portfolio() {
       <SectionContainer fullHeight={false}>
         <div className="relative border-y border-white/5 py-16 md:py-20">
           <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-16">
-            <div className="mb-10 text-center md:mb-14">
+            <Reveal className="mb-10 text-center md:mb-14">
               <span className="eyebrow justify-center">Delivery signals</span>
-              <h2 className="display-lg mt-4 text-white">How we keep engagements<br /><span className="text-gradient">structured and accountable.</span></h2>
-            </div>
-            <StatStrip
-              stats={[
-                { value: "4", label: "Service Divisions" },
-                { value: "1", label: "Delivery Roadmap" },
-                { value: "2019", label: "Group Founded" },
+              <h2 className="display-lg mt-4 text-white">
+                How we keep engagements
+                <br />
+                <span className="text-gradient">structured and accountable.</span>
+              </h2>
+            </Reveal>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
+              {[
+                { to: 4, label: "Service Divisions" },
+                { to: 1, label: "Delivery Roadmap" },
+                { to: 2019, label: "Group Founded" },
                 { value: "AU", label: "Registered Company" },
-              ]}
-            />
+              ].map((stat, i) => (
+                <Reveal key={stat.label} delay={i * 0.08} className="premium-card flex flex-col items-center justify-center p-6 text-center md:p-8">
+                  {"value" in stat ? (
+                    <span className="bg-gradient-to-br from-white to-primary bg-clip-text text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-none text-transparent">
+                      {stat.value}
+                    </span>
+                  ) : (
+                    <Counter
+                      to={stat.to as number}
+                      className="bg-gradient-to-br from-white to-primary bg-clip-text text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-none text-transparent"
+                    />
+                  )}
+                  <span className="mt-3 text-[11px] uppercase tracking-[0.16em] text-white/55 sm:text-xs">{stat.label}</span>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </SectionContainer>
 
       {/* CTA */}
       <SectionContainer fullHeight={false}>
-        <div className="relative overflow-hidden py-20 md:py-28">
+        <div ref={ctaRef} className="relative overflow-hidden py-20 md:py-28">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(240,180,79,0.12),transparent_55%)]" />
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 text-center"
-          >
-            <span className="eyebrow justify-center mb-6">Start your project</span>
-            <h2 className="display-xl mt-4 text-white">
-              Ready to create your<br /><span className="text-gradient">success story?</span>
-            </h2>
-            <p className="measure mx-auto mt-6 text-base leading-8 text-white/60">
-              Let's design and deliver a project that is measurable, scalable, and built for long-term value.
-            </p>
-            <div className="mt-10">
-              <Link href="/contact">
-                <Button variant="primary" size="lg">
-                  Start Your Project
-                </Button>
-              </Link>
+          <Reveal className="narrative-surface narrative-grid-overlay relative z-10 mx-auto max-w-3xl overflow-hidden rounded-[2.25rem] px-6 py-12 text-center shadow-[0_34px_100px_rgba(0,0,0,0.42)] sm:px-10 md:py-16">
+            <motion.span
+              aria-hidden
+              style={{ x: sweepX }}
+              className="pointer-events-none absolute inset-y-0 left-0 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"
+            />
+            <div className="relative z-10">
+              <span className="eyebrow mb-6 justify-center">Start your project</span>
+              <h2 className="display-xl mt-4 text-white">
+                Ready to create your
+                <br />
+                <span className="text-gradient">success story?</span>
+              </h2>
+              <p className="measure mx-auto mt-6 text-base leading-8 text-white/60">
+                Let's design and deliver a project that is measurable, scalable, and built for long-term value.
+              </p>
+              <div className="mt-10">
+                <Link href="/contact">
+                  <Button variant="primary" size="lg">
+                    Start Your Project
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </SectionContainer>
     </div>

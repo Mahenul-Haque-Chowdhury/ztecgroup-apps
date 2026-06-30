@@ -5,12 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, Terminal, X } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const GlassSurface = motion.div;
-const glassSurfaceClass = "rounded-full bg-[rgba(7,10,18,0.58)] ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] backdrop-blur-xl";
-const solidDropdownSurfaceClass = "rounded-2xl bg-[#070a12] ring-1 ring-white/[0.14] shadow-[0_26px_60px_rgba(4,8,20,0.62)]";
 
 const serviceDomainLinks = {
   communication: enterpriseServiceLinks.find((service) => service.slug === "communication")?.url ?? "https://communication.ztecgroup.au",
@@ -27,16 +23,21 @@ const serviceLinks = [
 ];
 
 const primaryLinks = [
-  { path: "/", label: "Systems" },
-  { path: "/contact", label: "Contact" },
-  { path: "/privacy-policy", label: "Privacy" },
+  { path: "/", label: "systems" },
+  { path: "/contact", label: "contact" },
 ];
 
+const activeServiceKey = "software";
+
+/**
+ * Software nav: left-aligned developer terminal bar. Monospace route tokens
+ * rendered as `nav.home`, hairline cyan rule under a solid slab surface,
+ * bracketed active markers, and a `$ run` styled CTA. No pill chrome.
+ */
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const activeServiceKey = "software";
 
   useEffect(() => {
     setIsServicesOpen(false);
@@ -47,11 +48,14 @@ export function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-4 lg:px-8"
+      className="fixed inset-x-0 top-0 z-50"
     >
-      <GlassSurface className={`mx-auto max-w-[1440px] ${glassSurfaceClass}`}>
-        <div className="flex h-14 items-center justify-between gap-2 px-3 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
-          <Link href="/" className="group shrink-0" aria-label="ZTEC Software home">
+      <div className="relative border-b border-white/10 bg-[rgba(7,12,22,0.82)] backdrop-blur-xl">
+        {/* hairline scan accent */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#63d3ff]/70 to-transparent" />
+        <div className="mx-auto flex h-14 max-w-[1480px] items-center gap-3 px-4 sm:h-16 sm:px-6 lg:px-10">
+          {/* Logo */}
+          <Link href="/" className="group flex shrink-0 items-center" aria-label="ZTEC Software home">
             <motion.div whileHover={{ scale: 1.02 }} className="flex h-[2.1rem] items-center gap-0 sm:h-[2.4rem] lg:h-[2.7rem]">
               <div className="-translate-y-0.5 flex h-[78%] w-[3.1rem] items-center self-center overflow-hidden sm:w-[3.6rem] sm:-translate-y-0.5 lg:w-[4.1rem] lg:-translate-y-1">
                 <Image src="/software.svg" alt="ZTEC Software" width={248} height={56} sizes="(max-width: 640px) 132px, (max-width: 1024px) 156px, 190px" priority loading="eager" className="h-full w-auto max-w-none origin-left scale-[1.78] object-contain" />
@@ -62,92 +66,177 @@ export function Navbar() {
             </motion.div>
           </Link>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <motion.div className="relative" whileHover={{ y: -1 }} onMouseEnter={() => setIsServicesOpen(true)} onMouseLeave={() => setIsServicesOpen(false)}>
-              <button type="button" onClick={() => setIsServicesOpen((previous) => !previous)} aria-haspopup="menu" aria-expanded={isServicesOpen} className="relative z-10 inline-flex items-center gap-1 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] text-white transition-colors">
-                <motion.span layoutId="service-navbar-indicator" className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]" transition={{ type: "spring", stiffness: 320, damping: 30 }} />
-                <span>Services</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
+          {/* divider */}
+          <span className="hidden h-6 w-px bg-white/12 lg:block" aria-hidden />
+
+          {/* Desktop terminal nav (left-aligned) */}
+          <div className="hidden items-center gap-1 font-mono text-[13px] lg:flex">
+            <Link
+              href="/"
+              className={`group inline-flex items-center gap-1 rounded-md px-3 py-1.5 transition-colors ${pathname === "/" ? "text-[#63d3ff]" : "text-white/60 hover:text-white"}`}
+            >
+              <span className="text-white/25 group-hover:text-[#63d3ff]/70">nav.</span>home
+            </Link>
+
+            <div className="relative" onMouseEnter={() => setIsServicesOpen(true)} onMouseLeave={() => setIsServicesOpen(false)}>
+              <button
+                type="button"
+                onClick={() => setIsServicesOpen((p) => !p)}
+                aria-haspopup="menu"
+                aria-expanded={isServicesOpen}
+                className={`group inline-flex items-center gap-1 rounded-md px-3 py-1.5 transition-colors ${isServicesOpen ? "text-[#63d3ff]" : "text-white/60 hover:text-white"}`}
+              >
+                <span className="text-white/25 group-hover:text-[#63d3ff]/70">nav.</span>services
+                <ChevronDown size={13} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
               </button>
 
               <AnimatePresence>
                 {isServicesOpen && (
-                  <GlassSurface initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }} className={`absolute left-1/2 top-[calc(100%+1.5rem)] z-40 w-[min(94vw,52rem)] -translate-x-1/2 isolate p-6 ${solidDropdownSurfaceClass}`}>
-                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute left-0 top-[calc(100%+0.85rem)] z-40 w-[min(94vw,40rem)] overflow-hidden rounded-lg border border-[#63d3ff]/20 bg-[#080d18] shadow-[0_26px_60px_rgba(4,8,20,0.66)]"
+                  >
+                    <div className="flex items-center gap-2 border-b border-white/8 px-4 py-2 font-mono text-[11px] text-white/35">
+                      <Terminal size={12} className="text-[#63d3ff]/70" />
+                      <span>~/ztec/services</span>
+                    </div>
+                    <div className="grid grid-cols-1 gap-1 p-2 sm:grid-cols-2">
                       {serviceLinks.map((service) => (
-                        <Link key={service.path} href={service.path} onClick={() => setIsServicesOpen(false)} className={`block rounded-2xl px-4 py-3 transition-colors ${activeServiceKey === service.key ? "bg-white/12 text-white" : "text-white/72 hover:bg-white/8 hover:text-white"}`}>
-                          <div className="flex items-start gap-3">
-                            <div className="mt-0.5 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
-                              <Image src={service.logoSrc} alt={service.logoAlt} width={56} height={56} className="h-full w-full object-contain" />
+                        <Link
+                          key={service.path}
+                          href={service.path}
+                          onClick={() => setIsServicesOpen(false)}
+                          className={`block rounded-md px-3 py-2.5 transition-colors ${activeServiceKey === service.key ? "bg-[#63d3ff]/10 text-white" : "text-white/72 hover:bg-white/[0.05] hover:text-white"}`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-white/8 p-1.5 ring-1 ring-white/8">
+                              <Image src={service.logoSrc} alt={service.logoAlt} width={40} height={40} className="h-full w-full object-contain" />
                             </div>
                             <div className="min-w-0">
-                              <div className="text-[0.95rem] font-semibold leading-tight text-white">{service.label}</div>
-                              <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[11px] uppercase tracking-[0.08em] text-white/45">{service.branches.slice(0, 3).join(" | ")}</p>
+                              <div className="text-[0.9rem] font-semibold leading-tight text-white">{service.label}</div>
+                              <p className="mt-1 truncate font-mono text-[10px] text-white/40">{service.branches.slice(0, 3).join(" | ")}</p>
                             </div>
                           </div>
                         </Link>
                       ))}
                     </div>
-                  </GlassSurface>
+                  </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
-
-            {primaryLinks.map((link) => (
-              <motion.div key={link.path} className="relative" whileHover={{ y: -1 }}>
-                <Link href={link.path} className={`relative z-10 inline-flex rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors ${pathname === link.path ? "text-white" : "text-white/70 hover:text-white"}`}>
-                  {pathname === link.path && <motion.span layoutId="navbar-indicator" className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]" transition={{ type: "spring", stiffness: 320, damping: 30 }} />}
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
-            <a href="https://ztecgroup.au" className="rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] text-white/55 transition-colors hover:text-white">ZTEC Group</a>
-          </div>
-
-          <div className="hidden lg:block">
-            <Link href="/contact">
-              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="rounded-full bg-[var(--brand-logo)] px-5 py-2.5 text-[var(--brand-logo-foreground)] ring-1 ring-[var(--brand-logo-ring)] shadow-[0_12px_28px_var(--brand-logo-shadow)] transition-all duration-300 hover:brightness-110">
-                <span className="text-xs uppercase tracking-[0.14em]">Book a Discovery Call</span>
-              </motion.button>
-            </Link>
-          </div>
-
-          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white lg:hidden" aria-expanded={isOpen} aria-label="Toggle navigation" onClick={() => setIsOpen((current) => !current)}>
-            {isOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </div>
-      </GlassSurface>
-
-      {isOpen ? (
-        <div className="mx-auto mt-3 max-w-[1440px] rounded-2xl bg-[#070a12] p-4 ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] lg:hidden">
-          <div className="flex flex-col gap-2">
-            <Link href="/" onClick={() => setIsOpen(false)} className={`rounded-full px-4 py-3 text-sm transition-colors ${pathname === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>Systems</Link>
-
-            <div className="space-y-3">
-              <p className="px-4 pt-1 text-[11px] uppercase tracking-[0.16em] text-white/45">Services</p>
-              <div className="space-y-2">
-                {serviceLinks.map((service) => (
-                  <Link key={service.path} href={service.path} onClick={() => setIsOpen(false)} className={`block rounded-[1.5rem] px-4 py-3 text-sm transition-colors ${activeServiceKey === service.key ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
-                        <Image src={service.logoSrc} alt={service.logoAlt} width={48} height={48} className="h-full w-full object-contain" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-sm font-medium leading-snug text-white">{service.label}</div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
             </div>
 
             {primaryLinks.slice(1).map((link) => (
-              <Link key={link.path} href={link.path} onClick={() => setIsOpen(false)} className={`rounded-full px-4 py-3 text-sm transition-colors ${pathname === link.path ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>{link.label}</Link>
+              <Link
+                key={link.path}
+                href={link.path}
+                className={`group inline-flex items-center gap-1 rounded-md px-3 py-1.5 transition-colors ${pathname === link.path ? "text-[#63d3ff]" : "text-white/60 hover:text-white"}`}
+              >
+                <span className="text-white/25 group-hover:text-[#63d3ff]/70">nav.</span>{link.label}
+              </Link>
             ))}
-            <a href="https://ztecgroup.au" className="rounded-full px-4 py-3 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white">Visit ZTEC Group</a>
+          </div>
+
+          {/* right cluster */}
+          <div className="ml-auto flex items-center gap-2">
+            <a href="https://ztecgroup.au" className="hidden font-mono text-[12px] text-white/45 transition-colors hover:text-white lg:inline">../group</a>
+            <Link href="/contact" className="hidden lg:block">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group inline-flex items-center gap-2 rounded-md border border-[#63d3ff]/40 bg-[#63d3ff]/10 px-4 py-2 font-mono text-[12px] text-[#bfeaff] transition-colors hover:bg-[#63d3ff]/18"
+              >
+                <span className="text-[#63d3ff]">$</span>
+                <span>book_call</span>
+                <span className="inline-block h-3.5 w-1.5 animate-pulse bg-[#63d3ff]" />
+              </motion.button>
+            </Link>
+
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/12 bg-white/5 text-white lg:hidden"
+              aria-expanded={isOpen}
+              aria-label="Toggle navigation"
+              onClick={() => setIsOpen((c) => !c)}
+            >
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
           </div>
         </div>
-      ) : null}
+      </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {isOpen ? (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-3 mt-2 overflow-hidden rounded-lg border border-[#63d3ff]/20 bg-[#080d18] shadow-[0_16px_40px_rgba(4,8,20,0.5)] lg:hidden"
+          >
+            <div className="flex max-h-[calc(100svh-5.5rem)] flex-col gap-1 overflow-y-auto overscroll-contain p-3 font-mono text-sm">
+              <Link href="/" onClick={() => setIsOpen(false)} className={`rounded-md px-3 py-2.5 transition-colors ${pathname === "/" ? "bg-[#63d3ff]/10 text-[#63d3ff]" : "text-white/65 hover:bg-white/5 hover:text-white"}`}>
+                <span className="text-white/25">nav.</span>systems
+              </Link>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setIsServicesOpen((p) => !p)}
+                  aria-expanded={isServicesOpen}
+                  className="flex w-full items-center justify-between rounded-md px-3 py-2.5 text-white/65 transition-colors hover:bg-white/5 hover:text-white"
+                >
+                  <span><span className="text-white/25">nav.</span>services</span>
+                  <ChevronDown size={15} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isServicesOpen && (
+                    <motion.div
+                      key="mobile-services"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-1 space-y-1 pb-1 pl-2">
+                        {serviceLinks.map((service) => (
+                          <Link key={service.path} href={service.path} onClick={() => setIsOpen(false)} className={`block rounded-md px-3 py-2 transition-colors ${activeServiceKey === service.key ? "bg-[#63d3ff]/10 text-white" : "text-white/65 hover:bg-white/5 hover:text-white"}`}>
+                            <div className="flex items-center gap-3">
+                              <div className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white/8 p-1.5 ring-1 ring-white/8">
+                                <Image src={service.logoSrc} alt={service.logoAlt} width={36} height={36} className="h-full w-full object-contain" />
+                              </div>
+                              <div className="min-w-0 font-sans">
+                                <div className="text-[0.88rem] font-medium leading-snug text-white">{service.label}</div>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {primaryLinks.slice(1).map((link) => (
+                <Link key={link.path} href={link.path} onClick={() => setIsOpen(false)} className={`rounded-md px-3 py-2.5 transition-colors ${pathname === link.path ? "bg-[#63d3ff]/10 text-[#63d3ff]" : "text-white/65 hover:bg-white/5 hover:text-white"}`}>
+                  <span className="text-white/25">nav.</span>{link.label}
+                </Link>
+              ))}
+              <a href="https://ztecgroup.au" className="rounded-md px-3 py-2.5 text-white/55 transition-colors hover:bg-white/5 hover:text-white">../group</a>
+              <Link href="/contact" onClick={() => setIsOpen(false)} className="mt-1">
+                <button className="flex w-full items-center justify-center gap-2 rounded-md border border-[#63d3ff]/40 bg-[#63d3ff]/10 px-4 py-2.5 text-[12px] text-[#bfeaff]">
+                  <span className="text-[#63d3ff]">$</span> book_call
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </motion.nav>
   );
 }

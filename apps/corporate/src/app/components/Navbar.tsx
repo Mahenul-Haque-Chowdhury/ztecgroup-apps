@@ -79,8 +79,8 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-4 lg:px-8"
     >
-      <GlassSurface className={`max-w-[1440px] mx-auto ${glassSurfaceClass}`}>
-        <div className="flex h-14 items-center justify-between gap-2 pl-3 pr-2 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
+      <GlassSurface className={`relative max-w-[1440px] mx-auto ${glassSurfaceClass}`}>
+        <div className="relative flex h-14 items-center justify-between gap-2 pl-3 pr-2 sm:h-[4.5rem] sm:px-4 lg:pl-5 lg:pr-8">
           {/* Logo */}
           <Link href="/" className="group min-w-0 shrink" aria-label="ZTEC Group home">
             <motion.div
@@ -102,105 +102,79 @@ export function Navbar() {
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
-            <motion.div className="relative" whileHover={{ y: -1 }}>
+          {/* Desktop Navigation: centered rail */}
+          <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center lg:flex">
+            <div className="pointer-events-auto flex items-center gap-1">
               <Link
                 href="/"
-                className={`relative z-10 inline-flex rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors ${
-                  pathname === "/" ? "text-white" : "text-white/70 hover:text-white"
-                }`}
+                className="group relative px-3 py-2 text-xs uppercase tracking-[0.16em] text-white/70 transition-colors hover:text-white"
               >
-                {pathname === "/" && (
-                  <motion.span
-                    layoutId="navbar-indicator"
-                    className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]"
-                    transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                  />
-                )}
-                Home
+                <span className={pathname === "/" ? "text-white" : ""}>Home</span>
+                <span className={`absolute -bottom-0.5 left-1/2 h-px -translate-x-1/2 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${pathname === "/" ? "w-5" : "w-0 group-hover:w-5"}`} />
               </Link>
-            </motion.div>
 
-            <motion.div
-              className="relative"
-              whileHover={{ y: -1 }}
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <button
-                type="button"
-                onClick={() => setIsServicesOpen((previous) => !previous)}
-                aria-haspopup="menu"
-                aria-expanded={isServicesOpen}
-                className={`relative z-10 inline-flex items-center gap-1 rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors ${
-                  isServicesOpen ? "text-white" : "text-white/70 hover:text-white"
-                }`}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
               >
-                {isServicesOpen && (
-                  <motion.span
-                    layoutId="navbar-indicator"
-                    className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]"
-                    transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                  />
-                )}
-                <span>Services</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
-              </button>
-
-              <AnimatePresence>
-                {isServicesOpen && (
-                  <GlassSurface
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className={`absolute left-1/2 top-[calc(100%+1.5rem)] z-40 w-[min(94vw,52rem)] -translate-x-1/2 isolate p-6 ${solidDropdownSurfaceClass}`}
-                  >
-                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                      {serviceLinks.map((service) => (
-                        <Link
-                          key={service.path}
-                          href={service.path}
-                          onClick={() => setIsServicesOpen(false)}
-                          className="block rounded-2xl px-4 py-3 text-white/72 transition-colors hover:bg-white/8 hover:text-white"
-                        >
-                          <div className="flex items-start gap-3">
-                            <div className="mt-0.5 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
-                              <Image src={service.logoSrc} alt={service.logoAlt} width={56} height={56} className="h-full w-full object-contain" />
-                            </div>
-                            <div className="min-w-0">
-                              <div className="text-[0.95rem] font-semibold leading-tight text-white">{service.label}</div>
-                              <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[11px] uppercase tracking-[0.08em] text-white/45">{service.branches.slice(0, 3).join(" | ")}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </GlassSurface>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
-            {primaryLinks.slice(1).map((link) => (
-              <motion.div key={link.path} className="relative" whileHover={{ y: -1 }}>
-                <Link
-                  href={link.path}
-                  className={`relative z-10 inline-flex rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors ${
-                    pathname === link.path ? "text-white" : "text-white/70 hover:text-white"
-                  }`}
+                <button
+                  type="button"
+                  onClick={() => setIsServicesOpen((previous) => !previous)}
+                  aria-haspopup="menu"
+                  aria-expanded={isServicesOpen}
+                  className="group relative inline-flex items-center gap-1 px-3 py-2 text-xs uppercase tracking-[0.16em] text-white/70 transition-colors hover:text-white"
                 >
-                  {pathname === link.path && (
-                    <motion.span
-                      layoutId="navbar-indicator"
-                      className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.14)]"
-                      transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                    />
+                  <span className={isServicesOpen ? "text-white" : ""}>Services</span>
+                  <ChevronDown size={14} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
+                  <span className={`absolute -bottom-0.5 left-1/2 h-px -translate-x-1/2 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${isServicesOpen ? "w-5" : "w-0 group-hover:w-5"}`} />
+                </button>
+
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <GlassSurface
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      className={`absolute left-1/2 top-[calc(100%+1.5rem)] z-40 w-[min(94vw,52rem)] -translate-x-1/2 isolate p-6 ${solidDropdownSurfaceClass}`}
+                    >
+                      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                        {serviceLinks.map((service) => (
+                          <Link
+                            key={service.path}
+                            href={service.path}
+                            onClick={() => setIsServicesOpen(false)}
+                            className="block rounded-2xl px-4 py-3 text-white/72 transition-colors hover:bg-white/8 hover:text-white"
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className="mt-0.5 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
+                                <Image src={service.logoSrc} alt={service.logoAlt} width={56} height={56} className="h-full w-full object-contain" />
+                              </div>
+                              <div className="min-w-0">
+                                <div className="text-[0.95rem] font-semibold leading-tight text-white">{service.label}</div>
+                                <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[11px] uppercase tracking-[0.08em] text-white/45">{service.branches.slice(0, 3).join(" | ")}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </GlassSurface>
                   )}
-                  {link.label}
+                </AnimatePresence>
+              </div>
+
+              {primaryLinks.slice(1).map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className="group relative px-3 py-2 text-xs uppercase tracking-[0.16em] text-white/70 transition-colors hover:text-white"
+                >
+                  <span className={pathname === link.path ? "text-white" : ""}>{link.label}</span>
+                  <span className={`absolute -bottom-0.5 left-1/2 h-px -translate-x-1/2 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${pathname === link.path ? "w-5" : "w-0 group-hover:w-5"}`} />
                 </Link>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* CTA Button */}
@@ -237,63 +211,95 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="mx-auto mt-3 max-w-[1440px] rounded-2xl bg-[#070a12] p-4 ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] lg:hidden">
-          <div className="flex flex-col gap-2">
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className={`rounded-full px-4 py-3 text-sm transition-colors ${
-                pathname === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              Home
-            </Link>
-
-            <div className="space-y-3">
-              <p className="px-4 pt-1 text-[11px] uppercase tracking-[0.16em] text-white/45">Services</p>
-              <div className="space-y-2">
-                {serviceLinks.map((service) => (
-                  <Link
-                    key={service.path}
-                    href={service.path}
-                    onClick={() => setIsOpen(false)}
-                    className="block rounded-[1.5rem] px-4 py-3 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
-                        <Image src={service.logoSrc} alt={service.logoAlt} width={48} height={48} className="h-full w-full object-contain" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-sm font-medium leading-snug text-white">{service.label}</div>
-                        <p className="mt-1 text-xs leading-snug text-white/55">{service.branches.slice(0, 3).join(" | ")}</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {primaryLinks.slice(1).map((link) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto mt-3 max-w-[1440px] overflow-hidden rounded-2xl bg-[#070a12] ring-1 ring-white/[0.08] shadow-[0_16px_40px_rgba(4,8,20,0.42)] lg:hidden"
+          >
+            <div className="flex max-h-[calc(100svh-6.5rem)] flex-col gap-2 overflow-y-auto overscroll-contain p-4">
               <Link
-                key={link.path}
-                href={link.path}
+                href="/"
                 onClick={() => setIsOpen(false)}
                 className={`rounded-full px-4 py-3 text-sm transition-colors ${
-                  pathname === link.path ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
+                  pathname === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
                 }`}
               >
-                {link.label}
+                Home
               </Link>
-            ))}
-            <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <button className="w-full rounded-full bg-primary px-6 py-3 text-primary-foreground ring-1 ring-primary/35">
-                Get Started
-              </button>
-            </Link>
-          </div>
-        </div>
-      )}
+
+              {/* Services accordion */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setIsServicesOpen((previous) => !previous)}
+                  aria-expanded={isServicesOpen}
+                  className="flex w-full items-center justify-between rounded-full px-4 py-3 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                >
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-white/55">Services</span>
+                  <ChevronDown size={16} className={`transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`} />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isServicesOpen && (
+                    <motion.div
+                      key="mobile-services"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-1 space-y-1.5 pb-1">
+                        {serviceLinks.map((service) => (
+                          <Link
+                            key={service.path}
+                            href={service.path}
+                            onClick={() => setIsOpen(false)}
+                            className="block rounded-[1.25rem] px-4 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 p-1.5">
+                                <Image src={service.logoSrc} alt={service.logoAlt} width={40} height={40} className="h-full w-full object-contain" />
+                              </div>
+                              <div className="min-w-0">
+                                <div className="text-[0.9rem] font-medium leading-snug text-white">{service.label}</div>
+                                <p className="mt-0.5 truncate text-[11px] leading-snug text-white/50">{service.branches.slice(0, 3).join(" | ")}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {primaryLinks.slice(1).map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`rounded-full px-4 py-3 text-sm transition-colors ${
+                    pathname === link.path ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link href="/contact" onClick={() => setIsOpen(false)} className="mt-1">
+                <button className="w-full rounded-full bg-primary px-6 py-3 text-primary-foreground ring-1 ring-primary/35">
+                  Get Started
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

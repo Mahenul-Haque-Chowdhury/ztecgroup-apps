@@ -5,15 +5,12 @@ import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { Shield, Video, Code, TrendingUp } from "lucide-react";
 import { SectionContainer } from "../components/SectionContainer";
-import { ServiceCard } from "../components/ServiceCard";
 import { Button } from "../components/Button";
-import { Faq } from "../components/Faq";
-import { StatStrip } from "../components/StatStrip";
 import BlurText from "../components/BlurText";
 import ShapeGrid from "../components/ShapeGrid";
 import CardSwap, { Card } from "../components/CardSwap";
+import { HomeSections } from "../components/home/HomeSections";
 import { useEffect, useRef, useState } from "react";
-import { siteFaqs } from "@ztecgroup/content";
 
 const HERO_ROTATING_CTAS = [
   {
@@ -50,7 +47,6 @@ const HERO_CTA_ROTATION_MS = 2800;
 
 export function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const solutionsRef = useRef<HTMLDivElement>(null);
   const [activeHeroCtaIndex, setActiveHeroCtaIndex] = useState(0);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -67,37 +63,12 @@ export function Home() {
     return () => window.clearInterval(rotationTimer);
   }, []);
 
-  const { scrollYProgress: solutionsProgress } = useScroll({
-    target: solutionsRef,
-    offset: ["start end", "end start"]
-  });
-
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, -120]);
   const gridPatternOpacity = useTransform(scrollYProgress, [0, 0.5], [0.85, 0.28]);
   const blobPrimaryY = useTransform(scrollYProgress, [0, 0.5], [0, -130]);
   const blobSecondaryY = useTransform(scrollYProgress, [0, 0.5], [0, 130]);
-  const tickerDriftY = useTransform(solutionsProgress, [0, 1], [16, -16]);
-  const orbPrimaryY = useTransform(solutionsProgress, [0, 1], [26, -26]);
-  const orbSecondaryY = useTransform(solutionsProgress, [0, 1], [-22, 22]);
   const activeHeroCta = HERO_ROTATING_CTAS[activeHeroCtaIndex] ?? HERO_ROTATING_CTAS[0];
-
-  const tickerItems = [
-    "Anonymous Communication Gateway",
-    "Website Development",
-    "E-Commerce Solutions",
-    "Mobile App Development",
-    "SEO & Digital Marketing",
-    "CRM",
-    "HRMS",
-    "Documentary & Story-Driven Video Edits",
-    "Shorts",
-    "Reels & Vertical Repurposing",
-    "Ad Creative & Promo Editing",
-    "Facebook-TikTok-YouTube",
-    "Video & Reels Editing",
-    "Short Term Rental Management Consultation",
-  ];
 
   const comprehensiveServices = [
     {
@@ -149,8 +120,6 @@ export function Home() {
       tags: ["Dynamic Pricing", "Forecasting", "Portfolio Ops"],
     },
   ];
-
-  const faqItems = siteFaqs.corporate;
 
   return (
     <div className="relative">
@@ -339,177 +308,8 @@ export function Home() {
         </div>
       </SectionContainer>
 
-      {/* Services Preview Section */}
-      <SectionContainer fullHeight={false} className="z-30 mt-0 sm:-mt-16 md:-mt-44">
-        <div ref={solutionsRef} className="relative overflow-x-hidden overflow-y-visible pt-2 pb-16 md:pb-20 md:pt-4">
-          <motion.div
-            style={{ y: orbPrimaryY }}
-            className="narrative-orb narrative-orb-cyan -left-24 top-4"
-            aria-hidden
-          />
-          <motion.div
-            style={{ y: orbSecondaryY }}
-            className="narrative-orb narrative-orb-amber -right-24 bottom-4"
-            aria-hidden
-          />
-
-          <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
-            <motion.div
-              style={{ y: tickerDriftY }}
-              className="narrative-surface narrative-ticker-full-bleed relative z-50 mb-8 overflow-hidden px-2 py-3 sm:mb-10 sm:px-2 sm:py-3"
-            >
-              <div className="narrative-ticker">
-                <div className="narrative-ticker-track text-[10px] leading-[1.35] uppercase tracking-[0.12em] text-white/68 sm:text-[12px] sm:tracking-[0.18em]">
-                  {Array.from({ length: 2 }).map((_, loopIndex) => (
-                    tickerItems.map((item, itemIndex) => (
-                      <span key={`${loopIndex}-${itemIndex}`} className="inline-flex items-center gap-2.5 whitespace-nowrap sm:gap-3">
-                        <span>{item}</span>
-                        <span className="h-1 w-1 rounded-full bg-primary/75" />
-                      </span>
-                    ))
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative z-10 text-center mb-10 md:mb-14"
-            >
-              <span className="eyebrow justify-center">Core Capabilities</span>
-              <h2 className="display-xl mx-auto mt-5 max-w-3xl text-white">
-                Comprehensive <span className="text-gradient">Solutions</span>
-              </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60 sm:text-lg">
-                Coordinated delivery across communication, content, software, and hospitality.
-              </p>
-            </motion.div>
-
-            {/* Service Cards Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className="narrative-surface narrative-surface-no-border relative z-10 rounded-[2rem] p-2.5 md:p-4"
-            >
-              <div className="grid gap-4 md:grid-cols-2 md:gap-5">
-                {comprehensiveServices.map((service) => (
-                  <ServiceCard
-                    key={service.number}
-                    number={service.number}
-                    title={service.title}
-                    description={service.description}
-                    icon={service.icon}
-                    imageSrc={service.imageSrc}
-                    href={service.href}
-                    gradient={service.gradient}
-                    tags={service.tags}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </SectionContainer>
-
-      {/* FAQ Section */}
-      <SectionContainer fullHeight={false}>
-        <div className="relative py-16 md:py-24">
-          <div className="pointer-events-none absolute inset-x-0 top-10 h-72 bg-[radial-gradient(circle_at_center,rgba(127,211,255,0.12),transparent_68%)]" />
-          <div className="mx-auto max-w-[1120px] px-5 sm:px-8 lg:px-16">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-9 text-center md:mb-12"
-            >
-              <span className="eyebrow justify-center">Decision support</span>
-              <h2 className="display-xl mt-5 text-white">Frequently asked questions</h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60">
-                Clear answers for teams evaluating a multi-division delivery partner.
-              </p>
-            </motion.div>
-
-            <Faq items={faqItems} />
-          </div>
-        </div>
-      </SectionContainer>
-
-      {/* Credibility Section */}
-      <SectionContainer fullHeight={false}>
-        <div className="relative border-y border-white/5 py-16 md:py-24">
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(127,211,255,0.07),transparent_34%,rgba(240,180,79,0.07)_66%,transparent)]" />
-          <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-16">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mx-auto mb-12 max-w-3xl text-center md:mb-16"
-            >
-              <div className="narrative-surface mb-5 inline-flex items-center rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-white/70">
-                Operating proof
-              </div>
-              <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-                Built for Practical Delivery
-              </h2>
-              <p className="text-sm leading-relaxed text-white/60 sm:text-base">
-                A growing mix of operators, teams, and service-led businesses rely on our delivery model
-              </p>
-            </motion.div>
-
-            {/* Stats Grid */}
-            <StatStrip
-              stats={[
-                { value: "80+", label: "Projects Delivered" },
-                { value: "99.5%", label: "Platform Reliability" },
-                { value: "20+", label: "Active Clients" },
-                { value: "4", label: "Specialist Divisions" },
-              ]}
-            />
-          </div>
-        </div>
-      </SectionContainer>
-
-      {/* Final CTA Section */}
-      <SectionContainer>
-        <div className="relative flex min-h-[74svh] items-center justify-center overflow-hidden md:min-h-screen">
-          {/* Background */}
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_30%,rgba(127,211,255,0.14),transparent_34%),radial-gradient(circle_at_72%_58%,rgba(240,180,79,0.13),transparent_34%),linear-gradient(180deg,transparent,rgba(4,8,16,0.62))]" />
-            <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="narrative-surface narrative-grid-overlay relative z-10 mx-auto max-w-5xl overflow-hidden rounded-[2.25rem] px-5 py-10 text-center shadow-[0_34px_100px_rgba(0,0,0,0.42)] sm:px-8 sm:py-12 md:py-16"
-          >
-            <div className="relative z-10">
-            <span className="eyebrow justify-center">Begin the build</span>
-            <h2 className="display-xl mx-auto mb-6 mt-5 max-w-3xl text-white md:mb-8">
-              Ready to transform your <span className="text-gradient">digital infrastructure?</span>
-            </h2>
-            <p className="measure mx-auto mb-9 text-base leading-8 text-white/62 sm:text-lg md:mb-12">
-              Join forward-thinking organizations leveraging the ZTEC ecosystem for competitive advantage.
-            </p>
-            <Link href="/contact" className="inline-flex w-full sm:w-auto">
-              <Button variant="primary" size="lg" className="w-full px-8 shadow-[0_18px_42px_rgba(240,180,79,0.24)] sm:w-auto">
-                Start Your Project
-              </Button>
-            </Link>
-            </div>
-          </motion.div>
-        </div>
-      </SectionContainer>
+      {/* Redesigned post-hero sections (Services / FAQ / Credibility / CTA) */}
+      <HomeSections />
       </div>
     </div>
   );
