@@ -18,9 +18,9 @@ interface ServiceCardProps {
 
 export function ServiceCard({ number, title, description, icon: Icon, imageSrc, href, gradient, tags = [] }: ServiceCardProps) {
   const previewTags = tags.slice(0, 3);
+  const isExternal = /^https?:\/\//.test(href);
 
-  return (
-    <Link href={href} className="block h-full">
+  const inner = (
       <motion.div
         initial={{ opacity: 0, y: 44, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -91,6 +91,19 @@ export function ServiceCard({ number, title, description, icon: Icon, imageSrc, 
           </div>
         </div>
       </motion.div>
+  );
+
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener" className="block h-full">
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className="block h-full">
+      {inner}
     </Link>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { buildOrganizationSchema, buildSiteMetadata, buildWebSiteSchema, serializeJsonLd } from "@ztecgroup/content";
+import { buildOrganizationSchema, buildSiteMetadata, buildSubSiteListSchema, buildWebSiteSchema, serializeJsonLd } from "@ztecgroup/content";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -30,13 +30,14 @@ export default function RootLayout({
 }>) {
   const organizationSchema = buildOrganizationSchema(process.env.NEXT_PUBLIC_SITE_URL);
   const websiteSchema = buildWebSiteSchema("corporate", process.env.NEXT_PUBLIC_SITE_URL);
+  const subSiteListSchema = buildSubSiteListSchema(process.env.NEXT_PUBLIC_SITE_URL);
 
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd([organizationSchema, websiteSchema]) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd([organizationSchema, websiteSchema, subSiteListSchema]) }}
         />
       </head>
       <body suppressHydrationWarning>

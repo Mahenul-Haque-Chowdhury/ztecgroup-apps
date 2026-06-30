@@ -141,10 +141,10 @@ export function buildSiteNavigationSchema(site: SiteKey, siteUrl?: string) {
   if (site === "corporate") {
     const serviceNavigation = serviceLinks.map((service, index) => ({
       "@type": "SiteNavigationElement",
-      "@id": `${url}/services/${service.slug}/#sitelink`,
+      "@id": `${service.url}/#sitelink`,
       name: service.label,
       description: service.description,
-      url: `${url}/services/${service.slug}`,
+      url: service.url,
       position: routes.length + index + 1,
     }));
 
@@ -152,6 +152,33 @@ export function buildSiteNavigationSchema(site: SiteKey, siteUrl?: string) {
   }
 
   return routes;
+}
+
+/**
+ * ItemList enumerating ZTEC Group's four sub-brand sites as the primary
+ * destinations from the corporate home. This gives Google an explicit,
+ * machine-readable list of the key sub-domains to consider for sitelinks.
+ */
+export function buildSubSiteListSchema(siteUrl?: string) {
+  const corporateUrl = getSiteUrl("corporate", siteUrl && siteUrl.includes("ztecgroup.au") ? siteUrl : undefined)
+    .toString()
+    .replace(/\/$/, "");
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${corporateUrl}/#sub-sites`,
+    name: "ZTEC Group Services",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: serviceLinks.length,
+    itemListElement: serviceLinks.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: service.label,
+      description: service.description,
+      url: service.url,
+    })),
+  };
 }
 
 export function buildServiceSchema(site: Exclude<SiteKey, "corporate">, siteUrl?: string) {
