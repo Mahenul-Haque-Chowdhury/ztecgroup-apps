@@ -1,4 +1,4 @@
-# ZTEC Premium Frontend Overhaul — Task Tracker
+# ZTEC Premium Frontend Overhaul - Task Tracker
 
 Bolder premium redesign across all 5 apps. Corporate is built first as the reference
 design (approval gate), then the system is propagated to the 4 sub-apps.
@@ -9,7 +9,7 @@ keep keyword-bearing H1/H2) · verify each app with `tsc --noEmit` + `next build
 
 ---
 
-## Phase A — Corporate (reference design) 🟡 AWAITING APPROVAL
+## Phase A - Corporate (reference design) 🟡 AWAITING APPROVAL
 
 ### Foundation
 - [x] Fonts: replaced Inter `@import` with `next/font` pairing (Syne display + DM Sans body) in `layout.tsx` + `fonts.css`
@@ -24,13 +24,13 @@ keep keyword-bearing H1/H2) · verify each app with `tsc --noEmit` + `next build
 - [x] `Stepper.tsx` (numbered steps)
 
 ### Pages (`apps/corporate/src/app/pages/`)
-- [x] `Home.tsx` — bigger Syne hero, condensed subhead, premium `Faq`, `StatStrip`, refined headers/CTA
+- [x] `Home.tsx` - bigger Syne hero, condensed subhead, premium `Faq`, `StatStrip`, refined headers/CTA
 - [x] `About.tsx`
 - [x] `Contact.tsx`
 - [x] `Portfolio.tsx`
 - [x] `Resources.tsx`
 - [x] `ServicesHub.tsx`
-- [ ] `LegalDocumentLayout.tsx` (deferred — low priority)
+- [ ] `LegalDocumentLayout.tsx` (deferred - low priority)
 
 ### Gate
 - [x] `tsc` + `build` clean · SEO guardrails verified (FAQPage + visible FAQ match, title intact)
@@ -38,7 +38,7 @@ keep keyword-bearing H1/H2) · verify each app with `tsc --noEmit` + `next build
 
 ---
 
-## Phase B — Propagate to sub-apps (after approval)
+## Phase B - Propagate to sub-apps (after approval)
 
 ### communication
 - [ ] Copy tokens/utilities (keep accent) + components

@@ -23,17 +23,17 @@ const stats: Array<{ value: number; suffix: string; label: string; sub: string }
 ];
 
 const investorPoints = [
-  "Feasibility first — suburb demand, competitor occupancy, and average daily rates assessed before you sign.",
-  "Licensing made simple — every council permit, fire-safety, and insurance obligation mapped.",
-  "Operations from day one — rosters, housekeeping checklists, and guest templates pre-built.",
-  "Revenue management — dynamic nightly rates that beat the OTAs, even in low season.",
+  "Feasibility first: suburb demand, competitor occupancy, and average daily rates assessed before you sign.",
+  "Licensing made simple: every council permit, fire-safety, and insurance obligation mapped.",
+  "Operations from day one: rosters, housekeeping checklists, and guest templates pre-built.",
+  "Revenue management: dynamic nightly rates that beat the OTAs, even in low season.",
 ];
 
 const homeownerPoints = [
-  "Suitability assessed — space, entry, noise, and local STRA council rules reviewed.",
-  "Setup without overwhelm — smart locks, photography, and listing copy that converts.",
-  "Pricing that works — never too high (no bookings) or too low (losses, bad guests).",
-  "House rules & launch checklist — from GST to automated messaging, done for you.",
+  "Suitability assessed: space, entry, noise, and local STRA council rules reviewed.",
+  "Setup without overwhelm: smart locks, photography, and listing copy that converts.",
+  "Pricing that works: never too high (no bookings) or too low (losses, bad guests).",
+  "House rules & launch checklist: from GST to automated messaging, done for you.",
 ];
 
 const roadmap = [
@@ -116,7 +116,7 @@ export function HospitalityExperience() {
                 transition={{ duration: 0.7, ease: EASE, delay: 0.85 }}
                 className="mt-8 max-w-xl text-lg leading-relaxed text-white/72"
               >
-                We help owners and investors move from uncertainty to operating clarity — practical setup, pricing, compliance, and occupancy systems.
+                We help owners and investors move from uncertainty to operating clarity, with practical setup, pricing, compliance, and occupancy systems.
               </motion.p>
 
               <motion.div
@@ -201,7 +201,7 @@ export function HospitalityExperience() {
                   className="mt-5 text-[clamp(2rem,4.5vw,3.4rem)] font-medium leading-[1.05] text-white"
                   style={{ fontFamily: SERIF }}
                 >
-                  No five years of experience required — just a proven system.
+                  No five years of experience required, just a proven system.
                 </h2>
               </motion.div>
 
@@ -287,7 +287,7 @@ export function HospitalityExperience() {
                 Open confidently. Operate profitably.
               </h2>
               <p className="mx-auto mt-7 max-w-lg text-lg leading-relaxed text-white/65">
-                Tell us about your property — we'll tell you exactly what steps come next.
+                Tell us about your property and we'll tell you exactly what steps come next.
               </p>
               <div className="mt-11 flex justify-center">
                 <Link href="/contact">

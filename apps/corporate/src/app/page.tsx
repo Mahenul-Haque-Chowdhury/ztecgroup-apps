@@ -4,7 +4,7 @@ import { Home } from "./pages/Home";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "ZTEC Group — Digital Services, Software & Media Company in Australia",
+    absolute: "ZTEC Group - Digital Services, Software & Media Company in Australia",
   },
   description:
     "ZTEC Group Pty Ltd is an Australian digital services company uniting software development, communication, content production, and hospitality consulting in one connected ecosystem.",

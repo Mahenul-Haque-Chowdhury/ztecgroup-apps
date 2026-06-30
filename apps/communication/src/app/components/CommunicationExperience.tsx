@@ -27,7 +27,7 @@ import { Button } from "./Button";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const SCAN2CALL_URL = "https://scan2call.net";
 
-const HEADLINE = ["Lost", "items", "found", "—", "without", "exposing", "who", "you", "are."];
+const HEADLINE = ["Lost", "items", "found,", "without", "exposing", "who", "you", "are."];
 
 const heroBranches = ["Scan2Call Platform", "QR Smart Tags", "Anonymous Channel", "Recovery Alerts"];
 
@@ -39,7 +39,7 @@ const recoverySteps: Array<{ title: string; description: string; icon: LucideIco
   },
   {
     title: "Anonymous contact",
-    description: "Call, text, or report — no personal numbers are ever shared.",
+    description: "Call, text, or report, with no personal numbers ever shared.",
     icon: MessageCircle,
   },
   {
@@ -143,7 +143,7 @@ export function CommunicationExperience() {
 
                 <h1 className="mt-8 flex flex-wrap justify-center gap-x-[0.26em] gap-y-1 text-[clamp(2.1rem,5vw,4.3rem)] font-bold leading-[1.0] tracking-[-0.04em] text-white lg:justify-start">
                   {HEADLINE.map((word, i) => {
-                    const accent = word === "found" || word === "are.";
+                    const accent = word === "found," || word === "are.";
                     return (
                       <motion.span
                         key={`${word}-${i}`}
@@ -165,7 +165,7 @@ export function CommunicationExperience() {
                   transition={{ duration: 0.7, ease: EASE, delay: 1 }}
                   className="mx-auto mt-7 max-w-md text-base leading-relaxed text-white/64 sm:text-lg lg:mx-0"
                 >
-                  A QR scan connects finder and owner through a private relay — personal details stay hidden on both sides.
+                  A QR scan connects finder and owner through a private relay, with personal details hidden on both sides.
                 </motion.p>
 
                 <motion.div

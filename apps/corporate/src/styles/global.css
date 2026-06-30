@@ -442,7 +442,7 @@ body::after {
   background: linear-gradient(90deg, transparent, var(--primary));
 }
 
-/* Icon chip — rounded gradient tile for feature/capability icons */
+/* Icon chip - rounded gradient tile for feature/capability icons */
 .icon-chip {
   display: inline-flex;
   align-items: center;
@@ -489,7 +489,7 @@ body::after {
     0 34px 72px rgba(4, 8, 20, 0.6);
 }
 
-/* Feature tile — lighter card for dense icon-led grids */
+/* Feature tile - lighter card for dense icon-led grids */
 .feature-tile {
   position: relative;
   overflow: hidden;

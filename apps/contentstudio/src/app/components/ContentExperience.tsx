@@ -75,7 +75,7 @@ const clips: Array<{
     title: "Motion & Captions",
     description: "Branded typography, lower thirds, subtitles, and graphic overlays.",
     icon: Subtitles,
-    duration: "—",
+    duration: "Any",
     ratio: "Any",
     platforms: ["Graphics"],
   },
@@ -83,7 +83,7 @@ const clips: Array<{
     title: "Color & Audio Finish",
     description: "Cinematic grading, noise reduction, and broadcast-safe mastering.",
     icon: Volume2,
-    duration: "—",
+    duration: "Any",
     ratio: "Master",
     platforms: ["Grade", "Mix"],
   },
@@ -397,7 +397,7 @@ export function ContentExperience() {
                       to={24}
                       className="bg-gradient-to-br from-amber-200 to-orange-400 bg-clip-text text-[clamp(3.5rem,8vw,6rem)] font-bold leading-none text-transparent"
                     />
-                    <span className="mb-2 text-2xl font-semibold text-amber-200/70">–72h</span>
+                    <span className="mb-2 text-2xl font-semibold text-amber-200/70">to 72h</span>
                   </div>
                   <p className="mt-3 text-lg text-white/70">typical turnaround for standard edits</p>
                 </div>
