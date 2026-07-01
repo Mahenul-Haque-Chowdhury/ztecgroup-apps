@@ -428,9 +428,9 @@ export function Home() {
                       type="button"
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                       aria-expanded={isOpen}
-                      className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left md:px-6 md:py-[1.05rem]"
+                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left sm:px-7"
                     >
-                      <span className="text-base font-medium leading-snug text-white/90 sm:text-lg md:text-xl md:leading-snug">
+                      <span className="text-base font-semibold text-white sm:text-lg">
                         {item.question}
                       </span>
                       <motion.span
@@ -449,10 +449,10 @@ export function Home() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <p className="px-5 pb-4 text-sm leading-relaxed text-white/68 md:px-6 md:pb-5 md:text-base">
+                          <p className="measure px-6 pb-6 text-sm leading-7 text-white/62 sm:px-7">
                             {item.answer}
                           </p>
                         </motion.div>
