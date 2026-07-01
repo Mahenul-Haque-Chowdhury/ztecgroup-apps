@@ -117,6 +117,17 @@ export const leadershipProfiles: LeadershipProfile[] = [
     worksFor: ["corporate", "software"],
     knowsAbout: ["Product architecture", "Software delivery", "Automation", "Digital systems"],
   },
+  {
+    slug: "ihtisham-el-fuad",
+    name: "Ihtisham EL-Fuad",
+    jobTitle: "Director of STRA",
+    division: "STRA & Hospitality",
+    shortBio: "Leads STRA and hospitality consultation, guiding property setup, revenue optimization, and operating strategy for short-term rental portfolios.",
+    bio: "Ihtisham EL-Fuad leads ZTEC STRA and hospitality management consultation, directing short-term rental strategy, property setup, revenue optimization, and day-to-day operating systems for hospitality portfolios.",
+    image: "/Ihtisham_EL-Fuad_Director_of_ZTEC_STRA.jpeg",
+    worksFor: ["corporate", "hospitality"],
+    knowsAbout: ["STRA strategy", "Hospitality operations", "Revenue optimization", "Property setup"],
+  },
 ];
 
 export function getLeadershipProfile(slug: string) {
