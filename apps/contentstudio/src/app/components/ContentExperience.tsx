@@ -115,7 +115,7 @@ export function ContentExperience() {
     target: reelRef,
     offset: ["start end", "end start"],
   });
-  const playheadX = useTransform(scrollYProgress, [0, 1], ["2%", "98%"]);
+  const playheadX = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? ["50%", "50%"] : ["2%", "98%"]);
   const filmstripX = useTransform(scrollYProgress, [0, 1], [shouldReduceMotion ? 0 : -80, shouldReduceMotion ? 0 : 80]);
 
   return (

@@ -357,7 +357,7 @@ export function SoftwareExperience() {
                           transition={{ duration: 0.5, ease: EASE, delay: 1.3 + i * 0.1 }}
                           className="text-center"
                         >
-                          <div className="bg-gradient-to-br from-white to-cyan-200 bg-clip-text text-2xl font-bold text-transparent">
+                          <div className="bg-gradient-to-br from-white to-cyan-200 bg-clip-text text-xl font-bold text-transparent sm:text-2xl">
                             {stat.value}
                           </div>
                           <div className="mt-1.5 text-[9px] uppercase tracking-[0.12em] text-white/45">{stat.label}</div>
@@ -450,7 +450,7 @@ export function SoftwareExperience() {
                       {/* giant index watermark */}
                       <span
                         aria-hidden
-                        className="pointer-events-none absolute -right-2 -top-6 select-none font-mono text-[7rem] font-bold leading-none text-white/[0.03] transition-all duration-500 group-hover:text-cyan-300/[0.07]"
+                        className="pointer-events-none absolute -right-2 -top-6 select-none font-mono text-[3.5rem] font-bold leading-none text-white/[0.03] transition-all duration-500 group-hover:text-cyan-300/[0.07] sm:text-[7rem]"
                       >
                         {moduleId}
                       </span>

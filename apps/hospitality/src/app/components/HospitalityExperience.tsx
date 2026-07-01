@@ -90,7 +90,7 @@ export function HospitalityExperience() {
               </motion.div>
 
               <h1
-                className="mt-8 flex flex-wrap gap-x-[0.28em] gap-y-1 text-[clamp(2.6rem,7vw,6rem)] font-medium leading-[0.98] tracking-[-0.01em] text-white"
+                className="mt-8 flex flex-wrap gap-x-[0.28em] gap-y-1 text-[clamp(1.9rem,7vw,6rem)] font-medium leading-[0.98] tracking-[-0.01em] text-white"
                 style={{ fontFamily: SERIF }}
               >
                 {HEADLINE.map((word, i) => {

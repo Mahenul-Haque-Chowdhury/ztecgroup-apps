@@ -45,7 +45,7 @@ export function Faq({ items, className = "" }: FaqProps) {
                 animate={{ rotate: isOpen ? 45 : 0 }}
                 transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 aria-hidden
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/65"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 sm:h-8 sm:w-8 text-white/65"
               >
                 <Plus size={16} />
               </motion.span>

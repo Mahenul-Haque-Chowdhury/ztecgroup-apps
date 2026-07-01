@@ -22,10 +22,45 @@ interface EcosystemDiagramProps {
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+/** Inner content of a division node card — shared by the mobile stack and the desktop diagram. */
+function NodeCardContent({ node }: { node: EcosystemNode }) {
+  return (
+    <>
+      {/* accent tint wash */}
+      <span className={`pointer-events-none absolute inset-0 -z-10 rounded-[1.4rem] bg-gradient-to-br ${node.accent} opacity-[0.08] transition-opacity duration-500 group-hover:opacity-[0.16]`} />
+      {/* soft accent bloom */}
+      <span className={`pointer-events-none absolute -inset-3 -z-20 rounded-[1.8rem] bg-gradient-to-br ${node.accent} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30`} />
+
+      <div className="flex items-center justify-between">
+        <span className="text-[10px] font-semibold tracking-[0.16em] text-white/25 transition-colors duration-500 group-hover:text-white/45">
+          {node.number}/04
+        </span>
+        <span className={`h-px flex-1 ml-3 bg-gradient-to-r ${node.accent} opacity-25 transition-opacity duration-500 group-hover:opacity-55`} />
+      </div>
+
+      <div className="flex items-center gap-3.5">
+        <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] sm:h-[4.5rem] sm:w-[4.5rem]">
+          <span className={`absolute inset-0 bg-gradient-to-br ${node.accent} opacity-20`} />
+          <Image src={node.logoSrc} alt={node.label} width={56} height={56} className="relative h-10 w-10 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] sm:h-12 sm:w-12" />
+        </span>
+        <span className="min-w-0 text-base font-semibold uppercase leading-[1.15] tracking-[0.02em] text-white/85 transition-colors group-hover:text-white sm:text-xl">
+          {node.label}
+        </span>
+      </div>
+
+      <p className="text-[11.5px] leading-snug text-white/48 transition-colors duration-500 group-hover:text-white/62 sm:text-xs">
+        {node.tagline}
+      </p>
+    </>
+  );
+}
+
 /**
  * Signature corporate visual: a central "ZTEC Group" core with the four
  * specialist divisions arranged around it, connected by lines that draw in and
  * pulse. Communicates "one operating architecture, four divisions".
+ * On mobile (< sm) the absolute diagram would overflow, so we render a simple
+ * stacked column of the same cards instead.
  * Lines/pulse are gated on reduced motion.
  */
 export function EcosystemDiagram({ nodes, className = "" }: EcosystemDiagramProps) {
@@ -44,7 +79,23 @@ export function EcosystemDiagram({ nodes, className = "" }: EcosystemDiagramProp
 
   return (
     <div ref={ref} className={`relative mx-auto w-full max-w-[1440px] ${className}`}>
-      <div className="relative aspect-[0.85/1] sm:aspect-[2.15/1]">
+      {/* Mobile: stacked cards (the absolute diagram would overflow < sm) */}
+      <div className="flex flex-col gap-4 sm:hidden">
+        {nodes.slice(0, 4).map((node) => (
+          <a
+            key={node.label}
+            href={node.href}
+            target="_blank"
+            rel="noopener"
+            className="group relative flex w-full flex-col gap-3 overflow-hidden rounded-[1.4rem] border border-white/10 bg-[radial-gradient(circle_at_20%_0%,rgba(255,255,255,0.07),rgba(10,14,22,0.96)_60%)] p-4 shadow-[0_18px_40px_rgba(4,8,20,0.5)] backdrop-blur-md"
+          >
+            <NodeCardContent node={node} />
+          </a>
+        ))}
+      </div>
+
+      {/* Desktop: signature X-diagram */}
+      <div className="relative hidden aspect-[2.15/1] sm:block">
         {/* faint radial grid backdrop */}
         <div
           aria-hidden
@@ -156,31 +207,7 @@ export function EcosystemDiagram({ nodes, className = "" }: EcosystemDiagramProp
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.5 + i * 0.12 }}
             >
-              {/* accent tint wash */}
-              <span className={`pointer-events-none absolute inset-0 -z-10 rounded-[1.4rem] bg-gradient-to-br ${node.accent} opacity-[0.08] transition-opacity duration-500 group-hover:opacity-[0.16]`} />
-              {/* soft accent bloom */}
-              <span className={`pointer-events-none absolute -inset-3 -z-20 rounded-[1.8rem] bg-gradient-to-br ${node.accent} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30`} />
-
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold tracking-[0.16em] text-white/25 transition-colors duration-500 group-hover:text-white/45">
-                  {node.number}/04
-                </span>
-                <span className={`h-px flex-1 ml-3 bg-gradient-to-r ${node.accent} opacity-25 transition-opacity duration-500 group-hover:opacity-55`} />
-              </div>
-
-              <div className="flex items-center gap-3.5">
-                <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] sm:h-[4.5rem] sm:w-[4.5rem]">
-                  <span className={`absolute inset-0 bg-gradient-to-br ${node.accent} opacity-20`} />
-                  <Image src={node.logoSrc} alt={node.label} width={56} height={56} className="relative h-10 w-10 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] sm:h-12 sm:w-12" />
-                </span>
-                <span className="min-w-0 text-lg font-semibold uppercase leading-[1.1] tracking-[0.02em] text-white/85 transition-colors group-hover:text-white sm:text-xl">
-                  {node.label}
-                </span>
-              </div>
-
-              <p className="text-[11.5px] leading-snug text-white/48 transition-colors duration-500 group-hover:text-white/62 sm:text-xs">
-                {node.tagline}
-              </p>
+              <NodeCardContent node={node} />
             </motion.a>
           );
         })}

@@ -9,6 +9,7 @@ import {
   useMotionValue,
   useVelocity,
   useAnimationFrame,
+  useReducedMotion,
 } from "motion/react";
 
 interface VelocityMapping {
@@ -120,8 +121,10 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
       return `${wrap(-copyWidth, 0, v)}px`;
     });
 
+    const prefersReducedMotion = useReducedMotion();
     const directionFactor = useRef<number>(1);
     useAnimationFrame((t, delta) => {
+      if (prefersReducedMotion) return;
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
       if (velocityFactor.get() < 0) {

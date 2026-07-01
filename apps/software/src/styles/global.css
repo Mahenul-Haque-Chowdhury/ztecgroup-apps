@@ -65,7 +65,7 @@ body {
 
 @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   html {
-    overflow-x: visible;
+    overflow-x: clip;
   }
 
   body {
