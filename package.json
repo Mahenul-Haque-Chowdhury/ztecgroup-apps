@@ -26,9 +26,5 @@
     "build:hospitality": "npm run build --workspace @ztecgroup/hospitality",
     "dev:hospitality": "npm run dev --workspace @ztecgroup/hospitality",
     "start:hospitality": "npm run start --workspace @ztecgroup/hospitality"
-  },
-  "dependencies": {
-    "lightningcss": "^1.32.0",
-    "lightningcss-win32-x64-msvc": "^1.32.0"
   }
 }
