@@ -485,7 +485,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                         ))}
                       </div>
                       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-                        <a href="https://scan2call.net" target="_blank" rel="noopener noreferrer">
+                        <a href="https://scan2call.com.au" target="_blank" rel="noopener noreferrer">
                           <Button variant="primary" size="lg">Visit Scan2Call</Button>
                         </a>
                         <Link href="/contact">
@@ -578,7 +578,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
                 {!isRevenueService ? (
                   isCommunicationService ? (
                     <a
-                      href="https://scan2call.net"
+                      href="https://scan2call.com.au"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -870,7 +870,7 @@ export function ServiceDetail({ serviceId }: ServiceDetailProps) {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 {isCommunicationService ? (
                   <a
-                    href="https://scan2call.net"
+                    href="https://scan2call.com.au"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

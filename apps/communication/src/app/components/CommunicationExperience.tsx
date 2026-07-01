@@ -25,7 +25,7 @@ import { SectionContainer } from "./SectionContainer";
 import { Button } from "./Button";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const SCAN2CALL_URL = "https://scan2call.net";
+const SCAN2CALL_URL = "https://scan2call.com.au";
 
 const HEADLINE = ["Lost", "items", "found,", "without", "exposing", "who", "you", "are."];
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface FaqItem {
   question: string;
@@ -15,7 +15,7 @@ interface FaqProps {
 }
 
 export function Faq({ items, className = "" }: FaqProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className={`space-y-3 ${className}`}>
@@ -23,7 +23,17 @@ export function Faq({ items, className = "" }: FaqProps) {
         const isOpen = openIndex === index;
 
         return (
-          <div key={item.question} className="premium-card">
+          <div
+            key={item.question}
+            style={{
+              backgroundImage: isOpen
+                ? "linear-gradient(112deg,color-mix(in srgb,var(--primary) 9%,transparent),color-mix(in srgb,var(--primary) 2%,transparent)),linear-gradient(112deg,rgba(44,51,62,0.96),rgba(33,39,49,0.95))"
+                : "linear-gradient(112deg,color-mix(in srgb,var(--primary) 6%,transparent),transparent 62%),linear-gradient(112deg,rgba(31,37,47,0.94),rgba(24,29,37,0.93))",
+            }}
+            className={`overflow-hidden rounded-[1.35rem] border transition-all duration-300 ${
+              isOpen ? "border-white/20" : "border-white/12 hover:border-white/20"
+            }`}
+          >
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -31,11 +41,14 @@ export function Faq({ items, className = "" }: FaqProps) {
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left sm:px-7"
             >
               <span className="text-base font-semibold text-white sm:text-lg">{item.question}</span>
-              <ChevronDown
-                size={20}
+              <motion.span
+                animate={{ rotate: isOpen ? 45 : 0 }}
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 aria-hidden
-                className={`shrink-0 text-white/55 transition-transform duration-300 ${isOpen ? "rotate-180 text-white" : ""}`}
-              />
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/65"
+              >
+                <Plus size={16} />
+              </motion.span>
             </button>
             <AnimatePresence initial={false}>
               {isOpen ? (

@@ -16,10 +16,10 @@ const serviceDomainLinks = {
 } as const;
 
 const serviceLinks = [
-  { path: serviceDomainLinks.communication, key: "communication", label: "Anonymous Communication Gateway", branches: ["Scan2Call & more."], logoSrc: "/communication.svg", logoAlt: "Anonymous Communication Gateway logo" },
-  { path: serviceDomainLinks.content, key: "content", label: "Video & Motion Content Studio", branches: ["Video Editing, Cinematic Production & more"], logoSrc: "/contentstudio.svg", logoAlt: "Video & Motion Content Studio logo" },
-  { path: serviceDomainLinks.software, key: "software", label: "Software & Business Systems", branches: ["Web Design, Mobile App, E-commerce & more"], logoSrc: "/software.svg", logoAlt: "Software & Business Systems logo" },
-  { path: serviceDomainLinks.revenue, key: "revenue", label: "STRA Management Consultation", branches: ["Property Renting Consultation"], logoSrc: "/hospitality.svg", logoAlt: "STRA Management Consultation logo" },
+  { path: serviceDomainLinks.communication, key: "communication", label: "ZTEC Communications", branches: ["Anonymous Communication Gateway, Scan2Call & more."], logoSrc: "/communication.svg", logoAlt: "ZTEC Communication - Anonymous Communication Gateway logo" },
+  { path: serviceDomainLinks.content, key: "content", label: "ZTEC Content Studio", branches: ["Video & Motion Content Studio, Video Editing, Cinematic Production & more"], logoSrc: "/contentstudio.svg", logoAlt: "ZTEC Content Studio - Video & Motion Content Studio logo" },
+  { path: serviceDomainLinks.software, key: "software", label: "ZTEC Software Lab", branches: ["Software & Business Systems, Web Design, Mobile App, E-commerce & more"], logoSrc: "/software.svg", logoAlt: "ZTEC Software Lab - Software & Business Systems logo" },
+  { path: serviceDomainLinks.revenue, key: "revenue", label: "ZTEC STRA & Hospitality Management", branches: ["STRA Management Consultation, Property Renting Consultation"], logoSrc: "/hospitality.svg", logoAlt: "ZTEC Hospitality Management Consultation - STRA Management Consultation logo" },
 ];
 
 const primaryLinks = [

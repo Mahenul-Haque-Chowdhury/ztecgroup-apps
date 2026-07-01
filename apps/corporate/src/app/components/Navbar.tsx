@@ -40,31 +40,31 @@ export function Navbar() {
   const serviceLinks = [
     {
       path: serviceDomainLinks.communication,
-      label: "Anonymous Communication Gateway",
-      branches: ["Scan2Call & more."],
+      label: "ZTEC Communications",
+      branches: ["Anonymous Communication Gateway, Scan2Call & more."],
       logoSrc: "/communication.svg",
-      logoAlt: "Anonymous Communication Gateway logo",
+      logoAlt: "ZTEC Communication - Anonymous Communication Gateway logo",
     },
     {
       path: serviceDomainLinks.content,
-      label: "Video & Motion Content Studio",
-      branches: ["Video Editing, Cinematic Production & more"],
+      label: "ZTEC Content Studio",
+      branches: ["Video & Motion Content Studio, Video Editing, Cinematic Production & more"],
       logoSrc: "/contentstudio.svg",
-      logoAlt: "Video & Motion Content Studio logo",
+      logoAlt: "ZTEC Content Studio - Video & Motion Content Studio logo",
     },
     {
       path: serviceDomainLinks.software,
-      label: "Software & Business Systems",
-      branches: ["Web Design, Mobile App, E-commerce & more"],
+      label: "ZTEC Software Lab",
+      branches: ["Software & Business Systems, Web Design, Mobile App, E-commerce & more"],
       logoSrc: "/software.svg",
-      logoAlt: "Software & Business Systems logo",
+      logoAlt: "ZTEC Software Lab - Software & Business Systems logo",
     },
     {
       path: serviceDomainLinks.revenue,
-      label: "STRA Management Consultation",
-      branches: ["Property Renting Consultation"],
+      label: "ZTEC STRA & Hospitality Management",
+      branches: ["STRA Management Consultation, Property Renting Consultation"],
       logoSrc: "/hospitality.svg",
-      logoAlt: "STRA Management Consultation logo",
+      logoAlt: "ZTEC Hospitality Management Consultation - STRA Management Consultation logo",
     },
   ];
 

@@ -35,8 +35,8 @@ const HERO_ROTATING_CTAS = [
       "!bg-[rgb(0,209,148)] text-slate-950 ring-[#86efd1]/70 shadow-[0_14px_35px_rgba(0,209,148,0.34)] hover:!bg-[rgb(0,209,148)]",
   },
   {
-    label: "Visit Scan2Call.net",
-    href: "https://scan2call.net",
+    label: "Visit Scan2Call.com.au",
+    href: "https://scan2call.com.au",
     external: true,
     toneClassName:
       "bg-[#FFC657] text-slate-950 ring-[#ffe3a6]/70 shadow-[0_14px_35px_rgba(255,198,87,0.34)] hover:bg-[#ffd173]",
@@ -125,8 +125,8 @@ export function Home() {
     <div className="relative">
       <div className="relative z-10">
       {/* Hero Section */}
-      <SectionContainer fullHeight>
-        <div ref={heroRef} className="relative flex min-h-[100svh] items-start justify-center overflow-hidden pt-28 sm:pt-32 md:pt-36 lg:pt-36 xl:pt-40">
+      <SectionContainer fullHeight={false}>
+        <div ref={heroRef} className="relative flex min-h-[85svh] items-start justify-center overflow-hidden pb-16 pt-28 sm:pt-32 md:pb-20 md:pt-36 lg:min-h-0 lg:pb-24 lg:pt-36 xl:pt-40">
           {/* Animated Background */}
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_20%,rgba(59,130,246,0.28),transparent_32%),radial-gradient(circle_at_30%_74%,rgba(34,211,238,0.22),transparent_30%),radial-gradient(circle_at_64%_22%,rgba(251,191,36,0.26),transparent_28%),radial-gradient(circle_at_84%_64%,rgba(249,115,22,0.2),transparent_26%),radial-gradient(circle_at_78%_32%,rgba(16,185,129,0.22),transparent_30%),radial-gradient(circle_at_54%_78%,rgba(132,204,22,0.18),transparent_26%),radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.06),transparent_40%),linear-gradient(180deg,rgba(6,10,18,0.42),rgba(3,6,12,0.76))]" />
@@ -279,24 +279,35 @@ export function Home() {
                     >
                       <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
                       <div className={`pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br ${service.gradient} opacity-20 blur-3xl`} />
-                      <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-[1.15rem] bg-white/[0.055] p-1.5 shadow-[0_16px_30px_rgba(0,0,0,0.24)] ring-1 ring-white/12">
+                      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-[1.05rem] bg-white/[0.055] p-1.5 shadow-[0_16px_30px_rgba(0,0,0,0.24)] ring-1 ring-white/12">
                         <Image
                           src={service.logoSrc}
                           alt={service.logoAlt}
-                          width={56}
-                          height={56}
+                          width={48}
+                          height={48}
                           className="h-full w-full object-contain"
                         />
                       </div>
-                      <div className="mb-3 text-[11px] uppercase tracking-[0.16em] text-white/42">{service.number}</div>
-                      <h2 className="text-xl font-semibold leading-tight text-white sm:text-2xl">{service.title}</h2>
-                      <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-white/62">{service.description}</p>
-                      <div className="mt-5 flex flex-wrap gap-2">
+                      <div className="mb-2 flex items-center justify-between">
+                        <span className="text-[11px] uppercase tracking-[0.16em] text-white/42">{service.number} / 04</span>
+                        <span className="text-[11px] uppercase tracking-[0.14em] text-white/32">Division</span>
+                      </div>
+                      <h2 className="line-clamp-1 text-lg font-semibold leading-tight text-white sm:text-xl">{service.title}</h2>
+                      <p className="mt-2.5 line-clamp-2 text-sm leading-relaxed text-white/62">{service.description}</p>
+                      <div className="mt-3.5 flex flex-wrap gap-2">
                         {service.tags.slice(0, 2).map((tag) => (
                           <span key={tag} className="rounded-full border border-white/8 bg-white/[0.035] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
                             {tag}
                           </span>
                         ))}
+                      </div>
+                      <div className="pointer-events-none absolute inset-x-5 bottom-4 flex items-center justify-between border-t border-white/8 pt-3">
+                        <span className="text-[10px] uppercase tracking-[0.14em] text-white/40">ztecgroup.au</span>
+                        <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br ${service.gradient} text-slate-950 opacity-90 transition-transform duration-300 group-hover:translate-x-0.5`}>
+                          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
+                            <path d="M3 9L9 3M9 3H4.5M9 3V7.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
                       </div>
                     </Card>
                   );

@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowUpRight, Shield, Video, Code, TrendingUp, type LucideIcon } from "lucide-react";
+import { Shield, Video, Code, TrendingUp, type LucideIcon } from "lucide-react";
 import { siteFaqs } from "@ztecgroup/content";
 import { SectionContainer } from "../SectionContainer";
 import { Button } from "../Button";
@@ -18,6 +17,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 interface Division {
   number: string;
   title: string;
+  shortLabel: string;
   description: string;
   icon: LucideIcon;
   logoSrc: string;
@@ -30,6 +30,7 @@ const divisions: Division[] = [
   {
     number: "01",
     title: "Anonymous Communication Gateway",
+    shortLabel: "ZTEC Communications",
     description: "Secure, encrypted communication infrastructure for privacy-first organizations and individuals.",
     icon: Shield,
     logoSrc: "/communication.svg",
@@ -40,6 +41,7 @@ const divisions: Division[] = [
   {
     number: "02",
     title: "Video & Motion Content Studio",
+    shortLabel: "ZTEC Content Studio",
     description: "Premium video production, motion graphics, and cinematic storytelling for brands that demand excellence.",
     icon: Video,
     logoSrc: "/contentstudio.svg",
@@ -50,6 +52,7 @@ const divisions: Division[] = [
   {
     number: "03",
     title: "Software & Business Systems",
+    shortLabel: "ZTEC Software Lab",
     description: "Enterprise-grade software solutions and custom business automation platforms.",
     icon: Code,
     logoSrc: "/software.svg",
@@ -60,6 +63,7 @@ const divisions: Division[] = [
   {
     number: "04",
     title: "STRA Management Consultation",
+    shortLabel: "ZTEC STRA & Hospitality Management",
     description: "Strategic STRA (Short term rental accommodation) management consultation and optimization frameworks.",
     icon: TrendingUp,
     logoSrc: "/hospitality.svg",
@@ -70,12 +74,53 @@ const divisions: Division[] = [
 ];
 
 const ecosystemNodes: EcosystemNode[] = divisions.map((d) => ({
-  label: d.title.split(" ").slice(0, 2).join(" "),
+  label: d.shortLabel,
+  number: d.number,
+  tagline: d.description,
   href: d.href,
   logoSrc: d.logoSrc,
   icon: d.icon,
   accent: d.accent,
 }));
+
+interface DivisionCapability {
+  number: string;
+  title: string;
+  description: string;
+  division: string;
+  accent: string;
+}
+
+const divisionCapabilities: DivisionCapability[] = [
+  {
+    number: "01",
+    title: "Secure Communication",
+    description: "ZTEC Communications runs standalone encrypted, anonymous messaging infrastructure for privacy-first individuals and organizations.",
+    division: "ZTEC Communications",
+    accent: "from-blue-500 to-cyan-500",
+  },
+  {
+    number: "02",
+    title: "Content Production",
+    description: "ZTEC Content Studio is an independent video and motion graphics house delivering cinematic storytelling for any brand, on any project.",
+    division: "ZTEC Content Studio",
+    accent: "from-amber-400 to-orange-500",
+  },
+  {
+    number: "03",
+    title: "Software & Automation",
+    description: "ZTEC Software Lab builds and supports enterprise software and business automation as a dedicated engineering practice.",
+    division: "ZTEC Software Lab",
+    accent: "from-cyan-500 to-teal-500",
+  },
+  {
+    number: "04",
+    title: "Hospitality Consulting",
+    description: "ZTEC STRA & Hospitality Management offers standalone short-term rental strategy, pricing, and portfolio consulting.",
+    division: "ZTEC STRA & Hospitality",
+    accent: "from-emerald-400 to-lime-500",
+  },
+];
 
 const credibilityStats: Array<{ to: number; prefix?: string; suffix?: string; decimals?: number; label: string }> = [
   { to: 80, suffix: "+", label: "Projects Delivered" },
@@ -83,46 +128,6 @@ const credibilityStats: Array<{ to: number; prefix?: string; suffix?: string; de
   { to: 20, suffix: "+", label: "Active Clients" },
   { to: 4, label: "Specialist Divisions" },
 ];
-
-function DivisionCard({ division, index }: { division: Division; index: number }) {
-  const Icon = division.icon;
-  return (
-    <motion.a
-      href={division.href}
-      target="_blank"
-      rel="noopener"
-      initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-70px" }}
-      transition={{ duration: 0.6, ease: EASE, delay: (index % 2) * 0.1 }}
-      whileHover={{ y: -6 }}
-      className="premium-card group block p-7 sm:p-8"
-    >
-      <span className="narrative-glint" aria-hidden />
-      <div className="relative z-[2]">
-        <div className="flex items-start justify-between gap-4">
-          <span className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${division.accent} shadow-[0_18px_32px_rgba(4,8,20,0.4)] ring-1 ring-white/12`}>
-            <Icon className="text-white" size={24} />
-          </span>
-          <span className="font-mono text-[11px] tracking-[0.2em] text-white/35">{division.number}/04</span>
-        </div>
-        <h3 className="mt-7 text-[1.4rem] font-semibold leading-tight text-white">{division.title}</h3>
-        <p className="mt-3 text-[0.96rem] leading-relaxed text-white/60">{division.description}</p>
-        <div className="mt-6 flex flex-wrap gap-2 border-t border-white/8 pt-5">
-          {division.tags.map((tag) => (
-            <span key={tag} className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-[10px] uppercase tracking-[0.1em] text-white/55">
-              {tag}
-            </span>
-          ))}
-          <span className="ml-auto inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-primary/80 transition-colors group-hover:text-primary">
-            Visit
-            <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </span>
-        </div>
-      </div>
-    </motion.a>
-  );
-}
 
 export function HomeSections() {
   const faqItems = siteFaqs.corporate;
@@ -147,34 +152,56 @@ export function HomeSections() {
               </p>
             </Reveal>
 
-            <Reveal className="mt-14" delay={0.1}>
+            <Reveal className="mt-16" delay={0.1}>
               <EcosystemDiagram nodes={ecosystemNodes} />
             </Reveal>
-
-            <div className="mt-16 grid gap-5 md:grid-cols-2">
-              {divisions.map((division, i) => (
-                <DivisionCard key={division.number} division={division} index={i} />
-              ))}
-            </div>
           </div>
         </div>
       </SectionContainer>
 
-      {/* ───────────── FAQ ───────────── */}
-      <SectionContainer fullHeight={false}>
-        <div className="relative py-16 md:py-24">
-          <div className="pointer-events-none absolute inset-x-0 top-10 h-72 bg-[radial-gradient(circle_at_center,rgba(127,211,255,0.12),transparent_68%)]" />
-          <div className="mx-auto max-w-[1120px] px-5 sm:px-8 lg:px-16">
-            <Reveal className="mb-9 text-center md:mb-12">
-              <span className="eyebrow justify-center">Decision support</span>
-              <h2 className="display-xl mt-5 text-white">Frequently asked questions</h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60">
-                Clear answers for teams evaluating a multi-division delivery partner.
+      {/* ───────────── How the Ecosystem Works ───────────── */}
+      <SectionContainer fullHeight={false} className="z-20">
+        <div className="relative overflow-hidden py-20 md:py-28">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(240,180,79,0.07),transparent_55%)]" />
+          {/* cinematic scan line sweep */}
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-0 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent"
+            initial={{ x: "-30%" }}
+            whileInView={{ x: "160%" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 2.2, ease: EASE, delay: 0.2 }}
+          />
+
+          <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-16">
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <span className="eyebrow justify-center">Four Independent Divisions</span>
+              <h2 className="display-xl mx-auto mt-5 text-white">
+                How the <span className="text-gradient">Ecosystem</span> Works
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60 sm:text-lg">
+                Each division operates as its own standalone service, engage with one or combine several under a single point of contact.
               </p>
             </Reveal>
-            <Reveal delay={0.08}>
-              <Faq items={faqItems} />
-            </Reveal>
+
+            <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 md:mt-20">
+              {divisionCapabilities.map((step, i) => (
+                <Reveal key={step.number} delay={0.1 + i * 0.12}>
+                  <div className="premium-card group relative flex h-full flex-col p-6">
+                    <span
+                      className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${step.accent} text-base font-bold text-slate-950 shadow-[0_14px_30px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:scale-110`}
+                    >
+                      {step.number}
+                    </span>
+                    <h3 className="text-lg font-semibold leading-snug text-white sm:text-xl">{step.title}</h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">{step.description}</p>
+                    <span className="mt-5 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-white/55">
+                      {step.division}
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </SectionContainer>
@@ -210,6 +237,25 @@ export function HomeSections() {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </div>
+      </SectionContainer>
+
+      {/* ───────────── FAQ ───────────── */}
+      <SectionContainer fullHeight={false}>
+        <div className="relative py-16 md:py-24">
+          <div className="pointer-events-none absolute inset-x-0 top-10 h-72 bg-[radial-gradient(circle_at_center,rgba(127,211,255,0.12),transparent_68%)]" />
+          <div className="mx-auto max-w-[1120px] px-5 sm:px-8 lg:px-16">
+            <Reveal className="mb-9 text-center md:mb-12">
+              <span className="eyebrow justify-center">Decision support</span>
+              <h2 className="display-xl mt-5 text-white">Frequently asked questions</h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60">
+                Clear answers for teams evaluating a multi-division delivery partner.
+              </p>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <Faq items={faqItems} />
+            </Reveal>
           </div>
         </div>
       </SectionContainer>

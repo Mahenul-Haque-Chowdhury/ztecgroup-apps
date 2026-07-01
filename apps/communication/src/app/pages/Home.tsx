@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
-import { Shield, Video, Code, TrendingUp, ChevronDown } from "lucide-react";
+import { Shield, Video, Code, TrendingUp, Plus } from "lucide-react";
 import { SectionContainer } from "../components/SectionContainer";
 import { ServiceCard } from "../components/ServiceCard";
 import { Button } from "../components/Button";
@@ -33,8 +33,8 @@ const HERO_ROTATING_CTAS = [
       "!bg-[rgb(0,209,148)] text-slate-950 ring-[#86efd1]/70 shadow-[0_14px_35px_rgba(0,209,148,0.34)] hover:!bg-[rgb(0,209,148)]",
   },
   {
-    label: "Visit Scan2Call.net",
-    href: "https://scan2call.net",
+    label: "Visit Scan2Call.com.au",
+    href: "https://scan2call.com.au",
     external: true,
     toneClassName:
       "bg-[#FFC657] text-slate-950 ring-[#ffe3a6]/70 shadow-[0_14px_35px_rgba(255,198,87,0.34)] hover:bg-[#ffd173]",
@@ -46,7 +46,7 @@ const HERO_CTA_ROTATION_MS = 2800;
 export function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeHeroCtaIndex, setActiveHeroCtaIndex] = useState(0);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -415,10 +415,13 @@ export function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.55, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                    style={{
+                      backgroundImage: isOpen
+                        ? "linear-gradient(112deg,color-mix(in srgb,var(--primary) 9%,transparent),color-mix(in srgb,var(--primary) 2%,transparent)),linear-gradient(112deg,rgba(44,51,62,0.96),rgba(33,39,49,0.95))"
+                        : "linear-gradient(112deg,color-mix(in srgb,var(--primary) 6%,transparent),transparent 62%),linear-gradient(112deg,rgba(31,37,47,0.94),rgba(24,29,37,0.93))",
+                    }}
                     className={`overflow-hidden rounded-[1.35rem] border transition-all duration-300 ${
-                      isOpen
-                        ? "border-white/20 bg-[linear-gradient(112deg,rgba(44,51,62,0.96),rgba(33,39,49,0.95))]"
-                        : "border-white/12 bg-[linear-gradient(112deg,rgba(31,37,47,0.94),rgba(24,29,37,0.93))] hover:border-white/20"
+                      isOpen ? "border-white/20" : "border-white/12 hover:border-white/20"
                     }`}
                   >
                     <button
@@ -431,11 +434,11 @@ export function Home() {
                         {item.question}
                       </span>
                       <motion.span
-                        animate={{ rotate: isOpen ? 180 : 0 }}
-                        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                        className="shrink-0 text-white/65"
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/65"
                       >
-                        <ChevronDown size={20} />
+                        <Plus size={16} />
                       </motion.span>
                     </button>
 
