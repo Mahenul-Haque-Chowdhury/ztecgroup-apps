@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildFaqSchema, serializeJsonLd, siteFaqs } from "@ztecgroup/content";
 import { SoftwareExperience } from "./components/SoftwareExperience";
+import { Faq } from "./components/Faq";
 
 export const metadata: Metadata = {
   title: {
@@ -47,16 +48,8 @@ export default function HomePage() {
               Frequently asked questions
             </h2>
           </div>
-          <div className="mt-14 space-y-5">
-            {siteFaqs.software.map((item) => (
-              <div
-                key={item.question}
-                className="cinematic-panel rounded-[1.5rem] p-7 sm:p-8"
-              >
-                <h3 className="text-lg font-semibold text-white sm:text-xl">{item.question}</h3>
-                <p className="mt-4 text-[0.98rem] leading-7 text-white/66">{item.answer}</p>
-              </div>
-            ))}
+          <div className="mt-14">
+            <Faq items={siteFaqs.software} />
           </div>
         </div>
       </section>
