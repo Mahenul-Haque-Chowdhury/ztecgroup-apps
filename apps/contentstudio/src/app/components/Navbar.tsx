@@ -50,9 +50,9 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-3 z-50 px-3 sm:top-5 sm:px-5 lg:px-8"
     >
-      <div className="relative mx-auto max-w-[1420px] overflow-hidden rounded-[1.4rem] border border-white/10 bg-[rgba(16,9,12,0.72)] shadow-[0_22px_60px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
+      <div className="relative mx-auto max-w-[1420px] rounded-[1.4rem] border border-white/10 bg-[rgba(16,9,12,0.72)] shadow-[0_22px_60px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
         {/* film-strip top edge */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 flex h-1.5 items-center justify-between gap-1 px-3 opacity-60">
+        <div className="pointer-events-none absolute inset-x-0 top-0 flex h-1.5 items-center justify-between gap-1 overflow-hidden rounded-t-[1.4rem] px-3 opacity-60">
           {Array.from({ length: 28 }).map((_, i) => (
             <span key={i} className="h-1 w-1.5 rounded-[1px] bg-gradient-to-b from-[#f6ba55]/70 to-[#ff8d66]/60" />
           ))}
