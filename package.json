@@ -26,5 +26,9 @@
     "build:hospitality": "npm run build --workspace @ztecgroup/hospitality",
     "dev:hospitality": "npm run dev --workspace @ztecgroup/hospitality",
     "start:hospitality": "npm run start --workspace @ztecgroup/hospitality"
+  },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "1.32.0",
+    "lightningcss-linux-x64-musl": "1.32.0"
   }
 }
